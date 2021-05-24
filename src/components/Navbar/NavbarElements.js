@@ -9,7 +9,6 @@ export const Nav = styled.div`
     
     @media screen and (max-width: 600px){
         height:90px;
-        position:fixed;
         width:100%;
         z-index:100;
         box-shadow: 1px 1px 4px 0 rgba(0,0,0,.1);

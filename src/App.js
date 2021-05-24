@@ -1,22 +1,23 @@
-import React from 'react';
-import { BrowserRouter as Router } from 'react-router-dom';
+import React, { Component} from 'react';
 import { GlobalStyle } from './globalstyles';
 
 import Intro from './components/Intro';
+import Routing from './components/Routing';
 import NavBar from './components/Navbar';
 import Work from './components/Work';
 import Projects from './components/Projects';
+import Footer from './components/Footer';
 
-export const App = () => {
-    return (
-        <Router >
+class App extends Component {
+    render() {
+      return (
+        <div id="App" className="App">
             <GlobalStyle />
             <NavBar />
-            <Intro />
-            <Work />
-            <Projects />
-        </Router>
-    )
-}
-
+            <Routing />
+        </div>
+      );
+    }
+  }
+  
 export default App;

@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const ProjectsContainer = styled.div`
-    margin-top:20px;
+    margin-top:5%;
 `;
 
 export const ProjectTitle = styled.div`
@@ -10,5 +10,5 @@ export const ProjectTitle = styled.div`
     justify-content:center;
     align-items:center;
     font-weight:700;
-    font-size:2.5rem;
+    font-size:2rem;
 `;

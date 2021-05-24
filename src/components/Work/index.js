@@ -4,23 +4,19 @@ import { WorkContainer, WorkGrid , WorkGridItem, WorkLogo,WorkName} from './Work
 const Work = () => {
     return (
         <WorkContainer>
-            {/* <WorkGridItem id="girdItem1">
-                <WorkLogo/>
-                <WorkName>Visible Alpha</WorkName>
-            </WorkGridItem> */}
             <WorkGrid>
-            <WorkGridItem id="girdItem4">
-                <WorkLogo/>
-                <WorkName>Visible Alpha</WorkName>
-            </WorkGridItem>
+                <WorkGridItem id="girdItem1">
+                    <WorkLogo/>
+                    <WorkName>VA</WorkName>
+                </WorkGridItem>
                 <WorkGridItem id="girdItem2">
                     <WorkLogo/>
-                    <WorkName>Godcast</WorkName>
+                    <WorkName>GC</WorkName>
                 </WorkGridItem>
 
                 <WorkGridItem id="girdItem3">
                     <WorkLogo/>
-                    <WorkName>Vistaar</WorkName>
+                    <WorkName>VT</WorkName>
                 </WorkGridItem>
             </WorkGrid>
         </WorkContainer>
