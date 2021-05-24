@@ -8,7 +8,7 @@ export const Nav = styled.div`
     flex-direction: row;
     
     @media screen and (max-width: 600px){
-        height:90px;
+        height:70px;
         width:100%;
         z-index:100;
         box-shadow: 1px 1px 4px 0 rgba(0,0,0,.1);
@@ -27,11 +27,15 @@ export const NavLink = styled(Link)`
         color:black;
     }
 
+    &:visited,&:focus{
+        border:none;
+    }
+
     @media screen and (max-width: 600px){
         .workLink{
             display:none
         }
-        margin : 40px 40px 0 0;
+        margin : 30px 40px 0 0;
     }
 `;
 

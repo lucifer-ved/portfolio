@@ -17,6 +17,10 @@ export const ProjectContainer = styled.div`
         flex-direction:column;
         box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
         margin:1.5rem;
+
+        &:nth-of-type(even){
+            flex-direction:column;
+        }
     }
 `;
 
@@ -38,6 +42,11 @@ export const ProjectDetails = styled.div`
     align-items:center;
     justify-content:center;
     flex:1;
+
+    @media screen and (max-width: 769px){
+        width:90%;
+        flex-direction:column;
+    }
 `;
 
 export const ProjectTitle = styled.div`
@@ -48,8 +57,9 @@ export const ProjectTitle = styled.div`
     justify-content:center;
 
     @media screen and (max-width: 769px){
-        font-size: 2rem;
-        align-items:left;
+        font-size: 1.5rem;
+        align-items:center;
+        text-align:center;
     }
 `;
 
@@ -64,7 +74,7 @@ export const ProjectDescription = styled.div`
     @media screen and (max-width: 769px){
         font-size: 1rem;
         margin-top:1.5rem;
-        align-items:left;
+        align-items:center;
     }
 `;
 

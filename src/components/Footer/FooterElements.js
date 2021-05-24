@@ -9,10 +9,11 @@ export const FooterContainer = styled.div`
     margin : 20px;
 
     @media screen and (max-width: 769px){
+        width:90%;
+        text-align:center;
         flex-direction:column;
     }
 `;
 
 export const FooterText = styled.div`
-    
 `;
