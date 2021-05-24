@@ -1,5 +1,5 @@
 import React from 'react';
-import {ProjectContainer,ProjectImage,ProjectDetails,ProjectTitle,ProjectDescription,SeeMoreButton,ProjectTechnologies, Tech} from './ProjectElements';
+import {ProjectContainer,ProjectImage,ProjectDetails,ProjectTitle,ProjectDescription,SeeMoreButton} from './ProjectElements';
 
 const Project = ({projectDetails}) => {
     return (

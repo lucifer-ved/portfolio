@@ -1,6 +1,5 @@
 import React from 'react';
-import Intro from '../Intro';
-import { Nav, NavLink, NavLogo, Logo, NavLinkAlignRight,NavBarIcon } from './NavbarElements';
+import { Nav, NavLink, NavLogo, Logo, NavLinkAlignRight } from './NavbarElements';
 
 const NavBar = () => {
     return (

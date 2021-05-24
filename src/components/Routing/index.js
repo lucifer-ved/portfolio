@@ -1,7 +1,6 @@
 import React from 'react';
 import { Switch, Route } from "react-router-dom";
 import { Redirect } from "react-router";
-import Work from '../Work';
 import Experiments from '../Experiments';
 import GetInTouch from '../GetInTouch';
 import Intro from '../Intro';
