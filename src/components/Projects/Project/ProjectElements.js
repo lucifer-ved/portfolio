@@ -7,9 +7,27 @@ export const ProjectContainer = styled.div`
     padding:2rem;
     display:flex;
     flex-direction:row;
+    padding:5rem;
 
     &:nth-of-type(even){
         flex-direction:row-reverse;
+    }
+
+    &:nth-child(odd){
+        img{
+            animation-duration:1.5s;
+            animation-name:translateSide;
+
+            @keyframes translateSide {
+                from{
+                    opacity:0;
+                    transform: translate(-15em)
+                }
+                to{
+                    opacity:1
+                }
+            }
+        }
     }
 
     @media screen and (max-width: 769px){
@@ -44,7 +62,7 @@ export const ProjectDetails = styled.div`
     flex:1;
 
     @media screen and (max-width: 769px){
-        width:90%;
+        width:100%;
         flex-direction:column;
     }
 `;
@@ -74,7 +92,7 @@ export const ProjectDescription = styled.div`
     @media screen and (max-width: 769px){
         font-size: 1rem;
         margin-top:1.5rem;
-        align-items:center;
+        text-align:center;
     }
 `;
 

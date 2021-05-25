@@ -1,7 +1,10 @@
+import VA from './images/va1.png';
+
 export const WorkData = [
     {
         shortname:'VA',
         fullName: 'Visible Alpha',
+        image:VA,
         companyDetails:{
             basics:{
                 name: 'Visible Alpha',
@@ -10,12 +13,13 @@ export const WorkData = [
                 website:'https://app.visiblealpha.com'
             },
             thingsWorkedOn:{
-
+                workedon:'here goes list'
             },
             challenges:{
-
+                challenges:'here goes list'
             }
-        }
+        },
+        to:'/va'
         
     },
     {
@@ -34,7 +38,8 @@ export const WorkData = [
             challenges:{
                 
             }
-        }
+        },
+        to:'/gc'
         
     },
     {
@@ -53,7 +58,8 @@ export const WorkData = [
             challenges:{
                 
             }
-        }
+        },
+        to:'/vt'
         
     }
 

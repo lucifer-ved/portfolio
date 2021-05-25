@@ -7,7 +7,7 @@ import {ProjectsContainer, ProjectTitle } from './ProjectsElements';
 const Projects = () => {
     return (
         <ProjectsContainer>
-            <ProjectTitle>Selected Projects</ProjectTitle>
+            <ProjectTitle>Recent Projects</ProjectTitle>
             <Project projectDetails={ProjectData}/>
         </ProjectsContainer>
     )

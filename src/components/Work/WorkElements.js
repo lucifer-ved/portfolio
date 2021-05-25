@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
 export const WorkContainer  = styled.div`
     background:transparent;
@@ -38,10 +39,11 @@ export const WorkGrid = styled.div`
 
 `;
 
-export const WorkGridItem = styled.div`
+export const WorkGridItem = styled(Link)`
     display:flex;
     justify-content:center;
     padding: .5rem;
+    text-decoration:none;
 
     animation-duration: 1.5s;
     animation-name: zoomOut;
