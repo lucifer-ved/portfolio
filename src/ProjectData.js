@@ -1,4 +1,6 @@
 import ProjCovid from './images/ProjectCovid.png';
+import TodoList from './images/TodoList.png';
+import IGBot from './images/IGBot.png';
 
 export const ProjectData = [
     {
@@ -32,7 +34,7 @@ export const ProjectData = [
         key:2
     },
     {
-        title:'MEMORIES - Social Media Application',
+        title:'MEMORIES - PhotoBlog',
         image:ProjCovid,
         description:'Collect and share memories !',
         details:{
@@ -63,7 +65,7 @@ export const ProjectData = [
     },
     {
         title:'Instagram Bot',
-        image:ProjCovid,
+        image:IGBot,
         description:'Instagram Bot to like, comment post and searched hashtag',
         details:{
             why:{
@@ -78,7 +80,7 @@ export const ProjectData = [
     },
     {
         title:'Todo List',
-        image:ProjCovid,
+        image:TodoList,
         description:'Simple todo list application',
         details:{
             why:{
@@ -90,21 +92,6 @@ export const ProjectData = [
             images:[]
         },
         key:6
-    },
-    {
-        title:'Quiz',
-        image:ProjCovid,
-        description:'Simple Quiz application',
-        details:{
-            why:{
-
-            },
-            challenges:{
-
-            },
-            images:[]
-        },
-        key:7
     }
 ];
 

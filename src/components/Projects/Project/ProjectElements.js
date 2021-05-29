@@ -8,6 +8,7 @@ export const ProjectContainer = styled.div`
     display:flex;
     flex-direction:row;
     padding:5rem;
+    
 
     &:nth-of-type(even){
         flex-direction:row-reverse;
@@ -35,6 +36,7 @@ export const ProjectContainer = styled.div`
         flex-direction:column;
         box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
         margin:1.5rem;
+        padding:20px;
 
         &:nth-of-type(even){
             flex-direction:column;
@@ -69,7 +71,7 @@ export const ProjectDetails = styled.div`
 
 export const ProjectTitle = styled.div`
     display:flex;
-    font-size: 3rem;
+    font-size: 2rem;
     font-weight:700;
     align-items:center;
     justify-content:center;
@@ -131,7 +133,6 @@ export const SeeMoreButton = styled.button`
     &:hover {
         color: #000 !important;
         background-color: transparent;
-        text-shadow: nthree;
     }
 
     &:hover:before {

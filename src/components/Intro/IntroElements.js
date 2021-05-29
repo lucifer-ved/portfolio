@@ -29,13 +29,13 @@ export const IntroContainer = styled.div`
 
 export const IntroHeading = styled.div`
     color:#333 ;
-    font-size:3rem;
+    font-size:5rem;
     font-weight:700;
     text-align:center;
     align-items:center;
     
     @media screen and (max-width: 600px){
-        font-size:2.5rem;
+        // font-size:5rem;
         // margin-top:10rem;
         margin-bottom:2rem;
     }

@@ -10,5 +10,5 @@ export const ProjectTitle = styled.div`
     justify-content:center;
     align-items:center;
     font-weight:700;
-    font-size:2rem;
+    font-size:3rem;
 `;
