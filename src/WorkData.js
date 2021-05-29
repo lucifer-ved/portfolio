@@ -4,6 +4,7 @@ export const WorkData = [
     {
         shortname:'VA',
         fullName: 'Visible Alpha',
+        workingyear:'(2017 - 2021)',
         image:VA,
         companyDetails:{
             basics:{
@@ -25,6 +26,7 @@ export const WorkData = [
     {
         shortname:'GC',
         fullName: 'Godcast',
+        workingyear:'(2016 - 2017)',
         companyDetails:{
             basics:{
                 name: 'Godcast',
@@ -45,6 +47,7 @@ export const WorkData = [
     {
         shortname:'VT',
         fullName: 'Vistaar',
+        workingyear:'(2015 - 2016)',
         companyDetails:{
             basics:{
                 name: 'Vistaar Technologies',

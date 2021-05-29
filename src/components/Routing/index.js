@@ -6,13 +6,13 @@ import Experiments from '../Experiments';
 import Intro from '../Intro';
 import WorkDetails from '../Work/WorkDetails';
 
-const Routing = ({props}) => {
+const Routing = () => {
   return(
     <Switch>
         <Route exact path="/" component={Intro}/>
         <Route exact path="/Work" component={Intro}/>
         <Route exact path="/Experiments" component={Experiments}/>
-        <Route exact path={"/va"} component={() => <WorkDetails something={props}/>}/>
+        <Route exact path="/va" component={WorkDetails}/>
         <Route exact path="/gc" component={WorkDetails}/>
         <Route exact path="/vt" component={WorkDetails}/>
         <Route name="app" path="/" handler={Intro}>

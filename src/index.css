@@ -3,7 +3,6 @@ body {
     font-family: -apple-system, BlinkMacSystemFont, 'europa',sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-
   }
   
   code {
@@ -11,7 +10,4 @@ body {
       monospace;
   }
 
-  /* .LandbotLivechat{
-    visibility:hidden;
-  } */
   

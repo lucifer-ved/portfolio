@@ -1,9 +1,31 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
+import { useLocation } from 'react-router';
 import { WorkData } from '../../../WorkData';
 import {WorkDetailContainer, WorkName, WorkImage, WorkBasicDetails,CompanyName,TimePeriod,Role, Website, ThingsWorkedOn, Challenges,SectionHeading, Hr, DetailsValue, DetailsHeading,WebsiteValue,WorkLinkContainer, WorkLink} from './WorkDetailElements';
 
-const WorkDetails = ({props}) => {
-    const data = WorkData[0];
+const WorkDetails = () => {
+    const location = useLocation();
+    
+    let { data }  = location.work;
+    let { workData }  = location.work;
+
+
+    data = data || workData;
+
+    let [data1,setData1] = useState({});
+
+    useEffect(() => {
+        const storedData = localStorage.getItem("data1");
+        setData1(JSON.parse(storedData));
+    }, [])
+
+    useEffect(() => {
+        if(data !== undefined){
+            localStorage.setItem("data1",JSON.stringify(data));
+        }
+    }, [data])
+    
+
     return (
         <WorkDetailContainer>
             <WorkName>
@@ -44,8 +66,10 @@ const WorkDetails = ({props}) => {
             <WorkLinkContainer>
                 <WorkLink to="/intro">All</WorkLink>
                 {
-                    WorkData.map((work)=>(
-                        <WorkLink to={work.to}>{work.shortname}</WorkLink>
+                    WorkData.map((workData)=>(
+                        <WorkLink to={{ pathname : workData.to, work:{workData} }}
+                        className={workData.shortname === data.shortname ? "isActive" : ""}
+                        >{workData.shortname}</WorkLink>
                     ))
                 }
             </WorkLinkContainer>

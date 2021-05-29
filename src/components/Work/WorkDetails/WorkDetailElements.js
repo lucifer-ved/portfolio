@@ -131,13 +131,18 @@ export const WorkLinkContainer = styled.div`
     display:flex;
     flex-direction:row;
     margin:5rem;
+
+    .isActive{
+        color:#000;
+    }
 `;
 
-export const WorkLink = styled.div`
+export const WorkLink = styled(Link)`
     flex:1;
     font-size:1.2rem;
     justify-content:center;
     text-align:center;
     cursor:pointer;
     color:#C0C0C0;
+    text-decoration:none;
 `;
