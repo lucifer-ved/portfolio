@@ -4,27 +4,23 @@ import IGBot from './images/IGBot.png';
 
 export const ProjectData = [
     {
-        title:'Covid-19 India Resources',
+        name:'Covid-19 India Resources',
+        shortName:'Covid-19 Resources',
         image:ProjCovid,
         description:'An attempt to provide all covid19 related resources link at one single place.',
         details:{
-            why:["It all started with an attempt to make all covid19 related resource easily searchable under one domain. When the 2nd wave started lot of information were available regarding medicines, beds, food etc. but on different different platforms.",
-                 "This small web app let user search for verified leads from twitter, filterout through helpful instagram post, and user can browse through filtered google sheets provided by volunteer and government organisations."]
+            why:["<div className='why'><p>It all started with an attempt to make all covid19 related resource easily searchable under one domain.<p><br/><p> When the 2nd wave started lot of information were available regarding medicines, beds, food etc. but on different different platforms.<p><br/><p><b>This small web app let user search for verified leads from twitter, filterout through helpful instagram post, and user can browse through filtered google sheets provided by volunteer and government organisations.</b></p></div>"]
             ,
-            challenges:["This was my first app that i built in reat and i learn a lot of stuff along the way.",
-                        "Implementing typeahead search functionality",
-                        "Styling an iframe for instagram post was bit of a challenge.",
-                        ]
+            challenges:["<p>This was my first app that i built in reat and i learn a lot of stuff along the way.<p><br/><p>1. Implementing typeahead search functionality</p><br/><p>2. Styling an iframe for instagram post was bit of a challenge.</p>"]
             ,
-            images:[],
-            whatsnext:[]
-            ,
-            currentStatus:'Done'
+            tech:["<a href='https://reactjs.org/'>React JS</a> <a href='https://www.netlify.com/'>Netlify</a>"]
         },
-        key:1
+        showWhatsNext:false,
+        id:1
     },
     {
-        title:'Positive News Application',
+        name:'Positive News Application',
+        shortName:'Positive News',
         image:ProjCovid,
         description:'An app that provide positive news happening around the world as a form of instagram stories',
         details:{
@@ -32,15 +28,14 @@ export const ProjectData = [
             ,
             challenges:[]
             ,
-            images:[],
             whatsnext:[]
-            ,
-            currentStatus:'WIP'
         },
-        key:2
+        showWhatsNext:false,
+        id:2
     },
     {
-        title:'MEMORIES - PhotoBlog',
+        name:'MEMORIES - PhotoBlog',
+        shortName:'Photoblog',
         image:ProjCovid,
         description:'Collect and share memories !',
         details:{
@@ -50,13 +45,13 @@ export const ProjectData = [
             ,
             images:[],
             whatsnext:[]
-            ,
-            currentStatus:'WIP'
         },
-        key:3
+        showWhatsNext:false,
+        id:3
     },
     {
-        title:'Blockchain Application',
+        name:'Blockchain Application',
+        shortName:'Blockchain',
         image:ProjCovid,
         description:'Attempt to create simple blockchain application',
         details:{
@@ -64,15 +59,14 @@ export const ProjectData = [
             ,
             challenges:[]
             ,
-            images:[],
             whatsnext:[]
-            ,
-            currentStatus:'WIP'
         },
-        key:4
+        showWhatsNext:false,
+        id:4
     },
     {
-        title:'Instagram Bot',
+        name:'Instagram Bot',
+        shortName:'Instagram Bot',
         image:IGBot,
         description:'Instagram Bot to like, comment post and searched hashtag',
         details:{
@@ -80,28 +74,21 @@ export const ProjectData = [
             ,
             challenges:["I struggled a lot at start for finding xpath of some specific actions. For Example. Finding 'like' icon and click on svg, Find comment box then type your comment in it etc."]
             ,
-            images:[],
             whatsnext:["Right now script only comments specific message passed while running the program. now the next step i'm working on is to collect data set of comments based on post, train it and it should come up with a relevant comment based on all the comments in comment box."]
-            ,
-            currentStatus:'Done'
         },
-        key:5
+        showWhatsNext:true,
+        id:5
     },
     {
-        title:'Todo List',
+        name:'Todo List',
+        shortName:'Todo List',
         image:TodoList,
         description:'Simple todo list application',
         details:{
             why:["Started working on this while learning about react js."]
-            ,
-            challenges:[]
-            ,
-            images:[],
-            whatsnext:[]
-            ,
-            currentStatus:'Done'
         },
-        key:6
+        showWhatsNext:false,
+        id:6
     }
 ];
 

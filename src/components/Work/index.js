@@ -13,7 +13,7 @@ const Work = () => {
             <WorkGrid>
                 {
                     WorkData.map((data,index)=>(
-                        <WorkGridItem id={`girdItem${index+1}`} to={{ pathname : data.to}} onClick={()=>saveToLocalStorage(data)} >
+                        <WorkGridItem id={`girdItem${index+1}`} to={{pathname: `/Work${data.to}`}} onClick={()=>saveToLocalStorage(data)} key={index}>
                             <WorkName id={`girdItemName${index+1}`}>{data.shortname}</WorkName>
                             <WorkGistContainer id={`gridItemContainer${index+1}`}>
                                 <WorkFullName>{data.fullName}</WorkFullName>

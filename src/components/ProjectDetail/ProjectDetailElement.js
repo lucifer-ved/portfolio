@@ -1,14 +1,17 @@
 import styled from 'styled-components';
-import {Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
-export const WorkDetailContainer= styled.div`
+export const ProjectDetailContainer =  styled.div`
     display:flex;
-    margin:5rem 3rem 0 3rem;
+    // margin:5rem 3rem 0 3rem;
     flex-direction:column;
-    // height:100vh;
+    width:70vw;
+    text-align:center;
+    justify-content:center;
+    margin:4rem auto;
 
     @media screen and (max-width: 769px){
-        margin:5rem 3rem 0 3rem;
+        // margin:5rem 3rem 0 3rem;
     }
 
     animation: fadeIn 2s;
@@ -24,7 +27,7 @@ export const WorkDetailContainer= styled.div`
     }
 `;
 
-export const WorkName= styled.div`
+export const ProjectName = styled.h1`
     font-size:3.5rem;
     font-weight:700;
     display:flex;
@@ -45,7 +48,29 @@ export const WorkName= styled.div`
 
 `;
 
-export const WorkImage= styled.img`
+export const ProjectDescription= styled.div`
+    font-size:1rem;
+    font-weight:700;
+    display:flex;
+    justify-content:center;
+    margin-top:1rem;
+
+    animation-duration: 1.5s;
+    animation-name: moveUp;
+
+    @keyframes moveUp {
+        from {
+            opacity: 0;
+            transform : translate(0em , 1em);
+        }
+        to {
+            opacity: 1;
+        }
+    }
+
+`;
+
+export const ProjectImage= styled.img`
     display: flex;
     align-items: center;
     justify-content: center;
@@ -59,88 +84,6 @@ export const WorkImage= styled.img`
         width:100%;
         margin-top:4rem;
     }
-
-`;
-
-export const WorkBasicDetails= styled.div`
-    display:flex;
-    flex-direction:row;
-    justify-content:center;
-    margin-right:3rem;
-    margin-bottom:2rem;
-
-    @media screen and (max-width: 769px){
-        flex-direction:column;
-        margin-right:0;
-        &>div{
-            margin-top:2rem;
-        }
-    }
-`;
-
-export const CompanyName= styled.div`
-    display:flex;
-    flex-direction:column;
-    flex:1;
-`;
-
-export const TimePeriod= styled.div`
-    display:flex;
-    flex-direction:column;
-    flex:1;
-`;
-
-export const Role= styled.div`
-    display:flex;
-    flex-direction:column;
-    flex:1;
-`;
-
-export const Website = styled.div`
-    display:flex;
-    flex-direction:column;
-    flex:1;
-`;
-
-export const DetailsHeading = styled.div`
-    display:flex;
-    justify-content:center;
-    font-size:1rem;
-    font-weight:900;
-`;
-
-
-export const DetailsValue = styled.div`
-    display:flex;
-    justify-content:center;
-    font-size:1.2rem;
-    margin-top:0.2rem;
-`;
-
-export const WebsiteValue = styled(Link)`
-    display:flex;
-    justify-content:center;
-    font-size:1.2rem;
-    margin-top:0.2rem;
-`;
-
-export const ThingsWorkedOn= styled.div`
-    display:flex;
-    justify-content:center;
-`;
-
-export const Challenges= styled.div`
-    display:flex;
-    justify-content:center;
-`;
-
-export const SectionHeading = styled.h2`
-    display:flex;
-    justify-content:center;
-    margin-top: 3rem;
-    margin-bottom: 3rem;
-    font-size:2.5rem;
-    font-weight:700;
 `;
 
 export const Hr = styled.hr`
@@ -152,7 +95,66 @@ export const Hr = styled.hr`
     margin:3rem auto;
 `;
 
-export const WorkLinkContainer = styled.div`
+export const TheChallenges= styled.div`
+    display:flex;
+    font-size:1.2rem;
+    flex-direction:column;
+    text-align:center;
+    line-height:1.2;
+    margin:auto 10%;
+`;
+
+export const TheWhy= styled.div`
+    display:flex;
+    font-size:1.2rem;
+    flex-direction:column;
+    text-align:center;
+    line-height:1.2;
+    margin:auto 10%;
+`;
+
+export const WhatsNext= styled.div`
+    display:flex;
+    font-size:1.2rem;
+    flex-direction:column;
+    text-align:center;
+    line-height:1.2;
+    margin:auto 10%;
+`;
+
+export const Tech = styled.div`
+    display:flex;
+    font-size:1.2rem;
+    flex-direction:row;
+    line-height:1.2;
+    margin:auto 10%;
+    justify-content:center;
+    
+    a{
+        text-decoration:none;
+        background-color:#ffc738;
+        border-radius:0.8rem;
+        padding:0.8rem;
+        color:#000;
+        margin:1rem;
+        text-align:center;
+
+        &:hover{
+            cursor:pointer;
+        }
+    }
+`;
+
+export const SectionHeading = styled.h2`
+    display:flex;
+    justify-content:center;
+    margin-top: 3rem;
+    margin-bottom: 3rem;
+    font-size:2.5rem;
+    font-weight:700;
+`;
+
+export const ProjectLinkContainer = styled.div`
     display:flex;
     flex-direction:row;
     margin:5rem;
@@ -166,7 +168,7 @@ export const WorkLinkContainer = styled.div`
     }
 `;
 
-export const WorkLink = styled(Link)`
+export const ProjectLink = styled(Link)`
     flex:1;
     font-size:1.2rem;
     justify-content:center;

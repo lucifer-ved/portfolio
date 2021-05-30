@@ -6,6 +6,9 @@ import Projects from '../Projects';
 import Footer from '../Footer';
 
 const Intro = () => {
+    // there must be some better way to do this !
+    localStorage.clear();
+
     return (
         <IntroContainer>
             <IntroHeading>
@@ -13,8 +16,8 @@ const Intro = () => {
                 {/* <br/> */}
             </IntroHeading>
             <IntroContent>
-                A <span>Software Developer</span> with an eye for design. <br/>
-                I like to Create,<a className="captureClass" href='http://photographsbyved.com/' target="_blank" rel="noopener noreferrer">Capture</a> & <IntroLink to={`/Experiments`}>Experiment</IntroLink> with different things.
+                A <span>Software Engineer</span> with an eye for design. <br/>
+                I like to Create, <a className="captureClass" href='http://photographsbyved.com/' target="_blank" rel="noopener noreferrer">Capture</a> & <IntroLink to={`/Experiments`}>Experiment</IntroLink> with different things.
                 <br/>
                 <SocialMediaContainer>
                     <SocialIcon >

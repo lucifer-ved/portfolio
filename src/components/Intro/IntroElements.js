@@ -35,8 +35,6 @@ export const IntroHeading = styled.div`
     align-items:center;
     
     @media screen and (max-width: 600px){
-        // font-size:5rem;
-        // margin-top:10rem;
         margin-bottom:2rem;
     }
 

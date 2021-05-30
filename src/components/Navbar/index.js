@@ -1,6 +1,6 @@
 import React from 'react';
 import { Nav, NavLink, NavLogo, Logo, NavLinkAlignRight } from './NavbarElements';
-import Resume from '../../assets/vedant_solanki.pdf';
+import Resume from '../../assets/Vedant_Solanki.pdf';
 
 const NavBar = () => {
 

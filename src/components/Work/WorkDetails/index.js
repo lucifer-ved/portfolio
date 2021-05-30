@@ -7,12 +7,13 @@ const WorkDetails = () => {
 
     useEffect(() => {
         const storedData = localStorage.getItem("workData");
-        // data = JSON.parse(storedData);
+        console.log(JSON.parse(storedData));
         setData(JSON.parse(storedData));
     }, [])
 
     function saveToLocalStorage(data){
         localStorage.setItem("workData",JSON.stringify(data));
+        setData(JSON.parse(JSON.stringify(data)));
     }
 
     return (
@@ -56,7 +57,7 @@ const WorkDetails = () => {
                 <WorkLink to="/">All</WorkLink>
                 {
                     WorkData.map((workData)=>(
-                        <WorkLink to={{ pathname : workData.to }}
+                        <WorkLink to={{pathname: `/Work${workData.to}`}}
                         className={workData.shortname === data.shortname ? "isActive" : ""}
                         onClick={()=>saveToLocalStorage(workData)}
                         >{workData.fullName}</WorkLink>

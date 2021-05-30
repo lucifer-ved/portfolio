@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-
+import { Link } from 'react-router-dom';
 
 export const ProjectContainer = styled.div`
     margin-top:2.5%;
@@ -112,7 +112,7 @@ export const Tech = styled.div`
     margin:0.5rem;
 `;
 
-export const SeeMoreButton = styled.button`
+export const SeeMoreButton = styled(Link)`
     margin-top:1.5rem;
     color: #333;
     background:#fff;
@@ -129,6 +129,7 @@ export const SeeMoreButton = styled.button`
     justify-content:center;
     align-items:center;
     stretch:center;
+    text-decoration:none;
 
     &:hover {
         color: #000 !important;
