@@ -135,6 +135,10 @@ export const WorkLinkContainer = styled.div`
     .isActive{
         color:#000;
     }
+
+    @media screen and (max-width: 769px){
+        flex-direction:column;
+    }
 `;
 
 export const WorkLink = styled(Link)`
@@ -145,4 +149,8 @@ export const WorkLink = styled(Link)`
     cursor:pointer;
     color:#C0C0C0;
     text-decoration:none;
+
+    @media screen and (max-width: 769px){
+        margin:1rem;
+    }
 `;

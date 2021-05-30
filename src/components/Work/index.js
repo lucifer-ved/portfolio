@@ -4,12 +4,16 @@ import { WorkData } from '../../WorkData';
 
 const Work = () => {
 
+    function saveToLocalStorage(data){
+        localStorage.setItem("workData",JSON.stringify(data));
+    }
+
     return (
         <WorkContainer>
             <WorkGrid>
                 {
                     WorkData.map((data,index)=>(
-                        <WorkGridItem id={`girdItem${index+1}`} to={{ pathname : data['to'], work:{data} }} >
+                        <WorkGridItem id={`girdItem${index+1}`} to={{ pathname : data.to}} onClick={()=>saveToLocalStorage(data)} >
                             <WorkName id={`girdItemName${index+1}`}>{data.shortname}</WorkName>
                             <WorkGistContainer id={`gridItemContainer${index+1}`}>
                                 <WorkFullName>{data.fullName}</WorkFullName>

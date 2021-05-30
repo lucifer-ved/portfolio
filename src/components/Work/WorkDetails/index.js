@@ -1,30 +1,19 @@
-import React, {useState, useEffect} from 'react';
-import { useLocation } from 'react-router';
+import React, { useState, useEffect} from 'react';
 import { WorkData } from '../../../WorkData';
 import {WorkDetailContainer, WorkName, WorkImage, WorkBasicDetails,CompanyName,TimePeriod,Role, Website, ThingsWorkedOn, Challenges,SectionHeading, Hr, DetailsValue, DetailsHeading,WebsiteValue,WorkLinkContainer, WorkLink} from './WorkDetailElements';
 
 const WorkDetails = () => {
-    const location = useLocation();
-    
-    let { data }  = location.work;
-    let { workData }  = location.work;
-
-
-    data = data || workData;
-
-    let [data1,setData1] = useState({});
+    const [data,setData] = useState({});
 
     useEffect(() => {
-        const storedData = localStorage.getItem("data1");
-        setData1(JSON.parse(storedData));
+        const storedData = localStorage.getItem("workData");
+        // data = JSON.parse(storedData);
+        setData(JSON.parse(storedData));
     }, [])
 
-    useEffect(() => {
-        if(data !== undefined){
-            localStorage.setItem("data1",JSON.stringify(data));
-        }
-    }, [data])
-    
+    function saveToLocalStorage(data){
+        localStorage.setItem("workData",JSON.stringify(data));
+    }
 
     return (
         <WorkDetailContainer>
@@ -37,39 +26,40 @@ const WorkDetails = () => {
             <WorkBasicDetails>
                 <CompanyName>
                     <DetailsHeading>Company</DetailsHeading>
-                    <DetailsValue>{data.companyDetails.basics.name}</DetailsValue>
+                    <DetailsValue>{(((data || {}).companyDetails || {}).basics || {}).name}</DetailsValue>
                 </CompanyName>
                 <TimePeriod>
                     <DetailsHeading>Time</DetailsHeading>
-                    <DetailsValue>{data.companyDetails.basics.timePeriod}</DetailsValue>
+                    <DetailsValue>{(((data || {}).companyDetails || {}).basics || {}).timePeriod}</DetailsValue>
                 </TimePeriod>
                 <Role>
                     <DetailsHeading>My Role</DetailsHeading>
-                    <DetailsValue>{data.companyDetails.basics.role}</DetailsValue>
+                    <DetailsValue>{(((data || {}).companyDetails || {}).basics || {}).role}</DetailsValue>
                 </Role>
                 <Website>
                     <DetailsHeading>Website</DetailsHeading>
-                    <WebsiteValue>{data.companyDetails.basics.website}</WebsiteValue>
+                    <WebsiteValue>{(((data || {}).companyDetails || {}).basics || {}).website}</WebsiteValue>
                 </Website>
             </WorkBasicDetails>
             <Hr />
             <SectionHeading>Things I Worked On</SectionHeading>
             <ThingsWorkedOn>
-                {data.companyDetails.thingsWorkedOn.workedon}
+                {(((data || {}).companyDetails || {}).thingsWorkedOn || {}).workedon}
             </ThingsWorkedOn>
             <Hr />
             <SectionHeading>Challenges</SectionHeading>
             <Challenges>
-                {data.companyDetails.challenges.challenges}
+                {(((data || {}).companyDetails || {}).challenges || {}).challenges}
             </Challenges> 
             <Hr />
             <WorkLinkContainer>
-                <WorkLink to="/intro">All</WorkLink>
+                <WorkLink to="/">All</WorkLink>
                 {
                     WorkData.map((workData)=>(
-                        <WorkLink to={{ pathname : workData.to, work:{workData} }}
+                        <WorkLink to={{ pathname : workData.to }}
                         className={workData.shortname === data.shortname ? "isActive" : ""}
-                        >{workData.shortname}</WorkLink>
+                        onClick={()=>saveToLocalStorage(workData)}
+                        >{workData.fullName}</WorkLink>
                     ))
                 }
             </WorkLinkContainer>

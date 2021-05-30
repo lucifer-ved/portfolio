@@ -1,11 +1,10 @@
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
 export const ExperimentContainer = styled.div`
     display:flex;
     flex-direction:column;
-    height:100vh;
-
-    
+    height:90vh;
 `;
 
 export const QuotesContainer = styled.div`
@@ -73,28 +72,33 @@ export const Author = styled.h3`
 `;
 
 
-export const DiffExperiments= styled.div`
+export const ExperimentsContainer= styled.div`
+    display:none;
+    // display:flex;
+    flex-direction:row;
+    flex-wrap:wrap;
+    min-height:30%;
+`;
+
+export const DiffExperiments= styled(Link)`
     display:flex:
+    flex-direction:column;
     flex:1;
     justify-content:center;
     align-items:center;
     text-align:center;
-
-    position: relative;
-    width: 400px;
-    margin: 40px auto;
-  
-    height: auto;
-    overflow: hidden;
-    padding: 20px;
-    background: $main-color;
-    box-shadow: 0 3px 5px rgba(0,0,0,0.05);
+    margin: 20px;
+    color:#000;
+    text-decoration:none;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+    &:hover{
+        box-shadow: rgba(17, 12, 46, 0.15) 0px 48px 100px 0px;
+    }
 `;
 
-export const ExperimentsContainer= styled.div`
-    display:flex;
-    flex-direction:row;
-    flex-wrap:wrap;
-    flex-grow:1;
-    min-height:40%;
+export const Title = styled.h1`
+    font-size:2rem;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
 `;

@@ -14,7 +14,7 @@ const Intro = () => {
             </IntroHeading>
             <IntroContent>
                 A <span>Software Developer</span> with an eye for design. <br/>
-                I like to Create, <IntroLink>Capture</IntroLink> & <IntroLink to={`/Experiments`}>Experiment</IntroLink> with different things.
+                I like to Create,<a className="captureClass" href='http://photographsbyved.com/' target="_blank" rel="noopener noreferrer">Capture</a> & <IntroLink to={`/Experiments`}>Experiment</IntroLink> with different things.
                 <br/>
                 <SocialMediaContainer>
                     <SocialIcon >

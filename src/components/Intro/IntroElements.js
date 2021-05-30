@@ -64,6 +64,20 @@ export const IntroContent = styled.div`
     text-align:center;
     line-height:150%;
 
+    .captureClass{
+        color:#c0c0c0;
+        text-decoration : none;
+        list-style : none;
+        text-decoration:none;
+        color:#c0c0c0;
+
+        &:hover {
+            color:#000;
+            cursor : pointer;
+            text-shadow: 0px 10px 2px #C0C0C0;
+        }
+    }
+
     @media screen and (max-width: 600px){
         font-size:2rem;
     }
@@ -87,6 +101,18 @@ export const IntroLink = styled(Link)`
     color:#c0c0c0;
     text-decoration : none;
     list-style : none;
+
+    a{
+        text-decoration:none;
+        color:#c0c0c0;
+
+        &:hover {
+            color:#000;
+            cursor : pointer;
+            text-shadow: 0px 10px 2px #C0C0C0;
+        }
+    }
+
     &:hover {
         color:#000;
         cursor : pointer;

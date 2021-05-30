@@ -19,7 +19,7 @@ const NavBar = () => {
             <NavLogo><Logo /></NavLogo>
             <NavLinkAlignRight>
                 <NavLink to={Resume} target='_blank' rel='noopener noreferrer'>Resume</NavLink>
-                <NavLink to="/GetInTouch" onClick={showContactOption}>Get In Touch</NavLink>
+                <NavLink to="#" onClick={showContactOption}>Get In Touch</NavLink>
             </NavLinkAlignRight>
         </Nav>
     )
