@@ -64,7 +64,7 @@ const ProjectDetail = () => {
                 <ProjectLink to="/">All</ProjectLink>
                 {
                     ProjectData.map((projectData)=>(
-                        <ProjectLink to={{pathname: `/project${projectData.to}`}}
+                        <ProjectLink to={{pathname: `/project/${projectData.id}`}}
                         className={projectData.shortName === (data || {}).shortName ? "isActive" : ""}
                         onClick={()=>saveToLocalStorage(projectData)}
                         >{projectData.shortName}</ProjectLink>

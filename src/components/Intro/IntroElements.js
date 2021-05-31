@@ -24,6 +24,7 @@ export const IntroContainer = styled.div`
 
     @media screen and (max-width: 600px){
         margin-top:4rem;
+        padding:2rem;
     }
 `;
 
