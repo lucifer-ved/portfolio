@@ -11,7 +11,7 @@ export const ProjectDetailContainer =  styled.div`
     margin:4rem auto;
 
     @media screen and (max-width: 769px){
-        // margin:5rem 3rem 0 3rem;
+        
     }
 
     animation: fadeIn 2s;
