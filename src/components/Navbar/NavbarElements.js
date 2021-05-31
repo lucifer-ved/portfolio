@@ -37,9 +37,9 @@ export const NavLink = styled(Link)`
     }
 
     @media screen and (max-width: 600px){
-        // .workLink{
-        //     display:none
-        // }
+        .workLink{
+            display:none
+        }
         margin : 30px 40px 0 70px;
     }
 `;
