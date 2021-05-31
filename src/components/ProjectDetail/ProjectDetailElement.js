@@ -163,7 +163,7 @@ export const ProjectLinkContainer = styled.div`
         color:#000;
     }
 
-    @media screen and (max-width: 769px){
+    @media screen and (max-width: 1100px){
         flex-direction:column;
     }
 `;
@@ -177,7 +177,7 @@ export const ProjectLink = styled(Link)`
     color:#C0C0C0;
     text-decoration:none;
 
-    @media screen and (max-width: 769px){
+    @media screen and (max-width: 1100px){
         margin:1rem;
     }
 `;
