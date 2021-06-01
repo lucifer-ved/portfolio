@@ -8,6 +8,9 @@ const NavBar = () => {
         try{
             const iframe = document.getElementsByTagName('iframe')[0];
             iframe.contentWindow.document.getElementsByClassName('launcher__bubble')[0].click();
+            // must be some better way to do this
+            setInterval(function(){ iframe.contentWindow.document.getElementsByTagName('footer')[0].innerHTML = "";}, 100);
+
         }catch(err){
             //console.log("Element Not Found Exception !")
         }

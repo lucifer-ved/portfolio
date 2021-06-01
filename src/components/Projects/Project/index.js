@@ -15,7 +15,7 @@ const Project = ({projectDetails}) => {
                     <ProjectImage src={projectDetails.image} alt={projectDetails.title}/>
                     <ProjectDetails>
                         <ProjectTitle>
-                            {projectDetails.title}
+                            {projectDetails.name}
                         </ProjectTitle>
                         <ProjectDescription>
                             {projectDetails.description}

@@ -1,6 +1,7 @@
 import ProjCovid from './images/ProjectCovid.png';
 import TodoList from './images/TodoList.png';
 import IGBot from './images/IGBot.png';
+import Photolog1 from './images/photolog1.png';
 
 export const ProjectData = [
     {
@@ -34,35 +35,21 @@ export const ProjectData = [
         id:2
     },
     {
-        name:'MEMORIES - PhotoBlog',
-        shortName:'Photoblog',
-        image:ProjCovid,
-        description:'Collect and share memories !',
+        name:'Photolog',
+        shortName:'Photolog',
+        image:Photolog1,
+        description:'Blogging platform only for photographers. where photographers can create their own journals.',
         details:{
             why:[]
             ,
             challenges:[]
             ,
+            tech:["<a href='https://reactjs.org/'>React JS</a> <a href='https://www.mongodb.com/cloud/atlas'>MongoDB Atlas</a> <a href='https://expressjs.com/'>Express JS</a> <a href='https://www.netlify.com/'>Netlify</a>"],
             images:[],
-            whatsnext:[]
+            whatsnext:[],
         },
-        showWhatsNext:false,
+        showWhatsNext:true,
         id:3
-    },
-    {
-        name:'Blockchain Application',
-        shortName:'Blockchain',
-        image:ProjCovid,
-        description:'Attempt to create simple blockchain application',
-        details:{
-            why:[]
-            ,
-            challenges:[]
-            ,
-            whatsnext:[]
-        },
-        showWhatsNext:false,
-        id:4
     },
     {
         name:'Instagram Bot',
@@ -74,10 +61,11 @@ export const ProjectData = [
             ,
             challenges:["I struggled a lot at start for finding xpath of some specific actions. For Example. Finding 'like' icon and click on svg, Find comment box then type your comment in it etc."]
             ,
-            whatsnext:["Right now script only comments specific message passed while running the program. now the next step i'm working on is to collect data set of comments based on post, train it and it should come up with a relevant comment based on all the comments in comment box."]
+            whatsnext:["Right now script only comments specific message passed while running the program. now the next step i'm working on is to collect data set of comments based on post, train it and it should come up with a relevant comment based on all the comments in comment box."],
+            tech:["<a href='https://www.python.org/'>Python</a> <a href='https://pypi.org/project/selenium/'>Selenium</a>"]
         },
         showWhatsNext:true,
-        id:5
+        id:4
     },
     {
         name:'Todo List',
@@ -88,7 +76,7 @@ export const ProjectData = [
             why:["Started working on this while learning about react js."]
         },
         showWhatsNext:false,
-        id:6
+        id:5
     }
 ];
 
