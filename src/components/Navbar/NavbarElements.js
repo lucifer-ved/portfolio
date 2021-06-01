@@ -40,7 +40,7 @@ export const NavLink = styled(Link)`
         .workLink{
             display:none
         }
-        margin : 30px 40px 0 70px;
+        margin : 30px 40px 0 0;
     }
 `;
 
@@ -49,9 +49,12 @@ export const NavLinkAlignRight = styled.div`
     justify-content:flex-end;
 
     @media screen and (max-width: 600px){
-        // justify-content:space-between;
-        justify-content:space-around;
+        justify-content:space-between;
+        // justify-content:space-around;
         width:100%;
+        .workLink{
+            display:none
+        }
     }
 `;
 
