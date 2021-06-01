@@ -143,6 +143,10 @@ export const Tech = styled.div`
             cursor:pointer;
         }
     }
+
+    @media screen and (max-width: 600px){
+        flex-direction:column;
+    }
 `;
 
 export const SectionHeading = styled.h2`

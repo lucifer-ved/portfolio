@@ -7,7 +7,8 @@ import Footer from '../Footer';
 
 const Intro = () => {
     // there must be some better way to do this !
-    localStorage.clear();
+    // every time any new project is added
+    // localStorage.clear();
 
     return (
         <IntroContainer>

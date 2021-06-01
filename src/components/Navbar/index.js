@@ -5,12 +5,21 @@ import Resume from '../../assets/vedantsolanki.pdf';
 class NavBar extends Component{
 
     componentDidMount(){
-        setInterval(function(){ 
-            const iframe = document.getElementsByTagName('iframe')[0];  
-            if(iframe && iframe.contentWindow!==undefined && iframe.contentWindow.document.getElementsByTagName('footer').length>0){  
-                iframe.contentWindow.document.getElementsByTagName('footer')[0].innerHTML = "";
-            }
-        }, 100);
+        try{
+            setInterval(function(){ 
+                const iframe = document.getElementsByTagName('iframe')[0];  
+                if(iframe && iframe.contentWindow!==undefined && iframe.contentWindow.document.getElementsByTagName('footer').length>0){  
+                    iframe.contentWindow.document.getElementsByTagName('footer')[0].innerHTML = "";
+                    let referralNode = iframe.contentWindow.document.querySelectorAll("[data-type='referral']");
+                    if(referralNode.length>0){
+                        referralNode[0].remove();
+                        referralNode[1].remove();
+                    }
+                }
+            }, 100);
+        }catch(err){
+            
+        }
     }
 
     
