@@ -1,7 +1,6 @@
 import React,{ Component} from 'react';
 import { Nav, NavLink, NavLogo, Logo, NavLinkAlignRight } from './NavbarElements';
 import Resume from '../../assets/vedantsolanki.pdf';
-import { render } from '@testing-library/react';
 
 class NavBar extends Component{
 
