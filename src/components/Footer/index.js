@@ -5,7 +5,7 @@ const Footer = () => {
     return (
         <FooterContainer>
             <FooterText> &#169; 2021 No rights reserved.</FooterText>
-            <FooterText> Infact, steal like a pro, share , get inspiration & create !</FooterText>
+            <FooterText> Infact, steal like a pro, share , get inspired & create !</FooterText>
         </FooterContainer>
     )
 }

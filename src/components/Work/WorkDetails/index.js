@@ -39,20 +39,21 @@ const WorkDetails = () => {
                 </Role>
                 <Website>
                     <DetailsHeading>Website</DetailsHeading>
-                    <WebsiteValue>{(((data || {}).companyDetails || {}).basics || {}).website}</WebsiteValue>
+                    <WebsiteValue href={(((data || {}).companyDetails || {}).basics || {}).website} target='_blank' rel='noopener noreferrer'>{(((data || {}).companyDetails || {}).basics || {}).website}</WebsiteValue>
                 </Website>
             </WorkBasicDetails>
             <Hr />
-            <SectionHeading>Things I Worked On</SectionHeading>
-            <ThingsWorkedOn>
-                {(((data || {}).companyDetails || {}).thingsWorkedOn || {}).workedon}
-            </ThingsWorkedOn>
+            <SectionHeading>What i did ?</SectionHeading>
+            <ThingsWorkedOn dangerouslySetInnerHTML={{ __html: ((data || {}).companyDetails || {}).thingsWorkedOn }} />
             <Hr />
-            <SectionHeading>Challenges</SectionHeading>
-            <Challenges>
-                {(((data || {}).companyDetails || {}).challenges || {}).challenges}
-            </Challenges> 
-            <Hr />
+            { 
+                (data || {}).showChallenges  && 
+                <div>
+                    <SectionHeading>Challenges</SectionHeading>
+                    <Challenges dangerouslySetInnerHTML={{ __html: ((data || {}).companyDetails || {}).challenges }} />
+                    <Hr /> 
+                </div>
+            }
             <WorkLinkContainer>
                 <WorkLink to="/">All</WorkLink>
                 {

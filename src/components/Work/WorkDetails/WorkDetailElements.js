@@ -117,7 +117,7 @@ export const DetailsValue = styled.div`
     margin-top:0.2rem;
 `;
 
-export const WebsiteValue = styled(Link)`
+export const WebsiteValue = styled.a`
     display:flex;
     justify-content:center;
     font-size:1.2rem;
@@ -126,12 +126,21 @@ export const WebsiteValue = styled(Link)`
 
 export const ThingsWorkedOn= styled.div`
     display:flex;
-    justify-content:center;
+    font-size:1.2rem;
+    flex-direction:column;
+    text-align:left;
+    line-height:1.5;
+    margin:auto 10%;
+    
 `;
 
 export const Challenges= styled.div`
     display:flex;
-    justify-content:center;
+    font-size:1.2rem;
+    flex-direction:column;
+    text-align:left;
+    line-height:1.5;
+    margin:auto 10%;
 `;
 
 export const SectionHeading = styled.h2`

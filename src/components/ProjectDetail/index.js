@@ -10,7 +10,8 @@ import {ProjectDetailContainer,
     Tech,
     WhatsNext,
     ProjectLink,
-    ProjectLinkContainer} from './ProjectDetailElement';
+    ProjectLinkContainer,
+    ProjectUrl} from './ProjectDetailElement';
 import { ProjectData } from '../../ProjectData';
 
 const ProjectDetail = () => {
@@ -37,6 +38,7 @@ const ProjectDetail = () => {
                 {(data || {}).description}
             </ProjectDescription>
             <ProjectImage src={(data || {}).image} alt={(data || {}).fullName} />
+            <ProjectUrl href={(data || {}).website}>{(data || {}).website}</ProjectUrl>
             <Hr />
             <SectionHeading>Why</SectionHeading>
             <TheWhy dangerouslySetInnerHTML={{ __html: ((data || {}).details || {}).why}} />

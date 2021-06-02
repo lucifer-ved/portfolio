@@ -95,6 +95,17 @@ export const Hr = styled.hr`
     margin:3rem auto;
 `;
 
+export const ProjectUrl = styled.a`
+    display:flex;
+    font-size:0.8rem;
+    flex-direction:row;
+    justify-content:center;
+    text-align:center;
+    text-decoration:none;
+    line-height:1.2;
+    margin:auto 10%;
+`;
+
 export const TheChallenges= styled.div`
     display:flex;
     font-size:1.2rem;
