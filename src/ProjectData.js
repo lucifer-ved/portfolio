@@ -12,7 +12,7 @@ export const ProjectData = [
         details:{
             why:["<div className='why'><p>It all started with an attempt to make all covid19 related resource easily searchable under one domain.<p><br/><p> When the 2nd wave started lot of information were available regarding medicines, beds, food etc. but on different different platforms.<p><br/><p><b>This small web app let user search for verified leads from twitter, filterout through helpful instagram post, and user can browse through filtered google sheets provided by volunteer and government organisations.</b></p></div>"]
             ,
-            challenges:["<p>This was the first app that i built in reat and i learned a lot of stuff along the way.<p><br/><p>1. Implementing typeahead search functionality.</p><br/><p>2. Collecting links with authentic and verified data.</p><br/><p>3. Styling an iframe for instagram post</p>"]
+            challenges:["<p>This was the first app that i built in reat and i learned a lot of stuff along the way.<p><br/><p>1. Implementing typeahead search functionality.</p><br/><p>2. Collecting links with authentic and verified data.</p>"]
             ,
             tech:["<a href='https://reactjs.org/'>React JS</a> <a href='https://www.netlify.com/'>Netlify</a>"]
         },
@@ -43,7 +43,7 @@ export const ProjectData = [
         name:'Instagram Bot',
         shortName:'Instagram Bot',
         image:IGBot,
-        description:'Instagram Bot to like, comment post and searched hashtag',
+        description:'Instagram Bot to like a post, comment on post, on searched hashtags.',
         details:{
             why:["<div className='why'><p>At first the only reason I started working on this was to reduce my engagement time on the post that I'm interested in.</p><br/><p> But soon I realized this issue is not only with me, after talking with one of my friend who just started with social media management and was handling 3 accounts at that time told me about the same issue and I realized small script like this could save a lot of time.</p></div>"]
             ,

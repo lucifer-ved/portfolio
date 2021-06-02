@@ -110,7 +110,7 @@ export const TheChallenges= styled.div`
     display:flex;
     font-size:1.2rem;
     flex-direction:column;
-    text-align:center;
+    text-align:left;
     line-height:1.2;
     margin:auto 10%;
 `;
@@ -119,7 +119,7 @@ export const TheWhy= styled.div`
     display:flex;
     font-size:1.2rem;
     flex-direction:column;
-    text-align:center;
+    text-align:left;
     line-height:1.2;
     margin:auto 10%;
 `;
@@ -128,7 +128,7 @@ export const WhatsNext= styled.div`
     display:flex;
     font-size:1.2rem;
     flex-direction:column;
-    text-align:center;
+    text-align:left;
     line-height:1.2;
     margin:auto 10%;
 `;
