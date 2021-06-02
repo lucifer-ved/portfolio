@@ -62,7 +62,8 @@ export const ProjectData = [
         image:TodoList,
         description:'Simple todo list application',
         details:{
-            why:["<div className='why'><p>Started working on this while learning about react js.</p></div>"]
+            why:["<div className='why'><p>Started working on this while learning about react js.</p></div>"],
+            tech:["<a href='https://reactjs.org/'>React JS</a> <a href='https://www.netlify.com/'>Netlify</a>"]
         },
         showWhatsNext:false,
         showChallenges:false,
