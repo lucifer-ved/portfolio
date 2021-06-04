@@ -7,7 +7,6 @@ const WorkDetails = () => {
 
     useEffect(() => {
         const storedData = localStorage.getItem("workData");
-        console.log(JSON.parse(storedData));
         setData(JSON.parse(storedData));
     }, [])
 
@@ -61,6 +60,7 @@ const WorkDetails = () => {
                         <WorkLink to={{pathname: `/Work${workData.to}`}}
                         className={workData.shortname === data.shortname ? "isActive" : ""}
                         onClick={()=>saveToLocalStorage(workData)}
+                        key={workData.fullName}
                         >{workData.fullName}</WorkLink>
                     ))
                 }

@@ -69,6 +69,7 @@ const ProjectDetail = () => {
                         <ProjectLink to={{pathname: `/project/${projectData.id}`}}
                         className={projectData.shortName === (data || {}).shortName ? "isActive" : ""}
                         onClick={()=>saveToLocalStorage(projectData)}
+                        key={projectData.shortName}
                         >{projectData.shortName}</ProjectLink>
                     ))
                 }
