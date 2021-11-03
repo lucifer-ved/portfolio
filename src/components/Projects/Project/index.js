@@ -21,7 +21,7 @@ const Project = ({projectDetails}) => {
                             {projectDetails.description}
                         </ProjectDescription>
                         <SeeMoreButton 
-                        to={{pathname:`/Project/${projectDetails.id}`}}
+                        to={{pathname:`/project/${projectDetails.id}`}}
                         onClick={()=>saveToLocalStorage(projectDetails)}>
                             Learn More
                         </SeeMoreButton>

@@ -1,17 +1,17 @@
-import React, { useState, useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
 import { WorkData } from '../../../WorkData';
-import {WorkDetailContainer, WorkName, WorkImage, WorkBasicDetails,CompanyName,TimePeriod,Role, Website, ThingsWorkedOn, Challenges,SectionHeading, Hr, DetailsValue, DetailsHeading,WebsiteValue,WorkLinkContainer, WorkLink} from './WorkDetailElements';
+import { WorkDetailContainer, WorkName, WorkImage, WorkBasicDetails, CompanyName, TimePeriod, Role, Website, ThingsWorkedOn, Challenges, SectionHeading, Hr, DetailsValue, DetailsHeading, WebsiteValue, WorkLinkContainer, WorkLink } from './WorkDetailElements';
 
 const WorkDetails = () => {
-    const [data,setData] = useState({});
+    const [data, setData] = useState({});
 
     useEffect(() => {
         const storedData = localStorage.getItem("workData");
         setData(JSON.parse(storedData));
     }, [])
 
-    function saveToLocalStorage(data){
-        localStorage.setItem("workData",JSON.stringify(data));
+    function saveToLocalStorage(data) {
+        localStorage.setItem("workData", JSON.stringify(data));
         setData(JSON.parse(JSON.stringify(data)));
     }
 
@@ -45,22 +45,22 @@ const WorkDetails = () => {
             <SectionHeading>What i did ?</SectionHeading>
             <ThingsWorkedOn dangerouslySetInnerHTML={{ __html: ((data || {}).companyDetails || {}).thingsWorkedOn }} />
             <Hr />
-            { 
-                (data || {}).showChallenges  && 
+            {
+                (data || {}).showChallenges &&
                 <div>
                     <SectionHeading>Challenges</SectionHeading>
                     <Challenges dangerouslySetInnerHTML={{ __html: ((data || {}).companyDetails || {}).challenges }} />
-                    <Hr /> 
+                    <Hr />
                 </div>
             }
             <WorkLinkContainer>
                 <WorkLink to="/">All</WorkLink>
                 {
-                    WorkData.map((workData)=>(
-                        <WorkLink to={{pathname: `/Work${workData.to}`}}
-                        className={workData.shortname === data.shortname ? "isActive" : ""}
-                        onClick={()=>saveToLocalStorage(workData)}
-                        key={workData.fullName}
+                    WorkData.map((workData) => (
+                        <WorkLink to={{ pathname: `/work${workData.to}` }}
+                            className={workData.shortname === data.shortname ? "isActive" : ""}
+                            onClick={() => saveToLocalStorage(workData)}
+                            key={workData.fullName}
                         >{workData.fullName}</WorkLink>
                     ))
                 }

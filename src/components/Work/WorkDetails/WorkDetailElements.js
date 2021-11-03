@@ -1,7 +1,7 @@
 import styled from 'styled-components';
-import {Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
-export const WorkDetailContainer= styled.div`
+export const WorkDetailContainer = styled.div`
     display:flex;
     margin:5rem 3rem 0 3rem;
     flex-direction:column;
@@ -24,7 +24,7 @@ export const WorkDetailContainer= styled.div`
     }
 `;
 
-export const WorkName= styled.div`
+export const WorkName = styled.div`
     font-size:3.5rem;
     font-weight:700;
     display:flex;
@@ -45,7 +45,7 @@ export const WorkName= styled.div`
 
 `;
 
-export const WorkImage= styled.img`
+export const WorkImage = styled.img`
     display: flex;
     align-items: center;
     justify-content: center;
@@ -62,7 +62,7 @@ export const WorkImage= styled.img`
 
 `;
 
-export const WorkBasicDetails= styled.div`
+export const WorkBasicDetails = styled.div`
     display:flex;
     flex-direction:row;
     justify-content:center;
@@ -78,19 +78,19 @@ export const WorkBasicDetails= styled.div`
     }
 `;
 
-export const CompanyName= styled.div`
+export const CompanyName = styled.div`
     display:flex;
     flex-direction:column;
     flex:1;
 `;
 
-export const TimePeriod= styled.div`
+export const TimePeriod = styled.div`
     display:flex;
     flex-direction:column;
     flex:1;
 `;
 
-export const Role= styled.div`
+export const Role = styled.div`
     display:flex;
     flex-direction:column;
     flex:1;
@@ -124,23 +124,27 @@ export const WebsiteValue = styled.a`
     margin-top:0.2rem;
 `;
 
-export const ThingsWorkedOn= styled.div`
+export const ThingsWorkedOn = styled.div`
     display:flex;
     font-size:1.2rem;
     flex-direction:column;
     text-align:left;
     line-height:1.5;
     margin:auto 10%;
+    text-align:center;
+    justify-content:center;
     
 `;
 
-export const Challenges= styled.div`
+export const Challenges = styled.div`
     display:flex;
     font-size:1.2rem;
     flex-direction:column;
     text-align:left;
     line-height:1.5;
     margin:auto 10%;
+    text-align:center;
+    justify-content:center;
 `;
 
 export const SectionHeading = styled.h2`

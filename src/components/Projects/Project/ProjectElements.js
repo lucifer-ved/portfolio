@@ -90,6 +90,9 @@ export const ProjectDescription = styled.div`
     margin-top:2.5rem;
     flex-direction:column;
     align-items:center;
+    text-align:center;
+    justify-content:center;
+    line-height:1.5em;
 
     @media screen and (max-width: 769px){
         font-size: 1rem;
