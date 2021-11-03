@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 
-export const ProjectDetailContainer =  styled.div`
+export const ProjectDetailContainer = styled.div`
     display:flex;
     // margin:5rem 3rem 0 3rem;
     flex-direction:column;
@@ -48,12 +48,13 @@ export const ProjectName = styled.h1`
 
 `;
 
-export const ProjectDescription= styled.div`
+export const ProjectDescription = styled.div`
     font-size:1rem;
     font-weight:700;
     display:flex;
     justify-content:center;
     margin-top:1rem;
+    line-height:1.8em;
 
     animation-duration: 1.5s;
     animation-name: moveUp;
@@ -70,7 +71,7 @@ export const ProjectDescription= styled.div`
 
 `;
 
-export const ProjectImage= styled.img`
+export const ProjectImage = styled.img`
     display: flex;
     align-items: center;
     justify-content: center;
@@ -106,31 +107,40 @@ export const ProjectUrl = styled.a`
     margin:auto 10%;
 `;
 
-export const TheChallenges= styled.div`
+export const TheChallenges = styled.div`
     display:flex;
     font-size:1.2rem;
     flex-direction:column;
     text-align:left;
     line-height:1.2;
     margin:auto 10%;
+    text-align:center;
+    justify-content:center;
+    line-height:1.8em;
 `;
 
-export const TheWhy= styled.div`
+export const TheWhy = styled.div`
     display:flex;
     font-size:1.2rem;
     flex-direction:column;
     text-align:left;
     line-height:1.2;
     margin:auto 10%;
+    text-align:center;
+    justify-content:center;
+    line-height:1.8em;
 `;
 
-export const WhatsNext= styled.div`
+export const WhatsNext = styled.div`
     display:flex;
     font-size:1.2rem;
     flex-direction:column;
     text-align:left;
     line-height:1.2;
     margin:auto 10%;
+    text-align:center;
+    justify-content:center;
+    line-height:1.8em;
 `;
 
 export const Tech = styled.div`
