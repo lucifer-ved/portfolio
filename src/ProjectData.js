@@ -19,7 +19,7 @@ export const ProjectData = [
         },
         showWhatsNext: false,
         showChallenges: true,
-        website: 'https://covid19indiaresources.in/',
+        website: 'https://covid19indiaresources.netlify.app/',
         id: 1
     },
     {

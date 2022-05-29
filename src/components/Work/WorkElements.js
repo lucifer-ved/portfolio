@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 
-export const WorkContainer  = styled.div`
+export const WorkContainer = styled.div`
     background:transparent;
     width:100%;
 `;
@@ -14,10 +14,12 @@ export const WorkGrid = styled.div`
     align-items:stretch;
     flex-direction:row;
     
+    
     #girdItem1{
-        background-color:#3ac;
+        background-color:#1d1e1c;
         flex:1;
         opacity:1;
+        
 
         &:hover{
             #girdItemName1{
@@ -25,6 +27,7 @@ export const WorkGrid = styled.div`
                 transform:scale(3);
                 transition: all 0.5s ease-in 0.1s;
                 opacity:0;
+                
             }
             #gridItemContainer1{
                 visibility:visible;
@@ -37,7 +40,7 @@ export const WorkGrid = styled.div`
     }
 
     #girdItem2{
-        background-color:#ffc738;
+        background-color:#fec600;
         flex:1;
         opacity:1;
         transform:scale(1);
@@ -61,7 +64,7 @@ export const WorkGrid = styled.div`
     }
 
     #girdItem3{
-        background-color:#000;
+        background-color:#4f8ac2;
         flex:1;
         opacity:1;
 
@@ -82,7 +85,31 @@ export const WorkGrid = styled.div`
         }
     }
 
-    #gridItemContainer1,#gridItemContainer2,#gridItemContainer3{
+    #girdItem4{
+        background-color:#f59822;
+        flex:1;
+        opacity:1;
+        transform:scale(1);
+
+        &:hover{
+            #girdItemName4{
+                // display:none;
+                transform:scale(5);
+                transition: all 0.5s ease-in 0.1s;
+                opacity:0;
+                
+            }
+            #gridItemContainer4{
+                visibility:visible;
+                transform:scale(1.5);
+                transition: all 0.5s ease-in 0.1s;
+                opacity:1;
+            }
+
+        }
+    }
+
+    #gridItemContainer1,#gridItemContainer2,#gridItemContainer3,#gridItemContainer4{
         visibility:hidden;
         opacity:0;
         transform:scale(0.5);
