@@ -33,7 +33,7 @@ export const ProjectData = [
         },
         showWhatsNext: false,
         showChallenges: false,
-        website: 'https://cryptotracker02.netlify.app/'
+        website: 'https://cryptotracker02.netlify.app/',
         id: 5
     },
     {
