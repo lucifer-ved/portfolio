@@ -8,15 +8,19 @@ export const WorkContainer = styled.div`
 
 export const WorkGrid = styled.div`
     margin-top:10rem;
-    display:flex;
+    // display:flex;
     height:100vh;
     justify-content: space-between;
     align-items:stretch;
     flex-direction:row;
-    
-    
+
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.5rem;
+
+
     #girdItem1{
-        background-color:#1d1e1c;
+        background-color:#fcbd32;
         flex:1;
         opacity:1;
         
@@ -39,16 +43,17 @@ export const WorkGrid = styled.div`
         }
     }
 
+
     #girdItem2{
-        background-color:#fec600;
+        background-color:#e65b1c;
         flex:1;
         opacity:1;
-        transform:scale(1);
+        
 
         &:hover{
             #girdItemName2{
                 // display:none;
-                transform:scale(5);
+                transform:scale(3);
                 transition: all 0.5s ease-in 0.1s;
                 opacity:0;
                 
@@ -62,18 +67,21 @@ export const WorkGrid = styled.div`
 
         }
     }
-
+    
+    
     #girdItem3{
-        background-color:#4f8ac2;
+        background-color:#1d1e1c;
         flex:1;
         opacity:1;
+        
 
         &:hover{
             #girdItemName3{
-                transform:scale(5);
+                // display:none;
+                transform:scale(3);
                 transition: all 0.5s ease-in 0.1s;
                 opacity:0;
-
+                
             }
             #gridItemContainer3{
                 visibility:visible;
@@ -86,7 +94,7 @@ export const WorkGrid = styled.div`
     }
 
     #girdItem4{
-        background-color:#f59822;
+        background-color:#565fa4;
         flex:1;
         opacity:1;
         transform:scale(1);
@@ -109,7 +117,53 @@ export const WorkGrid = styled.div`
         }
     }
 
-    #gridItemContainer1,#gridItemContainer2,#gridItemContainer3,#gridItemContainer4{
+    #girdItem5{
+        background-color:#739629;
+        flex:1;
+        opacity:1;
+
+        &:hover{
+            #girdItemName5{
+                transform:scale(5);
+                transition: all 0.5s ease-in 0.1s;
+                opacity:0;
+
+            }
+            #gridItemContainer5{
+                visibility:visible;
+                transform:scale(1.5);
+                transition: all 0.5s ease-in 0.1s;
+                opacity:1;
+            }
+
+        }
+    }
+
+    #girdItem6{
+        background-color:#1b5678;
+        flex:1;
+        opacity:1;
+        transform:scale(1);
+
+        &:hover{
+            #girdItemName6{
+                // display:none;
+                transform:scale(5);
+                transition: all 0.5s ease-in 0.1s;
+                opacity:0;
+                
+            }
+            #gridItemContainer6{
+                visibility:visible;
+                transform:scale(1.5);
+                transition: all 0.5s ease-in 0.1s;
+                opacity:1;
+            }
+
+        }
+    }
+
+    #gridItemContainer1,#gridItemContainer2,#gridItemContainer3,#gridItemContainer4,#gridItemContainer5,#gridItemContainer6{
         visibility:hidden;
         opacity:0;
         transform:scale(0.5);

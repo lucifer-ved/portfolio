@@ -2,17 +2,57 @@ import VA from './images/va1.png';
 import Godcast from './images/godcast.png';
 import Vistaar from './images/vistaar.png';
 import Olx from './images/olx.png';
+import smartq from './images/smartq.png';
+import itilite from './images/itilite.png';
 
 export const WorkData = [
     {
+        shortname: 'SQ',
+        fullName: 'SmartQ',
+        workingyear: '(2023 - 2024)',
+        image: smartq,
+        companyDetails: {
+            basics: {
+                name: 'SmartQ',
+                timePeriod: '2023 - 2024',
+                role: 'Technical Solution Architect',
+                website: 'https://www.thesmartq.com/'
+            },
+            thingsWorkedOn: '<p>1.<b> Led the development of a favorites feature</b>, enabling users to mark preferred items and providing personalized suggestions based on food preferences, time of day, and usage patterns, thereby setting a foundation for enhanced personalization.<br/><br/>2. <b>Led the architecture and integration development</b> with a Swedish company for their smart walk -in store and vending machine, significantly improving operational efficiency.<br/><br/>3.<b> Architected a cloud monitoring system</b> with region - specific alerting policies, improving operational reliability and response time to API, system, and service failures.<br/><br/>4. <b> Designed and implemented seamless integration</b> with a third - party system for ordering from vending machines through our app, enhancing user experience.<br/><br/></p>'
+            ,
+            challenges: "<p> 1. Managing complex configurations across regions and features was cumbersome and prone to errors; i addressed this <b>by developing an internal portal</b> using React and Google Sheets <b> to efficiently track and document all configurations</b>, improving overall system management.<br/><br/>2. Integrating with third-party systems caused frequent API timeouts due to external server limitations; we resolved this by <b>updating infra configuration of appengine servers</b>, ensuring stable and reliable system performance.<br/><br/>3. We encountered service disruptions due to Google's Secret Manager outage, affecting our system's ability to access sensitive credentials. To address this, we set up <b> region-specific cloud monitoring with tailored alert policies that triggered regular alerts during service outages</b>, critical API failures, or any infrastructure-level issues, ensuring timely detection and faster response to critical failures.<br/><br/></p>"
+        },
+        to: '/smartq',
+        showChallenges: true
+    },
+    {
+        shortname: 'ITL',
+        fullName: 'Itilite',
+        workingyear: '(2022 - 2023)',
+        image: itilite,
+        companyDetails: {
+            basics: {
+                name: 'Itilite Technologies',
+                timePeriod: '2022 - 2023',
+                role: 'Senior Software Engineer',
+                website: 'https://www.itilite.com/in/'
+            },
+            thingsWorkedOn: '<p>1. <b>Led a team</b> to enhance corporate travel and expense management solutions, developing and optimizing backend features using Python, Django, GraphQL, and PostgreSQL.<br/><br/>2. <b>Optimized</b> Docker images by introducing multi-stage builds and volume management, reducing deployment time by<b>50%</b><br/></p>'
+            ,
+            challenges: ""
+        },
+        to: '/itilite',
+        showChallenges: false
+    },
+    {
         shortname: 'OLX',
         fullName: 'Olx People',
-        workingyear: '(2021 - Present)',
+        workingyear: '(2021 - 2022)',
         image: Olx,
         companyDetails: {
             basics: {
                 name: 'Olx People (Acquired by Betterplace)',
-                timePeriod: '2021 - Present',
+                timePeriod: '2021 - 2022',
                 role: 'Software Engineer 2',
                 website: 'www.olxpeople.com/'
             },
