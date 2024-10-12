@@ -1,8 +1,9 @@
 import ProjCovid from './images/ProjectCovid.png';
 // import TodoList from './images/TodoList.png';
-import IGBot from './images/IGBot.png';
-import Photolog1 from './images/photolog1.png';
+// import IGBot from './images/IGBot.png';
+// import Photolog1 from './images/photolog1.png';
 import CryptoTracker from './images/cryptotracker.png';
+import DataGenie from './videos/DataGenie1.mov';
 
 export const ProjectData = [
     {
@@ -34,42 +35,22 @@ export const ProjectData = [
         showWhatsNext: false,
         showChallenges: false,
         website: 'https://cryptotracker02.netlify.app/',
-        id: 5
+        id: 2
     },
     {
-        name: 'Instagram Bot',
-        shortName: 'Instagram Bot',
-        image: IGBot,
-        description: 'Instagram Bot to like a post, comment on post, on searched hashtags.',
+        name: 'Data Genie',
+        shortName: 'Data Genie',
+        video: DataGenie,
+        description: 'Built an interactive application that leverages OpenAI and LangChain to enable users to query their databases in natural language, providing insights and visualizations based on user questions.',
         details: {
-            why: ["<div className='why'><p>At first the only reason I started working on this was to reduce my engagement time on the post that I'm interested in.</p><br/><p> But soon I realized this issue is not only with me, after talking with one of my friend who just started with social media management and was handling 3 accounts at that time told me about the same issue and I realized small script like this could save a lot of time.</p></div>"]
-            ,
-            challenges: ["<p>I struggled at the start for finding XPath for some specific actions. For Example. Finding 'like' icon and click on SVG, Find comment box then type your comment in it, etc.</p>"]
-            ,
-            whatsnext: ["<p>Right now script only comments specific message passed while running the program.</p> <br/><p>Now the next step I'm working on is to collect data set of comments from each post, train it and it should come up with a relevant comment based on all the comments in the comment box.</p>"],
-            tech: ["<a href='https://www.python.org/'>Python</a> <a href='https://pypi.org/project/selenium/'>Selenium</a>"]
+            why: ["<div className='why'><p>Data Genie was created to simplify how users interact with databases by allowing them to query using natural language. With the integration of OpenAI and LangChain, users can receive insightful responses along with visual data representations.</p><br/><p>The goal is to empower users to explore data without needing to know SQL or other technical details.</p></div>"],
+            tech: ["<a href='https://streamlit.io/'>Streamlit</a> <a href='https://www.python.org/'>Python</a> <a href='https://openai.com/'>OpenAI</a> <a href='https://python.langchain.com/en/latest/'>LangChain</a>"],
+            whatsnext: ["<div className='whatsnext'><p>Currently, Data Genie supports querying SQL and SQLite databases. The next steps are to:</p><br/><p>1. Extend support to other databases such as Postgres, BigQuery, and SQL Server.<br/>2. Enhance the visualizations to provide more customizable charts and graphs for deeper insights.<br/>3. Create a user management module to allow users to save and organize their queries.</p></div>"]
         },
         showWhatsNext: true,
         showChallenges: false,
+        website: '-',
         id: 4
-    },
-    {
-        name: 'Photolog',
-        shortName: 'Photolog',
-        image: Photolog1,
-        description: 'Blogging platform only for photographers. where photographers can create their own photo journals.',
-        details: {
-            why: ["<div className='why'><p>Initially I started it as a fun way to learn about the MERN tech stack but now I realized I could turn it into a whole web application. Keeping only photographers in focus there are very few applications available where photographers can connect and share their interests and knowledge about their work.</p></div>"]
-            ,
-            challenges: ["<p>Setting up Express JS application and make it communicate with MongoDB was challenging for me as I've never done it before.</p>"]
-            ,
-            tech: ["<a href='https://reactjs.org/'>React JS</a> <a href='https://www.mongodb.com/cloud/atlas'>MongoDB Atlas</a> <a href='https://expressjs.com/'>Express JS</a> <a href='https://react-redux.js.org/'>React Redux</a> <a href='https://www.netlify.com/'>Netlify</a>"],
-            images: [],
-            whatsnext: ["<p>As of now application shows only list of photologs. Next step is to<br/><p>1. Create a login module so each user can create and like posts.<br/>2. Create a user profile module where user can edit their profile preferences.</p>"],
-        },
-        showWhatsNext: true,
-        showChallenges: true,
-        id: 3
     }
 ];
 
@@ -109,3 +90,39 @@ export const ProjectData = [
 
 
 
+// {
+//     name: 'Photolog',
+//         shortName: 'Photolog',
+//             image: Photolog1,
+//                 description: 'Blogging platform only for photographers. where photographers can create their own photo journals.',
+//                     details: {
+//         why: ["<div className='why'><p>Initially I started it as a fun way to learn about the MERN tech stack but now I realized I could turn it into a whole web application. Keeping only photographers in focus there are very few applications available where photographers can connect and share their interests and knowledge about their work.</p></div>"]
+//             ,
+//             challenges: ["<p>Setting up Express JS application and make it communicate with MongoDB was challenging for me as I've never done it before.</p>"]
+//                 ,
+//                 tech: ["<a href='https://reactjs.org/'>React JS</a> <a href='https://www.mongodb.com/cloud/atlas'>MongoDB Atlas</a> <a href='https://expressjs.com/'>Express JS</a> <a href='https://react-redux.js.org/'>React Redux</a> <a href='https://www.netlify.com/'>Netlify</a>"],
+//                     images: [],
+//                         whatsnext: ["<p>As of now application shows only list of photologs. Next step is to<br/><p>1. Create a login module so each user can create and like posts.<br/>2. Create a user profile module where user can edit their profile preferences.</p>"],
+//         },
+//     showWhatsNext: true,
+//         showChallenges: true,
+//             id: 3
+// }
+
+// {
+//     name: 'Instagram Bot',
+//         shortName: 'Instagram Bot',
+//             image: IGBot,
+//                 description: 'Instagram Bot to like a post, comment on post, on searched hashtags.',
+//                     details: {
+//         why: ["<div className='why'><p>At first the only reason I started working on this was to reduce my engagement time on the post that I'm interested in.</p><br/><p> But soon I realized this issue is not only with me, after talking with one of my friend who just started with social media management and was handling 3 accounts at that time told me about the same issue and I realized small script like this could save a lot of time.</p></div>"]
+//             ,
+//             challenges: ["<p>I struggled at the start for finding XPath for some specific actions. For Example. Finding 'like' icon and click on SVG, Find comment box then type your comment in it, etc.</p>"]
+//                 ,
+//                 whatsnext: ["<p>Right now script only comments specific message passed while running the program.</p> <br/><p>Now the next step I'm working on is to collect data set of comments from each post, train it and it should come up with a relevant comment based on all the comments in the comment box.</p>"],
+//                     tech: ["<a href='https://www.python.org/'>Python</a> <a href='https://pypi.org/project/selenium/'>Selenium</a>"]
+//     },
+//     showWhatsNext: true,
+//         showChallenges: false,
+//             id: 4
+// }

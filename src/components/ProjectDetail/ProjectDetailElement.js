@@ -87,6 +87,23 @@ export const ProjectImage = styled.img`
     }
 `;
 
+export const ProjectVideo = styled.video`
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+    width: 70%;
+    max-width: 100%; 
+    height: auto; 
+    margin:3rem auto; 
+
+    @media screen and (max-width: 769px){
+        width:100%;
+        margin-top:4rem;
+    }
+`;
+
+
 export const Hr = styled.hr`
     border: none;
     color: #bbb;

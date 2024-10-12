@@ -1,35 +1,47 @@
 import React from 'react';
-import {ProjectContainer,ProjectImage,ProjectDetails,ProjectTitle,ProjectDescription,SeeMoreButton} from './ProjectElements';
+import { ProjectContainer, ProjectImage, ProjectVideo, ProjectDetails, ProjectTitle, ProjectDescription, SeeMoreButton } from './ProjectElements';
 
-const Project = ({projectDetails}) => {
+const Project = ({ projectDetails }) => {
 
-    function saveToLocalStorage(data){
-        localStorage.setItem("projectData",JSON.stringify(data));
+    function saveToLocalStorage(data) {
+        localStorage.setItem("projectData", JSON.stringify(data));
     }
 
     return (
         <div>
-        {
-            projectDetails.map((projectDetails)=>(
-                <ProjectContainer key={projectDetails.id}>
-                    <ProjectImage src={projectDetails.image} alt={projectDetails.title}/>
-                    <ProjectDetails>
-                        <ProjectTitle>
-                            {projectDetails.name}
-                        </ProjectTitle>
-                        <ProjectDescription>
-                            {projectDetails.description}
-                        </ProjectDescription>
-                        <SeeMoreButton 
-                        to={{pathname:`/project/${projectDetails.id}`}}
-                        onClick={()=>saveToLocalStorage(projectDetails)}>
-                            Learn More
-                        </SeeMoreButton>
-                    </ProjectDetails>
-            </ProjectContainer>
-            ))
-        }
-    </div>
+            {
+                projectDetails.map((project) => (
+                    <ProjectContainer key={project.id}>
+                        {
+                            project.video ? (
+                                <ProjectVideo
+                                    src={project.video}
+                                    autoPlay
+                                    muted
+                                    loop
+                                    controls={false}
+                                />
+                            ) : (
+                                <ProjectImage src={project.image} alt={project.title} />
+                            )
+                        }
+                        <ProjectDetails>
+                            <ProjectTitle>
+                                {project.name}
+                            </ProjectTitle>
+                            <ProjectDescription>
+                                {project.description}
+                            </ProjectDescription>
+                            <SeeMoreButton
+                                to={{ pathname: `/project/${project.id}` }}
+                                onClick={() => saveToLocalStorage(project)}>
+                                Learn More
+                            </SeeMoreButton>
+                        </ProjectDetails>
+                    </ProjectContainer>
+                ))
+            }
+        </div>
     )
 }
 

@@ -55,6 +55,17 @@ export const ProjectImage = styled.img`
     }
 `;
 
+export const ProjectVideo = styled.video`
+    width:50%;
+    height:40%;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+
+    @media screen and (max-width: 769px){
+        width:100%;
+    }
+`;
+
+
 export const ProjectDetails = styled.div`
     padding:2rem;
     display:flex;

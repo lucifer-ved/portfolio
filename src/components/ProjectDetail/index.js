@@ -1,8 +1,10 @@
-import React, {useState, useEffect} from 'react';
-import {ProjectDetailContainer, 
-    ProjectName, 
-    ProjectImage, 
-    Hr, 
+import React, { useState, useEffect } from 'react';
+import {
+    ProjectDetailContainer,
+    ProjectName,
+    ProjectImage,
+    ProjectVideo, // Add this import
+    Hr,
     ProjectDescription,
     SectionHeading,
     TheWhy,
@@ -11,65 +13,84 @@ import {ProjectDetailContainer,
     WhatsNext,
     ProjectLink,
     ProjectLinkContainer,
-    ProjectUrl} from './ProjectDetailElement';
+    ProjectUrl
+} from './ProjectDetailElement';
 import { ProjectData } from '../../ProjectData';
 
 const ProjectDetail = () => {
 
-    const[data,setData] = useState({});
-
+    const [data, setData] = useState({});
 
     useEffect(() => {
         const data = localStorage.getItem("projectData")
         setData(JSON.parse(data));
     }, [])
 
-    function saveToLocalStorage(data){
-        localStorage.setItem("projectData",JSON.stringify(data));
+    function saveToLocalStorage(data) {
+        localStorage.setItem("projectData", JSON.stringify(data));
         setData(JSON.parse(JSON.stringify(data)));
     }
 
     return (
         <ProjectDetailContainer>
             <ProjectName>
-               {(data || {}).name}
+                {(data || {}).name}
             </ProjectName>
             <ProjectDescription>
                 {(data || {}).description}
             </ProjectDescription>
-            <ProjectImage src={(data || {}).image} alt={(data || {}).fullName} />
+
+            {/* Conditionally render video or image */}
+            {
+                (data || {}).video ? (
+                    <ProjectVideo
+                        src={(data || {}).video}
+                        autoPlay
+                        muted
+                        loop
+                        controls={false}
+                        alt={(data || {}).name}
+                    />
+                ) : (
+                    <ProjectImage
+                        src={(data || {}).image}
+                        alt={(data || {}).name}
+                    />
+                )
+            }
+
             <ProjectUrl href={(data || {}).website}>{(data || {}).website}</ProjectUrl>
             <Hr />
             <SectionHeading>Why</SectionHeading>
-            <TheWhy dangerouslySetInnerHTML={{ __html: ((data || {}).details || {}).why}} />
+            <TheWhy dangerouslySetInnerHTML={{ __html: ((data || {}).details || {}).why }} />
             <Hr />
-            { 
-                (data || {}).showChallenges  && 
+            {
+                (data || {}).showChallenges &&
                 <div>
                     <SectionHeading>Challenges</SectionHeading>
                     <TheChallenges dangerouslySetInnerHTML={{ __html: ((data || {}).details || {}).challenges }} />
-                    <Hr /> 
+                    <Hr />
                 </div>
             }
             <SectionHeading>Technologies & Tools Used</SectionHeading>
             <Tech dangerouslySetInnerHTML={{ __html: ((data || {}).details || {}).tech }} />
             <Hr />
-            { 
-                (data || {}).showWhatsNext  && 
+            {
+                (data || {}).showWhatsNext &&
                 <div>
-                <SectionHeading>What's next ?</SectionHeading>
-                <WhatsNext dangerouslySetInnerHTML={{ __html: ((data || {}).details || {}).whatsnext }} /> 
-                <Hr /> 
+                    <SectionHeading>What's next ?</SectionHeading>
+                    <WhatsNext dangerouslySetInnerHTML={{ __html: ((data || {}).details || {}).whatsnext }} />
+                    <Hr />
                 </div>
             }
             <ProjectLinkContainer>
                 <ProjectLink to="/">All</ProjectLink>
                 {
-                    ProjectData.map((projectData)=>(
-                        <ProjectLink to={{pathname: `/project/${projectData.id}`}}
-                        className={projectData.shortName === (data || {}).shortName ? "isActive" : ""}
-                        onClick={()=>saveToLocalStorage(projectData)}
-                        key={projectData.shortName}
+                    ProjectData.map((projectData) => (
+                        <ProjectLink to={{ pathname: `/project/${projectData.id}` }}
+                            className={projectData.shortName === (data || {}).shortName ? "isActive" : ""}
+                            onClick={() => saveToLocalStorage(projectData)}
+                            key={projectData.shortName}
                         >{projectData.shortName}</ProjectLink>
                     ))
                 }
@@ -79,7 +100,3 @@ const ProjectDetail = () => {
 }
 
 export default ProjectDetail;
-
-
-
-
