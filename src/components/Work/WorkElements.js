@@ -170,10 +170,23 @@ export const WorkGrid = styled.div`
         // display:none;
     }
 
-    @media screen and (max-width: 769px){
-        flex-direction:column;
-        height:200vh;
+    // @media screen and (max-width: 769px){
+    //     flex-direction:column;
+    //     height:200vh;
+    // }
+
+    @media screen and (max-width: 769px) {
+    height: auto;
+    grid-template-columns: 1fr; /* One column on mobile */
+    grid-template-rows: 1fr; /* Ensures square aspect ratio */
+    gap: 1rem;
+    
+    /* Make the items themselves square */
+    #girdItem1, #girdItem2, #girdItem3, #girdItem4, #girdItem5, #girdItem6 {
+        aspect-ratio: 1 / 1; /* This ensures the width and height are equal */
+        width: 100%; /* Make the item take full width of the grid */
     }
+}
 
 `;
 
