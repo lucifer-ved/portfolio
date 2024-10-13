@@ -9,12 +9,12 @@ export const WorkData = [
     {
         shortname: 'SQ',
         fullName: 'SmartQ',
-        workingyear: '(2023 - 2024)',
+        workingyear: '(2023 - Present)',
         image: smartq,
         companyDetails: {
             basics: {
                 name: 'SmartQ',
-                timePeriod: '2023 - 2024',
+                timePeriod: '2023 - Present',
                 role: 'Technical Solution Architect',
                 website: 'https://www.thesmartq.com/'
             },
