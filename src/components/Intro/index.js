@@ -17,8 +17,8 @@ const Intro = () => {
                 {/* <br/> */}
             </IntroHeading>
             <IntroContent>
-                A <span>Software Engineer</span> with an eye for design. <br />
-                I like to Create, <a className="captureClass" href='http://photographsbyved.netlify.app/' target="_blank" rel="noopener noreferrer">Capture</a> & <IntroLink to={`/experiments`}>Experiment</IntroLink> with different things.
+                A <span>Tech Enthusiast</span> fueled by curiosity and innovation. <br />
+                Passionate about Creating, <a className="captureClass" href='http://photographsbyved.netlify.app/' target="_blank" rel="noopener noreferrer">Capturing</a> & <IntroLink to={`/experiments`}>Experimenting</IntroLink> to bring ideas to life.
                 <br />
                 <SocialMediaContainer>
                     <SocialIcon >
