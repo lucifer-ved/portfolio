@@ -5,6 +5,7 @@ import ProjCovid from './images/ProjectCovid.png';
 import CryptoTracker from './images/cryptotracker.png';
 import DataGenie from './videos/DataGenie1.mov';
 import PRAgent from './videos/PRAgent.mov';
+import RepoExplorer from './videos/RepoExplorer.mov';
 
 export const ProjectData = [
     {
@@ -36,6 +37,21 @@ export const ProjectData = [
         showChallenges: false,
         website: '-',
         id: 2
+    },
+    {
+        name: 'RepoExplorer',
+        shortName: 'RepoExplorer',
+        video: RepoExplorer,
+        description: 'Developed a chat-based interface allowing users to interact with a GitHub repository, enabling exploration of code, files, and commits by asking natural language questions.',
+        details: {
+            why: ["<div className='why'><p>RepoExplorer was built to provide developers and collaborators with an intuitive way to interact with GitHub repositories. By allowing users to chat with the repository, the project simplifies the process of understanding codebases, exploring file structures, and reviewing commit history without needing to manually browse through the repository.</p><br/><p>The goal is to make code exploration more accessible by integrating natural language interactions directly with the GitHub repository.</p></div>"],
+            tech: ["<a href='https://github.com/'>GitHub API</a> <a href='https://openai.com/'>OpenAI</a> <a href='https://www.python.org/'>Python</a> <a href='https://streamlit.io/'>Streamlit</a>"],
+            whatsnext: ["<div className='whatsnext'><p>RepoExplorer is currently in development and may encounter some errors during interactions. The next steps for the project are:</p><br/><p>1. Improve the error handling and stability.<br/>2. Expand support for more complex queries, such as analyzing specific functions or comparing pull requests.<br/>3. Add features to allow users to run basic code quality checks within the chat interface.</p></div>"],
+        },
+        showWhatsNext: true,
+        showChallenges: true,
+        website: '-',
+        id: 5
     },
     {
         name: 'Crypto Tracker',
