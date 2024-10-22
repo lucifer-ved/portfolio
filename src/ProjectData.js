@@ -4,8 +4,53 @@ import ProjCovid from './images/ProjectCovid.png';
 // import Photolog1 from './images/photolog1.png';
 import CryptoTracker from './images/cryptotracker.png';
 import DataGenie from './videos/DataGenie1.mov';
+import PRAgent from './videos/PRAgent.mov';
 
 export const ProjectData = [
+    {
+        name: 'Data Genie',
+        shortName: 'Data Genie',
+        video: DataGenie,
+        description: 'Built an interactive application that leverages OpenAI and LangChain to enable users to query their databases in natural language, providing insights and visualizations based on user questions.',
+        details: {
+            why: ["<div className='why'><p>Data Genie was created to simplify how users interact with databases by allowing them to query using natural language. With the integration of OpenAI and LangChain, users can receive insightful responses along with visual data representations.</p><br/><p>The goal is to empower users to explore data without needing to know SQL or other technical details.</p></div>"],
+            tech: ["<a href='https://streamlit.io/'>Streamlit</a> <a href='https://www.python.org/'>Python</a> <a href='https://openai.com/'>OpenAI</a> <a href='https://python.langchain.com/en/latest/'>LangChain</a>"],
+            whatsnext: ["<div className='whatsnext'><p>Currently, Data Genie supports querying SQL and SQLite databases. The next steps are to:</p><br/><p>1. Extend support to other databases such as Postgres, BigQuery, and SQL Server.<br/>2. Enhance the visualizations to provide more customizable charts and graphs for deeper insights.<br/>3. Create a user management module to allow users to save and organize their queries.</p></div>"]
+        },
+        showWhatsNext: true,
+        showChallenges: false,
+        website: '-',
+        id: 1
+    },
+    {
+        name: 'PR-Agent',
+        shortName: 'PR-Agent',
+        video: PRAgent,
+        description: 'Developed an automated PR review agent that integrates GitHub Actions with Slack notifications, streamlining code review processes by alerting teams of new pull requests and enabling seamless communication.',
+        details: {
+            why: ["<div className='why'><p>PR-Agent was created to reduce the manual overhead of monitoring and reviewing pull requests. By integrating with GitHub Actions and Slack, it ensures that teams are immediately notified when PRs are created, enabling faster and more efficient reviews.</p><br/><p>The goal is to enhance collaboration and reduce bottlenecks in the code review process by automating key communication tasks.</p></div>"],
+            tech: ["<a href='https://github.com/'>GitHub Actions</a> <a href='https://slack.com/'>Slack</a> <a href='https://www.python.org/'>Python</a>"],
+            whatsnext: ["<div className='whatsnext'><p>Future plans for PR-Agent include:</p><br/><p>1. Adding auto-approval mechanisms based on predefined criteria.<br/>2. Extending integration to other communication platforms like Microsoft Teams.<br/>3. Implementing machine learning algorithms to automatically detect potential issues in PRs before approval.</p></div>"]
+        },
+        showWhatsNext: true,
+        showChallenges: false,
+        website: '-',
+        id: 2
+    },
+    {
+        name: 'Crypto Tracker',
+        shortName: 'Crypto Tracker',
+        image: CryptoTracker,
+        description: 'Get real time updates of cryptocurrencies using coingecko API. ',
+        details: {
+            why: ["<div className='why'><p>Started working on this while learning about react js.</p></div>"],
+            tech: ["<a href='https://reactjs.org/'>React JS</a>"]
+        },
+        showWhatsNext: false,
+        showChallenges: false,
+        website: 'https://cryptotracker02.netlify.app/',
+        id: 3
+    },
     {
         name: 'Covid-19 India Resources',
         shortName: 'Covid-19 Resources',
@@ -21,35 +66,6 @@ export const ProjectData = [
         showWhatsNext: false,
         showChallenges: true,
         website: 'https://covid19indiaresources.netlify.app/',
-        id: 1
-    },
-    {
-        name: 'Crypto Tracker',
-        shortName: 'Crypto Tracker',
-        image: CryptoTracker,
-        description: 'Get real time updates of cryptocurrencies using coingecko API. ',
-        details: {
-            why: ["<div className='why'><p>Started working on this while learning about react js.</p></div>"],
-            tech: ["<a href='https://reactjs.org/'>React JS</a>"]
-        },
-        showWhatsNext: false,
-        showChallenges: false,
-        website: 'https://cryptotracker02.netlify.app/',
-        id: 2
-    },
-    {
-        name: 'Data Genie',
-        shortName: 'Data Genie',
-        video: DataGenie,
-        description: 'Built an interactive application that leverages OpenAI and LangChain to enable users to query their databases in natural language, providing insights and visualizations based on user questions.',
-        details: {
-            why: ["<div className='why'><p>Data Genie was created to simplify how users interact with databases by allowing them to query using natural language. With the integration of OpenAI and LangChain, users can receive insightful responses along with visual data representations.</p><br/><p>The goal is to empower users to explore data without needing to know SQL or other technical details.</p></div>"],
-            tech: ["<a href='https://streamlit.io/'>Streamlit</a> <a href='https://www.python.org/'>Python</a> <a href='https://openai.com/'>OpenAI</a> <a href='https://python.langchain.com/en/latest/'>LangChain</a>"],
-            whatsnext: ["<div className='whatsnext'><p>Currently, Data Genie supports querying SQL and SQLite databases. The next steps are to:</p><br/><p>1. Extend support to other databases such as Postgres, BigQuery, and SQL Server.<br/>2. Enhance the visualizations to provide more customizable charts and graphs for deeper insights.<br/>3. Create a user management module to allow users to save and organize their queries.</p></div>"]
-        },
-        showWhatsNext: true,
-        showChallenges: false,
-        website: '-',
         id: 4
     }
 ];
