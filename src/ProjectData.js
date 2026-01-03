@@ -53,37 +53,37 @@ export const ProjectData = [
         website: '-',
         id: 5
     },
-    {
-        name: 'Crypto Tracker',
-        shortName: 'Crypto Tracker',
-        image: CryptoTracker,
-        description: 'Get real time updates of cryptocurrencies using coingecko API. ',
-        details: {
-            why: ["<div className='why'><p>Started working on this while learning about react js.</p></div>"],
-            tech: ["<a href='https://reactjs.org/'>React JS</a>"]
-        },
-        showWhatsNext: false,
-        showChallenges: false,
-        website: 'https://cryptotracker02.netlify.app/',
-        id: 3
-    },
-    {
-        name: 'Covid-19 India Resources',
-        shortName: 'Covid-19 Resources',
-        image: ProjCovid,
-        description: 'An attempt to provide all covid19 related resources link at one single place.',
-        details: {
-            why: ["<div className='why'><p>It all started with an attempt to make all covid19 related resource easily searchable under one domain.<p><br/><p> When the 2nd wave started lot of information were available regarding medicines, beds, food etc. but on different different platforms.<p><br/><p><b>This small web app let user search for verified leads from twitter, filterout through helpful instagram post, and user can browse through filtered google sheets provided by volunteer and government organisations.</b></p></div>"]
-            ,
-            challenges: ["<p>This was the first app that i built in react and i learned a lot of stuff along the way.<p><br/><p>1. Implementing typeahead search functionality.</p><br/><p>2. Collecting links with authentic and verified data.</p>"]
-            ,
-            tech: ["<a href='https://reactjs.org/'>React JS</a> <a href='https://www.netlify.com/'>Netlify</a>"]
-        },
-        showWhatsNext: false,
-        showChallenges: true,
-        website: 'https://covid19indiaresources.netlify.app/',
-        id: 4
-    }
+    // {
+    //     name: 'Crypto Tracker',
+    //     shortName: 'Crypto Tracker',
+    //     image: CryptoTracker,
+    //     description: 'Get real time updates of cryptocurrencies using coingecko API. ',
+    //     details: {
+    //         why: ["<div className='why'><p>Started working on this while learning about react js.</p></div>"],
+    //         tech: ["<a href='https://reactjs.org/'>React JS</a>"]
+    //     },
+    //     showWhatsNext: false,
+    //     showChallenges: false,
+    //     website: 'https://cryptotracker02.netlify.app/',
+    //     id: 3
+    // },
+    // {
+    //     name: 'Covid-19 India Resources',
+    //     shortName: 'Covid-19 Resources',
+    //     image: ProjCovid,
+    //     description: 'An attempt to provide all covid19 related resources link at one single place.',
+    //     details: {
+    //         why: ["<div className='why'><p>It all started with an attempt to make all covid19 related resource easily searchable under one domain.<p><br/><p> When the 2nd wave started lot of information were available regarding medicines, beds, food etc. but on different different platforms.<p><br/><p><b>This small web app let user search for verified leads from twitter, filterout through helpful instagram post, and user can browse through filtered google sheets provided by volunteer and government organisations.</b></p></div>"]
+    //         ,
+    //         challenges: ["<p>This was the first app that i built in react and i learned a lot of stuff along the way.<p><br/><p>1. Implementing typeahead search functionality.</p><br/><p>2. Collecting links with authentic and verified data.</p>"]
+    //         ,
+    //         tech: ["<a href='https://reactjs.org/'>React JS</a> <a href='https://www.netlify.com/'>Netlify</a>"]
+    //     },
+    //     showWhatsNext: false,
+    //     showChallenges: true,
+    //     website: 'https://covid19indiaresources.netlify.app/',
+    //     id: 4
+    // }
 ];
 
 
