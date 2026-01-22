@@ -1,0 +1,209 @@
+[
+    {
+        "id": 1,
+        "name": "Data Genie",
+        "shortName": "Data Genie",
+        "video": "DataGenie",
+        "description": "Built an interactive application that leverages OpenAI and LangChain to enable users to query their databases in natural language, providing insights and visualizations based on user questions.",
+        "details": {
+            "why": [
+                "<p>Data Genie was created to simplify how users interact with databases by allowing them to query using natural language.</p><p>The goal is to empower users to explore data without needing to know SQL or other technical details.</p>"
+            ],
+            "tech": [
+                "Streamlit",
+                "Python",
+                "OpenAI",
+                "LangChain"
+            ],
+            "whatsnext": [
+                "Extend support to Postgres, BigQuery, and SQL Server.",
+                "Enhance visualizations with customizable charts.",
+                "Add user management for saving queries."
+            ]
+        },
+        "showWhatsNext": true,
+        "showChallenges": false,
+        "website": "-",
+        "shortId": "data-genie"
+    },
+    {
+        "id": 2,
+        "name": "PR-Agent",
+        "shortName": "PR-Agent",
+        "video": "PRAgent",
+        "description": "Developed an automated PR review agent integrating GitHub Actions with Slack notifications.",
+        "details": {
+            "why": [
+                "Built to reduce manual overhead of monitoring pull requests and speed up code reviews."
+            ],
+            "tech": [
+                "GitHub Actions",
+                "Slack",
+                "Python"
+            ],
+            "whatsnext": [
+                "Auto approval based on rules.",
+                "Microsoft Teams integration.",
+                "ML based PR issue detection."
+            ]
+        },
+        "showWhatsNext": true,
+        "showChallenges": false,
+        "website": "-",
+        "shortId": "pr-agent"
+    },
+    {
+        "id": 3,
+        "name": "RepoExplorer",
+        "shortName": "RepoExplorer",
+        "video": "RepoExplorer",
+        "description": "Chat based interface to explore GitHub repositories using natural language.",
+        "details": {
+            "why": [
+                "Allows developers to understand repositories without manually browsing code."
+            ],
+            "tech": [
+                "GitHub API",
+                "OpenAI",
+                "Python",
+                "Streamlit"
+            ],
+            "whatsnext": [
+                "Improve stability and error handling.",
+                "Support complex code analysis queries.",
+                "Add code quality checks."
+            ]
+        },
+        "showWhatsNext": true,
+        "showChallenges": true,
+        "website": "-",
+        "shortId": "repo-explorer"
+    },
+    {
+        "id": 4,
+        "name": "Crypto Tracker",
+        "shortName": "Crypto Tracker",
+        "image": "CryptoTracker",
+        "description": "Real time cryptocurrency tracker using CoinGecko API.",
+        "details": {
+            "why": [
+                "Built while learning React."
+            ],
+            "tech": [
+                "React"
+            ]
+        },
+        "showWhatsNext": false,
+        "showChallenges": false,
+        "website": "https://cryptotracker02.netlify.app",
+        "shortId": "crypto-tracker"
+    },
+    {
+        "id": 5,
+        "name": "Covid-19 India Resources",
+        "shortName": "Covid-19 Resources",
+        "image": "ProjCovid",
+        "description": "Centralized platform for verified Covid-19 resource links.",
+        "details": {
+            "why": [
+                "Built to consolidate verified leads during the second wave of Covid-19 in India."
+            ],
+            "challenges": [
+                "Typeahead search implementation.",
+                "Data verification."
+            ],
+            "tech": [
+                "React",
+                "Netlify"
+            ]
+        },
+        "showWhatsNext": false,
+        "showChallenges": true,
+        "website": "https://covid19indiaresources.netlify.app",
+        "shortId": "covid-resources"
+    },
+    {
+        "id": 6,
+        "name": "Positive News Application",
+        "shortName": "Positive News",
+        "image": "ProjCovid",
+        "description": "Application showing positive news in an Instagram story format.",
+        "details": {},
+        "showWhatsNext": false,
+        "showChallenges": true,
+        "shortId": "positive-news"
+    },
+    {
+        "id": 7,
+        "name": "Todo List",
+        "shortName": "Todo List",
+        "image": "TodoList",
+        "description": "Simple todo list application.",
+        "details": {
+            "why": [
+                "Built while learning React."
+            ],
+            "tech": [
+                "React",
+                "Netlify"
+            ]
+        },
+        "showWhatsNext": false,
+        "showChallenges": false,
+        "shortId": "todo-list"
+    },
+    {
+        "id": 8,
+        "name": "Photolog",
+        "shortName": "Photolog",
+        "image": "Photolog1",
+        "description": "Blogging platform exclusively for photographers.",
+        "details": {
+            "why": [
+                "Focused platform for photographers to share photo journals."
+            ],
+            "challenges": [
+                "Learning Express and MongoDB integration."
+            ],
+            "tech": [
+                "React",
+                "MongoDB",
+                "Express",
+                "Redux",
+                "Netlify"
+            ],
+            "whatsnext": [
+                "Add authentication.",
+                "User profile management."
+            ]
+        },
+        "showWhatsNext": true,
+        "showChallenges": true,
+        "shortId": "photolog"
+    },
+    {
+        "id": 9,
+        "name": "Instagram Bot",
+        "shortName": "Instagram Bot",
+        "image": "IGBot",
+        "description": "Automation bot for Instagram engagement.",
+        "details": {
+            "why": [
+                "Built to reduce manual social media engagement time."
+            ],
+            "challenges": [
+                "XPath identification for dynamic UI elements."
+            ],
+            "whatsnext": [
+                "AI based comment generation."
+            ],
+            "tech": [
+                "Python",
+                "Selenium"
+            ]
+        },
+        "showWhatsNext": true,
+        "showChallenges": false,
+        "shortId": "instagram-bot"
+    }
+]

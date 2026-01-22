@@ -1,8 +1,8 @@
-import ProjCovid from './images/ProjectCovid.png';
+//import ProjCovid from './images/ProjectCovid.png';
 // import TodoList from './images/TodoList.png';
 // import IGBot from './images/IGBot.png';
 // import Photolog1 from './images/photolog1.png';
-import CryptoTracker from './images/cryptotracker.png';
+//import CryptoTracker from './images/cryptotracker.png';
 import DataGenie from './videos/DataGenie1.mov';
 import PRAgent from './videos/PRAgent.mov';
 import RepoExplorer from './videos/RepoExplorer.mov';
