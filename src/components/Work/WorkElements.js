@@ -2,265 +2,172 @@ import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 
 export const WorkContainer = styled.div`
-    background:transparent;
-    width:100%;
+    background: transparent;
+    width: 100%;
 `;
 
 export const WorkGrid = styled.div`
-    margin-top:10rem;
-    // display:flex;
-    height:100vh;
-    justify-content: space-between;
-    align-items:stretch;
-    flex-direction:row;
-
+    width: min(1140px, 92vw);
+    margin-top: 4.2rem;
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 0.5rem;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 0.95rem;
 
-
-    #girdItem1{
-        background-color:#fcbd32;
-        flex:1;
-        opacity:1;
-        
-
-        &:hover{
-            #girdItemName1{
-                // display:none;
-                transform:scale(3);
-                transition: all 0.5s ease-in 0.1s;
-                opacity:0;
-                
-            }
-            #gridItemContainer1{
-                visibility:visible;
-                transform:scale(1.5);
-                transition: all 0.5s ease-in 0.1s;
-                opacity:1;
-            }
-
-        }
+    & > a:nth-child(1) {
+        background: linear-gradient(155deg, #1c5dff, #3f8cff);
     }
 
-
-    #girdItem2{
-        background-color:#e65b1c;
-        flex:1;
-        opacity:1;
-        
-
-        &:hover{
-            #girdItemName2{
-                // display:none;
-                transform:scale(3);
-                transition: all 0.5s ease-in 0.1s;
-                opacity:0;
-                
-            }
-            #gridItemContainer2{
-                visibility:visible;
-                transform:scale(1.5);
-                transition: all 0.5s ease-in 0.1s;
-                opacity:1;
-            }
-
-        }
-    }
-    
-    
-    #girdItem3{
-        background-color:#1d1e1c;
-        flex:1;
-        opacity:1;
-        
-
-        &:hover{
-            #girdItemName3{
-                // display:none;
-                transform:scale(3);
-                transition: all 0.5s ease-in 0.1s;
-                opacity:0;
-                
-            }
-            #gridItemContainer3{
-                visibility:visible;
-                transform:scale(1.5);
-                transition: all 0.5s ease-in 0.1s;
-                opacity:1;
-            }
-
-        }
+    & > a:nth-child(2) {
+        background: linear-gradient(155deg, #0ea5a0, #34d399);
     }
 
-    #girdItem4{
-        background-color:#565fa4;
-        flex:1;
-        opacity:1;
-        transform:scale(1);
-
-        &:hover{
-            #girdItemName4{
-                // display:none;
-                transform:scale(5);
-                transition: all 0.5s ease-in 0.1s;
-                opacity:0;
-                
-            }
-            #gridItemContainer4{
-                visibility:visible;
-                transform:scale(1.5);
-                transition: all 0.5s ease-in 0.1s;
-                opacity:1;
-            }
-
-        }
+    & > a:nth-child(3) {
+        background: linear-gradient(155deg, #2f3657, #4f5f91);
     }
 
-    #girdItem5{
-        background-color:#739629;
-        flex:1;
-        opacity:1;
-
-        &:hover{
-            #girdItemName5{
-                transform:scale(5);
-                transition: all 0.5s ease-in 0.1s;
-                opacity:0;
-
-            }
-            #gridItemContainer5{
-                visibility:visible;
-                transform:scale(1.5);
-                transition: all 0.5s ease-in 0.1s;
-                opacity:1;
-            }
-
-        }
+    & > a:nth-child(4) {
+        background: linear-gradient(155deg, #8b5cf6, #4f46e5);
     }
 
-    #girdItem6{
-        background-color:#1b5678;
-        flex:1;
-        opacity:1;
-        transform:scale(1);
-
-        &:hover{
-            #girdItemName6{
-                // display:none;
-                transform:scale(5);
-                transition: all 0.5s ease-in 0.1s;
-                opacity:0;
-                
-            }
-            #gridItemContainer6{
-                visibility:visible;
-                transform:scale(1.5);
-                transition: all 0.5s ease-in 0.1s;
-                opacity:1;
-            }
-
-        }
+    & > a:nth-child(5) {
+        background: linear-gradient(155deg, #f97316, #fb923c);
     }
 
-    #gridItemContainer1,#gridItemContainer2,#gridItemContainer3,#gridItemContainer4,#gridItemContainer5,#gridItemContainer6{
-        visibility:hidden;
-        opacity:0;
-        transform:scale(0.5);
-        // display:none;
+    & > a:nth-child(6) {
+        background: linear-gradient(155deg, #16a34a, #22c55e);
     }
 
-    // @media screen and (max-width: 769px){
-    //     flex-direction:column;
-    //     height:200vh;
-    // }
-
-    @media screen and (max-width: 769px) {
-    height: auto;
-    grid-template-columns: 1fr; /* One column on mobile */
-    grid-template-rows: 1fr; /* Ensures square aspect ratio */
-    gap: 1rem;
-    
-    /* Make the items themselves square */
-    #girdItem1, #girdItem2, #girdItem3, #girdItem4, #girdItem5, #girdItem6 {
-        aspect-ratio: 1 / 1; /* This ensures the width and height are equal */
-        width: 100%; /* Make the item take full width of the grid */
+    & > a [id^='girdItemName'] {
+        transition: transform 300ms ease, opacity 300ms ease;
     }
-}
 
+    & > a [id^='gridItemContainer'] {
+        opacity: 0;
+        transform: translateY(8px);
+        transition: transform 300ms ease, opacity 300ms ease;
+    }
+
+    & > a:hover [id^='girdItemName'] {
+        opacity: 0;
+        transform: translateY(-8px) scale(0.95);
+    }
+
+    & > a:hover [id^='gridItemContainer'] {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    @media screen and (max-width: 980px) {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    @media screen and (max-width: 700px) {
+        grid-template-columns: 1fr;
+    }
 `;
 
 export const WorkGridItem = styled(Link)`
-    display:flex;
-    justify-content:center;
-    padding: .5rem;
-    text-decoration:none;
-    flex-direction:column;
-    justify-content:center;
-    text-align:center;
-    align-items:center;
+    position: relative;
+    overflow: hidden;
+    min-height: 240px;
+    border-radius: 22px;
+    border: 1px solid rgba(255, 255, 255, 0.42);
+    box-shadow: 0 15px 30px rgba(12, 20, 40, 0.22);
+    display: flex;
+    justify-content: center;
+    text-decoration: none;
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+    padding: 1rem;
+    transform-style: preserve-3d;
+    transition: transform 280ms ease, box-shadow 280ms ease;
 
+    &:before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background:
+            linear-gradient(140deg, rgba(255, 255, 255, 0.38), transparent 45%),
+            radial-gradient(circle at 80% 20%, rgba(255, 255, 255, 0.24), transparent 42%);
+        pointer-events: none;
+    }
 
-    animation-duration: 1.5s;
-    animation-name: zoomOut;
+    &:hover {
+        transform: translateY(-8px) rotateX(2deg) rotateY(-2deg);
+        box-shadow: 0 22px 36px rgba(12, 20, 40, 0.28);
+    }
 
-    @keyframes zoomOut{
+    animation: itemEnter 700ms ease both;
+
+    @keyframes itemEnter {
         from {
             opacity: 0;
-            transform: scale(0.8);
+            transform: translateY(14px) scale(0.98);
         }
         to {
             opacity: 1;
-            transform: scale(1);
+            transform: translateY(0) scale(1);
         }
     }
-    
+
+    @media screen and (max-width: 700px) {
+        min-height: 205px;
+
+        [id^='girdItemName'] {
+            display: none;
+        }
+
+        [id^='gridItemContainer'] {
+            opacity: 1 !important;
+            transform: translateY(0) !important;
+            position: static;
+        }
+    }
 `;
 
-
-export const WorkLogo = styled.div`
-
-`;
+export const WorkLogo = styled.div``;
 
 export const WorkName = styled.span`
-    color : #fff;
-    font-size:2.8rem;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    text-decoration:none;
-    cursor:pointer;
-    font-weight:700;
+    color: #ffffff;
+    font-size: clamp(2.1rem, 5vw, 3rem);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    cursor: pointer;
+    font-weight: 700;
+    font-family: var(--font-display);
+    letter-spacing: 0.08em;
+    text-shadow: 0 10px 20px rgba(9, 16, 34, 0.35);
 `;
 
 export const WorkGistContainer = styled.div`
-    display:flex;
-    flex-direction:column;
-    justify-content:center;
-    align-items:center;
-    margin-top:-3rem;
-    
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    width: 92%;
 `;
 
-
 export const WorkTimeSpan = styled.div`
-    color : #fff;
-    font-size:1.5rem;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    text-decoration:none;
-    cursor:pointer;
-    font-weight:700;
+    color: rgba(255, 255, 255, 0.95);
+    font-size: 0.95rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 500;
+    margin-top: 0.4rem;
+    letter-spacing: 0.02em;
 `;
 
 export const WorkFullName = styled.div`
-    color : #fff;
-    font-size:2rem;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    text-decoration:none;
-    cursor:pointer;
-    font-weight:700;
+    color: #ffffff;
+    font-size: clamp(1.3rem, 2.7vw, 1.95rem);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 700;
+    text-shadow: 0 10px 20px rgba(9, 16, 34, 0.35);
 `;

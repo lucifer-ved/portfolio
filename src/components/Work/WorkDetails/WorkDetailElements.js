@@ -2,193 +2,206 @@ import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 
 export const WorkDetailContainer = styled.div`
-    display:flex;
-    margin:5rem 3rem 0 3rem;
-    flex-direction:column;
-    // height:100vh;
-
-    @media screen and (max-width: 769px){
-        margin:5rem 3rem 0 3rem;
-    }
-
-    animation: fadeIn 2s;
-    opacity: 1;
+    width: min(1140px, 92vw);
+    margin: 4.5rem auto 2rem auto;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid var(--line);
+    border-radius: 24px;
+    padding: 1.5rem;
+    background: linear-gradient(145deg, rgba(255, 255, 255, 0.9), rgba(246, 252, 255, 0.72));
+    box-shadow: var(--shadow-sm);
+    animation: fadeIn 700ms ease;
 
     @keyframes fadeIn {
         from {
             opacity: 0;
+            transform: translateY(8px);
         }
         to {
             opacity: 1;
+            transform: translateY(0);
         }
+    }
+
+    @media screen and (max-width: 769px) {
+        margin-top: 3.6rem;
+        padding: 0.95rem;
+        border-radius: 16px;
     }
 `;
 
 export const WorkName = styled.div`
-    font-size:3.5rem;
-    font-weight:700;
-    display:flex;
-    justify-content:center;
-
-    animation-duration: 1.5s;
-    animation-name: moveUp;
-
-    @keyframes moveUp {
-        from {
-            opacity: 0;
-            transform : translate(0em , 1em);
-        }
-        to {
-            opacity: 1;
-        }
-    }
-
+    font-size: clamp(1.9rem, 5vw, 3.1rem);
+    font-weight: 700;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    letter-spacing: 0.06em;
 `;
 
 export const WorkImage = styled.img`
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    
-    width: 70%;
-    max-width: 100%; 
-    height: auto; 
-    margin:3rem auto; 
+    width: min(840px, 100%);
+    height: auto;
+    margin: 1.8rem auto;
+    border-radius: 16px;
+    border: 1px solid rgba(255, 255, 255, 0.7);
+    box-shadow: 0 10px 22px rgba(20, 33, 61, 0.14);
 
-    @media screen and (max-width: 769px){
-        width:100%;
-        margin-top:4rem;
+    @media screen and (max-width: 769px) {
+        margin-top: 1.2rem;
     }
-
 `;
 
 export const WorkBasicDetails = styled.div`
-    display:flex;
-    flex-direction:row;
-    justify-content:center;
-    margin-right:3rem;
-    margin-bottom:2rem;
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 0.7rem;
+    margin-bottom: 1rem;
 
-    @media screen and (max-width: 769px){
-        flex-direction:column;
-        margin-right:0;
-        &>div{
-            margin-top:2rem;
-        }
+    @media screen and (max-width: 980px) {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    @media screen and (max-width: 769px) {
+        grid-template-columns: 1fr;
     }
 `;
 
 export const CompanyName = styled.div`
-    display:flex;
-    flex-direction:column;
-    flex:1;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    padding: 0.8rem;
 `;
 
 export const TimePeriod = styled.div`
-    display:flex;
-    flex-direction:column;
-    flex:1;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    padding: 0.8rem;
 `;
 
 export const Role = styled.div`
-    display:flex;
-    flex-direction:column;
-    flex:1;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    padding: 0.8rem;
 `;
 
 export const Website = styled.div`
-    display:flex;
-    flex-direction:column;
-    flex:1;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    padding: 0.8rem;
 `;
 
 export const DetailsHeading = styled.div`
-    display:flex;
-    justify-content:center;
-    font-size:1rem;
-    font-weight:900;
+    display: flex;
+    justify-content: center;
+    font-size: 0.68rem;
+    color: var(--muted);
+    letter-spacing: 0.11em;
+    text-transform: uppercase;
+    font-weight: 700;
 `;
 
-
 export const DetailsValue = styled.div`
-    display:flex;
-    justify-content:center;
-    font-size:1.2rem;
-    margin-top:0.2rem;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    font-size: 0.95rem;
+    margin-top: 0.42rem;
 `;
 
 export const WebsiteValue = styled.a`
-    display:flex;
-    justify-content:center;
-    font-size:1.2rem;
-    margin-top:0.2rem;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    font-size: 0.95rem;
+    margin-top: 0.42rem;
+    color: var(--primary);
 `;
 
 export const ThingsWorkedOn = styled.div`
-    display:flex;
-    font-size:1.2rem;
-    flex-direction:column;
-    text-align:left;
-    line-height:1.5;
-    margin:auto 10%;
-    text-align:center;
-    justify-content:center;
-    
+    display: flex;
+    font-size: 0.96rem;
+    color: var(--muted);
+    flex-direction: column;
+    line-height: 1.75;
+    margin: auto 6%;
+    text-align: center;
+    justify-content: center;
 `;
 
 export const Challenges = styled.div`
-    display:flex;
-    font-size:1.2rem;
-    flex-direction:column;
-    text-align:left;
-    line-height:1.5;
-    margin:auto 10%;
-    text-align:center;
-    justify-content:center;
+    display: flex;
+    font-size: 0.96rem;
+    color: var(--muted);
+    flex-direction: column;
+    line-height: 1.75;
+    margin: auto 6%;
+    text-align: center;
+    justify-content: center;
 `;
 
 export const SectionHeading = styled.h2`
-    display:flex;
-    justify-content:center;
-    margin-top: 3rem;
-    margin-bottom: 3rem;
-    font-size:2.5rem;
-    font-weight:700;
+    display: flex;
+    justify-content: center;
+    margin-top: 1.8rem;
+    margin-bottom: 1.3rem;
+    font-size: clamp(1.4rem, 3.8vw, 2.2rem);
+    font-weight: 700;
+    letter-spacing: 0.06em;
 `;
 
 export const Hr = styled.hr`
     border: none;
-    color: #bbb;
-    width:15%;
-    background-color: #bbb;
+    color: var(--line-strong);
+    width: 24%;
+    background-color: var(--line-strong);
     height: 1px;
-    margin:3rem auto;
+    margin: 1.4rem auto;
 `;
 
 export const WorkLinkContainer = styled.div`
-    display:flex;
-    flex-direction:row;
-    margin:5rem;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin: 1.9rem auto 0.4rem auto;
 
-    .isActive{
-        color:#000;
+    .isActive {
+        color: #fff;
+        background: var(--primary);
+        border-color: var(--primary);
     }
 
-    @media screen and (max-width: 769px){
-        flex-direction:column;
+    @media screen and (max-width: 769px) {
+        width: 100%;
     }
 `;
 
 export const WorkLink = styled(Link)`
-    flex:1;
-    font-size:1.2rem;
-    justify-content:center;
-    text-align:center;
-    cursor:pointer;
-    color:#C0C0C0;
-    text-decoration:none;
+    font-size: 0.66rem;
+    letter-spacing: 0.11em;
+    text-transform: uppercase;
+    text-align: center;
+    cursor: pointer;
+    color: var(--muted);
+    border: 1px solid var(--line-strong);
+    border-radius: 10px;
+    padding: 0.58rem 0.72rem;
+    text-decoration: none;
+    transition: background 160ms ease, color 160ms ease, border-color 160ms ease;
 
-    @media screen and (max-width: 769px){
-        margin:1rem;
+    &:hover {
+        background: var(--primary-soft);
+        color: var(--primary);
+        border-color: var(--primary);
     }
 `;

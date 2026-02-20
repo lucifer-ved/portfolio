@@ -2,172 +2,170 @@ import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 
 export const ProjectContainer = styled.div`
-    margin-top:2.5%;
-    width:100%;
-    padding:2rem;
-    display:flex;
-    flex-direction:row;
-    padding:5rem;
-    
+    margin-top: 1rem;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    gap: 1.2rem;
+    padding: 1.1rem;
+    border-radius: 22px;
+    border: 1px solid var(--line);
+    background: linear-gradient(145deg, rgba(255, 255, 255, 0.9), rgba(247, 252, 255, 0.72));
+    box-shadow: var(--shadow-sm);
+    position: relative;
+    overflow: hidden;
+    transition: transform 240ms ease, box-shadow 240ms ease;
 
-    &:nth-of-type(even){
-        flex-direction:row-reverse;
+    &:before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(125deg, rgba(40, 100, 255, 0.08), transparent 38%, rgba(20, 184, 166, 0.08));
+        pointer-events: none;
     }
 
-    &:nth-child(odd){
-        img{
-            animation-duration:1.5s;
-            animation-name:translateSide;
-
-            @keyframes translateSide {
-                from{
-                    opacity:0;
-                    transform: translate(-15em)
-                }
-                to{
-                    opacity:1
-                }
-            }
-        }
+    &:nth-of-type(even) {
+        flex-direction: row-reverse;
     }
 
-    @media screen and (max-width: 769px){
-        width:90%;
-        flex-direction:column;
-        box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-        margin:1.5rem;
-        padding:20px;
+    &:hover {
+        transform: translateY(-5px);
+        box-shadow: var(--shadow-lg);
+    }
 
-        &:nth-of-type(even){
-            flex-direction:column;
+    @media screen and (max-width: 900px) {
+        flex-direction: column;
+        padding: 0.85rem;
+        border-radius: 16px;
+
+        &:nth-of-type(even) {
+            flex-direction: column;
         }
     }
 `;
 
-
 export const ProjectImage = styled.img`
-    width:50%;
-    height:40%;
-    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    width: 52%;
+    border-radius: 16px;
+    border: 1px solid rgba(255, 255, 255, 0.65);
+    box-shadow: 0 10px 22px rgba(20, 33, 61, 0.14);
 
-    @media screen and (max-width: 769px){
-        width:100%;
+    @media screen and (max-width: 900px) {
+        width: 100%;
     }
 `;
 
 export const ProjectVideo = styled.video`
-    width:50%;
-    height:40%;
-    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    width: 52%;
+    border-radius: 16px;
+    border: 1px solid rgba(255, 255, 255, 0.65);
+    box-shadow: 0 10px 22px rgba(20, 33, 61, 0.14);
 
-    @media screen and (max-width: 769px){
-        width:100%;
+    @media screen and (max-width: 900px) {
+        width: 100%;
     }
 `;
 
-
 export const ProjectDetails = styled.div`
-    padding:2rem;
-    display:flex;
-    flex-direction:column;
-    align-items:center;
-    justify-content:center;
-    flex:1;
+    padding: 0.4rem 0.4rem 0.4rem 0.8rem;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    flex: 1;
+    position: relative;
+    z-index: 1;
 
-    @media screen and (max-width: 769px){
-        width:100%;
-        flex-direction:column;
+    @media screen and (max-width: 900px) {
+        width: 100%;
+        align-items: center;
+        text-align: center;
+        padding: 0.8rem 0.2rem 0.4rem 0.2rem;
     }
 `;
 
 export const ProjectTitle = styled.div`
-    display:flex;
-    font-size: 2rem;
-    font-weight:700;
-    align-items:center;
-    justify-content:center;
-
-    @media screen and (max-width: 769px){
-        font-size: 1.5rem;
-        align-items:center;
-        text-align:center;
-    }
+    display: flex;
+    font-size: clamp(1.5rem, 3vw, 2.2rem);
+    font-weight: 700;
+    align-items: center;
+    justify-content: center;
+    letter-spacing: 0.05em;
 `;
 
 export const ProjectDescription = styled.div`
-    display:flex;
-    font-size: 1.2rem;
-    font-weight:400;
-    margin-top:2.5rem;
-    flex-direction:column;
-    align-items:center;
-    text-align:center;
-    justify-content:center;
-    line-height:1.5em;
+    display: flex;
+    font-size: 0.95rem;
+    font-weight: 500;
+    margin-top: 0.85rem;
+    color: var(--muted);
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: left;
+    justify-content: center;
+    line-height: 1.65;
 
-    @media screen and (max-width: 769px){
-        font-size: 1rem;
-        margin-top:1.5rem;
-        text-align:center;
+    @media screen and (max-width: 900px) {
+        text-align: center;
+        align-items: center;
     }
 `;
 
 export const ProjectTechnologies = styled.div`
-    display:flex;
-    flex-direction:row;
-    justify-content:center;
-    margin-top:1.5rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-top: 1rem;
 `;
 
 export const Tech = styled.div`
-    background:#3cf;
-    font-size:0.8rem;
-    padding:0.5rem;
-    margin:0.5rem;
+    background: #3cf;
+    font-size: 0.8rem;
+    padding: 0.45rem;
+    margin: 0.45rem;
 `;
 
 export const SeeMoreButton = styled(Link)`
-    margin-top:1.5rem;
-    color: #333;
-    background:#fff;
+    margin-top: 1.05rem;
+    color: var(--text);
+    background: rgba(255, 255, 255, 0.85);
     cursor: pointer;
-    display: flex;
+    display: inline-flex;
     position: relative;
-    border: 2px solid #F7CA18;
-    width:120px;
-    height:50px;
-    transition: all 0.4s cubic-bezier(0.42, 0, 0.58, 1);
-    0s;
-    display:flex;
-    text-align:center;
-    justify-content:center;
-    align-items:center;
-    stretch:center;
-    text-decoration:none;
+    border: 1px solid var(--line-strong);
+    border-radius: 12px;
+    min-width: 132px;
+    height: 42px;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    font-size: 0.69rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    font-weight: 600;
+    overflow: hidden;
+    transition: color 220ms ease, border-color 220ms ease;
 
     &:hover {
-        color: #000 !important;
-        background-color: transparent;
-    }
-
-    &:hover:before {
-        left: 0%;
-        right: auto;
-        width: 100%;
+        color: #fff;
+        border-color: var(--primary);
     }
 
     &:before {
-        display: block;
-        position: absolute;
-        top: 0px;
-        right: 0px;
-        height: 100%;
-        width: 0px;
-        z-index: -1;
         content: '';
-        color: #000 !important;
-        background: #F7CA18;
-        transition: all 0.4s cubic-bezier(0.42, 0, 0.58, 1);
-    0s;
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(135deg, var(--primary), var(--secondary));
+        transform: translateX(-102%);
+        transition: transform 280ms ease;
+        z-index: -1;
+    }
+
+    &:hover:before {
+        transform: translateX(0);
     }
 `;
