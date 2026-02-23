@@ -24,6 +24,13 @@ export const HeroStage = styled.section`
   max-width: min(1280px, 94vw);
   margin: 0 auto;
 
+  @media screen and (min-width: 1280px) {
+    padding-left: 4.2rem;
+    grid-template-columns: minmax(0, 1fr) minmax(340px, 450px);
+    gap: clamp(1.25rem, 2vw, 2.4rem);
+    box-sizing: border-box;
+  }
+
   @media screen and (max-width: 1100px) {
     grid-template-columns: 1fr;
     min-height: auto;
@@ -61,6 +68,11 @@ export const SectionInner = styled.div`
   max-width: min(1280px, 94vw);
   width: 100%;
   margin: 0 auto;
+  box-sizing: border-box;
+
+  @media screen and (min-width: 1280px) {
+    padding-left: 4.2rem;
+  }
 `;
 
 /* ── Hero left column ── */
@@ -68,7 +80,7 @@ export const HeroContent = styled.div`
   position: relative;
   z-index: 2;
   width: 100%;
-  max-width: 780px;
+  max-width: 760px;
   margin: 0 auto;
 
   @media screen and (max-width: 760px) {
@@ -97,6 +109,10 @@ export const HeroHeading = styled.h1`
     -9px -9px 18px var(--shadowLight),
     9px 9px 18px var(--shadowDark),
     0 0 20px rgba(0, 0, 0, 0.22);
+
+  @media screen and (min-width: 1280px) {
+    font-size: clamp(3.8rem, 6.9vw, 7.1rem);
+  }
 
   span {
     display: block;
@@ -168,6 +184,12 @@ export const StackCard = styled.aside`
   border-radius: 1.28rem;
   padding: 1.6rem;
   width: 100%;
+  justify-self: end;
+
+  @media screen and (min-width: 1280px) {
+    max-width: 450px;
+    padding: 1.4rem 1.35rem;
+  }
 
   @media screen and (max-width: 1100px) {
     max-width: 540px;

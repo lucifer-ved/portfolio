@@ -5,6 +5,26 @@ import Routing from './components/Routing';
 
 const App = () => {
   useEffect(() => {
+    const previousScrollRestoration =
+      'scrollRestoration' in window.history ? window.history.scrollRestoration : null;
+
+    if ('scrollRestoration' in window.history) {
+      window.history.scrollRestoration = 'manual';
+    }
+
+    // Ensure refresh lands at Hello/top instead of restoring previous section.
+    const initialHash = window.location.hash;
+    requestAnimationFrame(() => {
+      if (initialHash && initialHash !== '#hello') {
+        const target = document.querySelector(initialHash);
+        if (target) {
+          target.scrollIntoView({ behavior: 'auto', block: 'start' });
+          return;
+        }
+      }
+      window.scrollTo({ top: 0, left: 0, behavior: 'auto' });
+    });
+
     if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
       document.documentElement.style.scrollBehavior = 'smooth';
     }
@@ -217,6 +237,9 @@ const App = () => {
     updateActiveNav();
 
     return () => {
+      if ('scrollRestoration' in window.history && previousScrollRestoration) {
+        window.history.scrollRestoration = previousScrollRestoration;
+      }
       io.disconnect();
       if (themeToggle) themeToggle.removeEventListener('click', handleThemeToggle);
       if (accentToggle) accentToggle.removeEventListener('click', handleAccentToggle);

@@ -29,6 +29,12 @@ const builds = [
     link: 'https://medireco.com'
   },
   {
+    name: 'PhotoFix Telegram Bot',
+    stage: 'Beta',
+    progress: 58,
+    link: 'https://getphotofix.com/'
+  },
+  {
     name: 'Pawlog',
     stage: 'MVP',
     progress: 61,
