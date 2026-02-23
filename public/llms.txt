@@ -1,0 +1,24 @@
+# Ved Solanki
+
+Portfolio of Ved Solanki, backend architect and technical solution architect with 10+ years of experience.
+
+## Focus
+- Python backend systems
+- AWS and cloud architecture
+- Event-driven systems and automation
+- AI integrations and practical product engineering
+
+## Current Status
+- Intentional career break (2026-present)
+- Learning deeply and building AI-first products
+
+## Current Products
+- MediReco: https://medireco.com
+- Pawlog: https://pawlog.netlify.app
+- House of Agents: https://houseofagents.co
+
+## Important URLs
+- Home: https://www.yourdomain.com/
+- Building section: https://www.yourdomain.com/#results
+- Experience section: https://www.yourdomain.com/#evidence
+- Contact section: https://www.yourdomain.com/#contact

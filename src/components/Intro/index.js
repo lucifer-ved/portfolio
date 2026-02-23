@@ -399,9 +399,9 @@ const Intro = () => {
             <SectionTop className="reveal">
               <SectionKicker>Experience</SectionKicker>
               <SectionTitle>Work history</SectionTitle>
-            <SectionDescription>
-              Real production ownership across product, platform, and architecture.
-            </SectionDescription>
+              <SectionDescription>
+                Real production ownership across product, platform, and architecture.
+              </SectionDescription>
             </SectionTop>
             <TimelineWrap className="reveal">
               <TimelineScroll ref={timelineScrollRef}>
@@ -439,46 +439,46 @@ const Intro = () => {
               <ExperienceDetailMotion $token={detailMotionToken}>
                 {activeExperience.caseStudy ? (
                   <>
-                  <CaseTopBar>
-                    <CaseTopRole className="neu-sm"><strong>Role</strong> {activeExperience.caseStudy.role}</CaseTopRole>
-                    {activeExperience.caseStudy.focus && (
-                      <CaseTopRole className="neu-sm"><strong>Focus</strong> {activeExperience.caseStudy.focus}</CaseTopRole>
+                    <CaseTopBar>
+                      <CaseTopRole className="neu-sm"><strong>Role</strong> {activeExperience.caseStudy.role}</CaseTopRole>
+                      {activeExperience.caseStudy.focus && (
+                        <CaseTopRole className="neu-sm"><strong>Focus</strong> {activeExperience.caseStudy.focus}</CaseTopRole>
+                      )}
+                      {activeExperience.caseStudy.website && (
+                        <CaseTopWebsite
+                          className="neu-sm no-hover"
+                          href={activeExperience.caseStudy.website}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
+                          Website
+                        </CaseTopWebsite>
+                      )}
+                    </CaseTopBar>
+                    {activeExperience.caseStudy.currentLine && (
+                      <CaseCurrentLine>{activeExperience.caseStudy.currentLine}</CaseCurrentLine>
                     )}
-                    {activeExperience.caseStudy.website && (
-                      <CaseTopWebsite
-                        className="neu-sm no-hover"
-                        href={activeExperience.caseStudy.website}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                      >
-                        Website
-                      </CaseTopWebsite>
-                    )}
-                  </CaseTopBar>
-                  {activeExperience.caseStudy.currentLine && (
-                    <CaseCurrentLine>{activeExperience.caseStudy.currentLine}</CaseCurrentLine>
-                  )}
-                  <CaseStudyWrap className="neu-inset-md">
-                    <CaseBlock>
-                      <CaseSectionTitle>What I did</CaseSectionTitle>
-                      <CaseList>
-                        {activeExperience.caseStudy.whatIDid.map((point, idx) => (
-                          <li key={`work-${activeExperience.company}-${idx}`}>{point}</li>
-                        ))}
-                      </CaseList>
-                    </CaseBlock>
-
-                    {activeExperience.caseStudy.challenges?.length > 0 && (
+                    <CaseStudyWrap className="neu-inset-md">
                       <CaseBlock>
-                        <CaseSectionTitle>Challenges</CaseSectionTitle>
+                        <CaseSectionTitle>What I did</CaseSectionTitle>
                         <CaseList>
-                          {activeExperience.caseStudy.challenges.map((point, idx) => (
-                            <li key={`challenge-${activeExperience.company}-${idx}`}>{point}</li>
+                          {activeExperience.caseStudy.whatIDid.map((point, idx) => (
+                            <li key={`work-${activeExperience.company}-${idx}`}>{point}</li>
                           ))}
                         </CaseList>
                       </CaseBlock>
-                    )}
-                  </CaseStudyWrap>
+
+                      {activeExperience.caseStudy.challenges?.length > 0 && (
+                        <CaseBlock>
+                          <CaseSectionTitle>Challenges</CaseSectionTitle>
+                          <CaseList>
+                            {activeExperience.caseStudy.challenges.map((point, idx) => (
+                              <li key={`challenge-${activeExperience.company}-${idx}`}>{point}</li>
+                            ))}
+                          </CaseList>
+                        </CaseBlock>
+                      )}
+                    </CaseStudyWrap>
                   </>
                 ) : (
                   <>
@@ -560,7 +560,7 @@ const Intro = () => {
                   <li>Project kickoff 🚀</li>
                 </ol>
                 <ContactFooter>
-                  © {new Date().getFullYear()} Ved Solanki · Full-Stack Engineer
+                  © {new Date().getFullYear()} Ved Solanki
                 </ContactFooter>
               </ContactRight>
             </ContactGrid>
