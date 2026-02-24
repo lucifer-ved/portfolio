@@ -47,10 +47,10 @@ const builds = [
     link: 'https://houseofagents.co'
   },
   {
-    name: 'Stealth Build 01',
+    name: 'SpendLayer',
     stage: 'MVP',
-    progress: 48,
-    link: ''
+    progress: 52,
+    link: 'https://spendlayer.netlify.app/landing'
   },
   {
     name: 'Stealth Build 02',

@@ -73,6 +73,17 @@ export const BrandIconChip = styled.span`
     height: 26px;
   }
 
+  span {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.78rem;
+    line-height: 1;
+    font-weight: 800;
+    letter-spacing: 0.02em;
+    color: var(--text);
+  }
+
   @media screen and (max-width: 760px) {
     width: 24px;
     height: 24px;
@@ -80,6 +91,10 @@ export const BrandIconChip = styled.span`
     svg {
       width: 22px;
       height: 22px;
+    }
+
+    span {
+      font-size: 0.66rem;
     }
   }
 `;

@@ -1,5 +1,5 @@
 import React from 'react';
-import { FiMoon, FiSun, FiZap, FiCpu } from 'react-icons/fi';
+import { FiMoon, FiSun, FiZap } from 'react-icons/fi';
 import Resume from '../../assets/vedantsolanki.pdf';
 import {
   Nav,
@@ -22,10 +22,10 @@ const NavBar = () => {
       <NavInner>
         <NavBrand href="#hello" className="no-hover">
           <BrandIconChip>
-            <FiCpu />
+            <span>VS</span>
           </BrandIconChip>
           <BrandName>
-            <BrandFirst>Ved</BrandFirst>
+            <BrandFirst>Vedant</BrandFirst>
             <BrandLast>Solanki</BrandLast>
           </BrandName>
         </NavBrand>

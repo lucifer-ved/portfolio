@@ -13,6 +13,20 @@ import {
   FiActivity,
   FiZap
 } from 'react-icons/fi';
+import {
+  SiPython,
+  SiDjango,
+  SiReact,
+  SiJavascript,
+  SiTypescript,
+  SiPostgresql,
+  SiDocker,
+  SiAmazonaws,
+  SiGraphql,
+  SiTailwindcss,
+  SiAdobeillustrator,
+  SiAdobephotoshop
+} from 'react-icons/si';
 import CurrentlyBuilding from '../CurrentlyBuilding';
 import {
   IntroContainer,
@@ -74,7 +88,14 @@ import {
   SocialSidebar,
   SocialIconsCol,
   SocialBar,
-  SidebarIconLink
+  SidebarIconLink,
+  BottomToolsMarqueeSection,
+  ToolsMarqueeViewport,
+  ToolsMarqueeTrack,
+  ToolsMarqueeGroup,
+  ToolCard,
+  ToolIcon,
+  ToolName
 } from './IntroElements';
 
 const experienceTimeline = [
@@ -268,6 +289,32 @@ const socialLinks = [
   { icon: FiSend, href: '#contact', label: 'Connect', tooltip: 'Contact' }
 ];
 
+const toolTiles = [
+  { label: 'Python', icon: SiPython },
+  { label: 'Django', icon: SiDjango },
+  { label: 'FastAPI', icon: FiZap },
+  { label: 'PostgreSQL', icon: SiPostgresql },
+  { label: 'Docker', icon: SiDocker },
+  { label: 'AWS', icon: SiAmazonaws },
+  { label: 'GraphQL', icon: SiGraphql },
+  { label: 'React', icon: SiReact },
+  { label: 'JavaScript', icon: SiJavascript },
+  { label: 'TypeScript', icon: SiTypescript },
+  { label: 'Event-Driven', icon: FiActivity },
+  { label: 'Serverless', icon: FiCloud },
+  { label: 'Observability', icon: FiActivity },
+  { label: 'n8n', icon: FiLayers },
+  { label: 'LLM APIs', icon: FiCpu },
+  { label: 'RAG', icon: FiDatabase },
+  { label: 'Vector DB', icon: FiDatabase },
+  { label: 'Prompt Eval', icon: FiActivity },
+  { label: 'Agents', icon: FiCpu },
+  { label: 'Automation', icon: FiZap },
+  { label: 'Tailwind', icon: SiTailwindcss },
+  { label: 'Illustrator', icon: SiAdobeillustrator },
+  { label: 'Photoshop', icon: SiAdobephotoshop }
+];
+
 const renderStackContent = () => (
   <>
     <StackLabel>Technical Stack</StackLabel>
@@ -356,7 +403,7 @@ const Intro = () => {
           <HeroContent className="reveal">
             <HeroHeading className="neu-emboss-soft">
               <span>HI !</span>
-              <span>I'M VED.</span>
+              <span className="hero-line-wide">I'M VEDANT.</span>
             </HeroHeading>
             <HeroText>
               A tech enthusiast with 10+ years of experience, fueled by curiosity and innovation.{' '}
@@ -560,12 +607,35 @@ const Intro = () => {
                   <li>Project kickoff 🚀</li>
                 </ol>
                 <ContactFooter>
-                  © {new Date().getFullYear()} Ved Solanki
+                  © {new Date().getFullYear()} Vedant Solanki
                 </ContactFooter>
               </ContactRight>
             </ContactGrid>
           </SectionInner>
         </Section>
+
+        <BottomToolsMarqueeSection aria-label="Tools marquee">
+          <ToolsMarqueeViewport>
+            <ToolsMarqueeTrack>
+              <ToolsMarqueeGroup>
+                {toolTiles.map(({ label, icon: Icon }) => (
+                  <ToolCard key={`marquee-a-${label}`} className="neu-sm" title={label} aria-label={label}>
+                    <ToolIcon><Icon /></ToolIcon>
+                    <ToolName>{label}</ToolName>
+                  </ToolCard>
+                ))}
+              </ToolsMarqueeGroup>
+              <ToolsMarqueeGroup aria-hidden="true">
+                {toolTiles.map(({ label, icon: Icon }) => (
+                  <ToolCard key={`marquee-b-${label}`} className="neu-sm" title={label}>
+                    <ToolIcon><Icon /></ToolIcon>
+                    <ToolName>{label}</ToolName>
+                  </ToolCard>
+                ))}
+              </ToolsMarqueeGroup>
+            </ToolsMarqueeTrack>
+          </ToolsMarqueeViewport>
+        </BottomToolsMarqueeSection>
 
       </IntroContainer>
 

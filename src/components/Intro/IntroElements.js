@@ -119,6 +119,20 @@ export const HeroHeading = styled.h1`
     width: max-content;
     transition: transform 0.2s ease, text-shadow 0.2s ease;
     cursor: pointer;
+    white-space: nowrap;
+    position: relative;
+    -webkit-text-stroke: 1px rgba(39, 46, 54, 0.16);
+    text-stroke: 1px rgba(39, 46, 54, 0.16);
+  }
+
+  span.hero-line-wide {
+    letter-spacing: -0.03em;
+    font-size: 0.9em;
+  }
+
+  html[data-theme='dark'] & span {
+    -webkit-text-stroke: 1px rgba(228, 232, 239, 0.06);
+    text-stroke: 1px rgba(228, 232, 239, 0.06);
   }
 
   span:hover {
@@ -130,7 +144,7 @@ export const HeroHeading = styled.h1`
 
   @media screen and (max-width: 760px) {
     margin-top: 0.5rem;
-    font-size: clamp(4.4rem, 21vw, 6.2rem);
+    font-size: clamp(4rem, 18vw, 5.6rem);
     letter-spacing: -0.012em;
     line-height: 0.84;
     align-items: flex-start;
@@ -140,6 +154,21 @@ export const HeroHeading = styled.h1`
       -7px -7px 14px var(--shadowLight),
       7px 7px 14px var(--shadowDark),
       0 0 14px rgba(0, 0, 0, 0.2);
+
+    span.hero-line-wide {
+      font-size: 0.86em;
+      letter-spacing: -0.035em;
+    }
+
+    span {
+      -webkit-text-stroke: 1px rgba(39, 46, 54, 0.22);
+      text-stroke: 1px rgba(39, 46, 54, 0.22);
+    }
+
+    html[data-theme='dark'] & span {
+      -webkit-text-stroke: 1px rgba(228, 232, 239, 0.08);
+      text-stroke: 1px rgba(228, 232, 239, 0.08);
+    }
   }
 `;
 
@@ -333,6 +362,306 @@ export const SectionDescription = styled.p`
   line-height: 1.6;
   max-width: 640px;
   font-size: 0.95rem;
+`;
+
+/* ── Activity / tools layouts ── */
+export const CenteredSectionTop = styled(SectionTop)`
+  text-align: center;
+
+  ${SectionDescription} {
+    margin-left: auto;
+    margin-right: auto;
+  }
+`;
+
+export const ActivityWrap = styled.div`
+  margin-top: 1.6rem;
+  display: grid;
+  gap: 1rem;
+  justify-items: center;
+`;
+
+export const ActivityCaption = styled.p`
+  margin: 0;
+  color: var(--textSoft);
+  font-size: 0.92rem;
+  text-align: center;
+  max-width: 720px;
+  line-height: 1.55;
+
+  @media screen and (max-width: 760px) {
+    font-size: 0.84rem;
+    max-width: 95%;
+  }
+`;
+
+export const ActivityHeatmapCard = styled.div`
+  width: min(100%, 960px);
+  border-radius: 1.35rem;
+  padding: 1.25rem 1.2rem;
+
+  @media screen and (max-width: 760px) {
+    padding: 0.9rem 0.75rem;
+    border-radius: 1.1rem;
+    overflow-x: auto;
+  }
+`;
+
+export const ActivityMonths = styled.div`
+  margin-left: 2.4rem;
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  gap: 0.35rem;
+  color: var(--textSoft);
+  font-size: 0.76rem;
+  margin-bottom: 0.5rem;
+
+  @media screen and (max-width: 760px) {
+    min-width: 660px;
+    margin-left: 2.15rem;
+    font-size: 0.68rem;
+  }
+`;
+
+export const ActivityGridWrap = styled.div`
+  display: grid;
+  grid-template-columns: 2rem auto;
+  align-items: start;
+  gap: 0.4rem;
+
+  @media screen and (max-width: 760px) {
+    min-width: 700px;
+  }
+`;
+
+export const ActivityDayLabels = styled.div`
+  display: grid;
+  grid-template-rows: repeat(7, 0.62rem);
+  gap: 0.23rem;
+  padding-top: 0.05rem;
+  color: var(--textSoft);
+  font-size: 0.68rem;
+  line-height: 1;
+`;
+
+export const ActivityGrid = styled.div`
+  display: grid;
+  grid-auto-flow: column;
+  grid-template-rows: repeat(7, 0.62rem);
+  grid-auto-columns: 0.62rem;
+  gap: 0.23rem;
+`;
+
+export const ActivityCell = styled.span`
+  border-radius: 2px;
+  background: ${({ $level }) => {
+    if ($level >= 4) return 'rgba(90, 197, 117, 0.92)';
+    if ($level === 3) return 'rgba(108, 214, 132, 0.9)';
+    if ($level === 2) return 'rgba(131, 230, 152, 0.82)';
+    if ($level === 1) return 'rgba(185, 210, 195, 0.7)';
+    return 'rgba(255, 255, 255, 0.08)';
+  }};
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.03);
+`;
+
+export const ActivityFooter = styled.div`
+  display: grid;
+  justify-items: center;
+  gap: 0.35rem;
+  margin-top: 0.25rem;
+  color: var(--textSoft);
+`;
+
+export const ActivityFooterIcon = styled.span`
+  width: 54px;
+  height: 54px;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--icon-color);
+  font-size: 1.45rem;
+`;
+
+export const ActivityFooterText = styled.p`
+  margin: 0;
+  text-align: center;
+  font-size: 0.9rem;
+  line-height: 1.5;
+
+  strong {
+    color: var(--text);
+    font-weight: 700;
+  }
+`;
+
+export const ToolsWrap = styled.div`
+  margin-top: 1.55rem;
+  position: relative;
+`;
+
+export const ToolsScroll = styled.div`
+  overflow-x: auto;
+  overflow-y: hidden;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  padding: 0.2rem 0.15rem 0.4rem;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+`;
+
+export const ToolsTrack = styled.div`
+  display: inline-flex;
+  align-items: center;
+  gap: 0.9rem;
+  min-width: max-content;
+  padding: 0.15rem 0.1rem;
+`;
+
+export const ToolCard = styled.div`
+  width: 74px;
+  height: 74px;
+  border-radius: 1rem;
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.32rem;
+  color: var(--text);
+  text-align: center;
+  padding: 0.45rem;
+
+  @media screen and (max-width: 760px) {
+    width: 66px;
+    height: 66px;
+    border-radius: 0.9rem;
+  }
+`;
+
+export const ToolIcon = styled.span`
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--icon-color);
+  font-size: 1.55rem;
+  line-height: 1;
+
+  @media screen and (max-width: 760px) {
+    font-size: 1.3rem;
+  }
+`;
+
+export const ToolName = styled.span`
+  color: var(--textSoft);
+  font-size: 0.62rem;
+  line-height: 1.1;
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+`;
+
+const toolsMarqueeMove = keyframes`
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(calc(-50% - 0.45rem));
+  }
+`;
+
+export const BottomToolsMarqueeSection = styled.div`
+  position: relative;
+  margin: 0 auto 5.4rem;
+  width: min(1280px, 94vw);
+  box-sizing: border-box;
+
+  @media screen and (min-width: 1280px) {
+    padding-left: 4.2rem;
+  }
+
+  @media screen and (max-width: 760px) {
+    width: calc(100% - 2rem);
+    margin: 0 auto 5.9rem;
+  }
+`;
+
+export const ToolsMarqueeViewport = styled.div`
+  position: relative;
+  overflow: hidden;
+  padding: 0.25rem 0;
+
+  &::before,
+  &::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 56px;
+    z-index: 2;
+    pointer-events: none;
+  }
+
+  &::before {
+    left: 0;
+    background: linear-gradient(to right, var(--bg), rgba(var(--fade-color), 0));
+  }
+
+  &::after {
+    right: 0;
+    background: linear-gradient(to left, var(--bg), rgba(var(--fade-color), 0));
+  }
+
+  @media screen and (max-width: 760px) {
+    overflow-x: auto;
+    overflow-y: hidden;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+
+    &::before,
+    &::after {
+      width: 26px;
+    }
+  }
+`;
+
+export const ToolsMarqueeTrack = styled.div`
+  display: flex;
+  align-items: center;
+  width: max-content;
+  gap: 0.9rem;
+  animation: ${toolsMarqueeMove} 28s linear infinite;
+  will-change: transform;
+
+  &:hover {
+    animation-play-state: paused;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    animation: none;
+  }
+
+  @media screen and (max-width: 760px) {
+    animation: none;
+    gap: 0.6rem;
+    padding: 0 0.1rem;
+  }
+`;
+
+export const ToolsMarqueeGroup = styled.div`
+  display: inline-flex;
+  align-items: center;
+  gap: 0.9rem;
+
+  @media screen and (max-width: 760px) {
+    gap: 0.6rem;
+  }
 `;
 
 /* ── 3-column card grid ── */
@@ -957,6 +1286,7 @@ export const SidebarIconLink = styled.a`
   }
 `;
 
+/* ── Activity / tools showcase sections ── */
 /* ── Legacy footer (kept for backward compat) ── */
 export const Footer = styled.footer`
   border-radius: 1.1rem;
