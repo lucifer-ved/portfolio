@@ -17,6 +17,11 @@ export const NowRow = styled.div`
   flex-wrap: wrap;
   align-items: center;
   gap: 0.5rem 0.6rem;
+
+  /* Phones: certificates only */
+  @media screen and (max-width: 760px) {
+    display: none;
+  }
 `;
 
 export const NowLabel = styled.span`
@@ -63,6 +68,10 @@ export const Badge = styled.article`
   background: transparent;
   box-shadow: ${raisedLg};
 
+  @media screen and (max-width: 760px) {
+    padding: 1rem;
+  }
+
   ${({ $exam }) => $exam && `
     background: rgba(241, 199, 90, 0.08);
     border: 1px dashed rgba(241, 199, 90, 0.6);
@@ -82,6 +91,18 @@ export const BadgeMark = styled.span`
   font-weight: 900;
   letter-spacing: 0.03em;
   box-shadow: ${({ $exam }) => ($exam ? 'none' : raisedSm)};
+
+  /* Issuer logo; alt is empty because the issuer is named right beside it */
+  img {
+    width: 58%;
+    height: 58%;
+    object-fit: contain;
+  }
+
+  /* Wide wordmarks (IBM) need more of the circle to stay legible */
+  img[src$='ibm.svg'] {
+    width: 72%;
+  }
 `;
 
 export const BadgeTitle = styled.h3`
@@ -149,6 +170,12 @@ const pill = `
   &:hover {
     transform: translateY(-1px);
   }
+
+  @media screen and (max-width: 760px) {
+    min-height: 2.5rem;
+    padding: 0 0.85rem;
+    font-size: 0.8rem;
+  }
 `;
 
 export const PillButton = styled.button`
@@ -194,6 +221,16 @@ export const LightboxActions = styled.div`
   display: flex;
   align-items: center;
   gap: 0.55rem;
+
+  @media screen and (max-width: 760px) {
+    width: 100%;
+
+    a {
+      flex: 1;
+      justify-content: center;
+      min-height: 2.75rem;
+    }
+  }
 `;
 
 /* Lightbox */
@@ -218,6 +255,11 @@ export const LightboxBackdrop = styled.div`
   @media (prefers-reduced-motion: reduce) {
     animation: none;
   }
+
+  @media screen and (max-width: 760px) {
+    align-items: flex-end;
+    padding: 0;
+  }
 `;
 
 export const LightboxPanel = styled.div`
@@ -240,6 +282,31 @@ export const LightboxPanel = styled.div`
   @keyframes certRise {
     from { opacity: 0; transform: translateY(12px) scale(0.985); }
     to { opacity: 1; transform: none; }
+  }
+
+  @keyframes certSheet {
+    from { transform: translateY(100%); }
+    to { transform: none; }
+  }
+
+  /* Phones: a sheet that rises from the bottom, within thumb reach */
+  @media screen and (max-width: 760px) {
+    width: 100%;
+    max-height: 92svh;
+    border-radius: 1.5rem 1.5rem 0 0;
+    padding: 0.7rem 1rem calc(1.2rem + env(safe-area-inset-bottom, 0px));
+    animation: certSheet 320ms cubic-bezier(0.22, 1, 0.36, 1) both;
+
+    &::before {
+      content: '';
+      display: block;
+      width: 2.5rem;
+      height: 0.3rem;
+      margin: 0 auto 0.8rem;
+      border-radius: 999px;
+      background: var(--muted);
+      opacity: 0.6;
+    }
   }
 
   @media (prefers-reduced-motion: reduce) {
@@ -290,4 +357,9 @@ export const CloseButton = styled.button`
   place-items: center;
   color: var(--text);
   font-size: 1.05rem;
+
+  @media screen and (max-width: 760px) {
+    width: 2.75rem;
+    height: 2.75rem;
+  }
 `;

@@ -142,10 +142,29 @@ const App = () => {
       }
     };
 
+    const paintShadow = (el, state) => {
+      const { blur1, blur2, isText, isInset } = state;
+      const light = `${state.currentLightX.toFixed(2)}px ${state.currentLightY.toFixed(2)}px ${blur1}px var(--shadowLight)`;
+      const dark = `${state.currentDarkX.toFixed(2)}px ${state.currentDarkY.toFixed(2)}px ${blur2}px var(--shadowDark)`;
+      if (isText) {
+        el.style.textShadow = `${light}, ${dark}`;
+      } else if (isInset) {
+        el.style.boxShadow = `inset ${light}, inset ${dark}`;
+      } else {
+        el.style.boxShadow = `${light}, ${dark}`;
+      }
+    };
+
+    // Touch screens have no pointer for the light to follow, so the loop would only
+    // repaint shadows while scrolling. Paint each shadow once at rest instead.
+    const followPointer = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+
     const trackMouseForNeumorphism = (e) => { mouseX = e.clientX; mouseY = e.clientY; wake(); };
-    document.addEventListener('mousemove', trackMouseForNeumorphism);
-    window.addEventListener('scroll', wake, { passive: true });
-    window.addEventListener('resize', wake);
+    if (followPointer) {
+      document.addEventListener('mousemove', trackMouseForNeumorphism);
+      window.addEventListener('scroll', wake, { passive: true });
+      window.addEventListener('resize', wake);
+    }
 
     const updateNeumorphism = () => {
       // Read every position first, then write, so layout is computed once per frame
@@ -173,7 +192,7 @@ const App = () => {
         influence = Math.max(0.5, Math.min(1, influence));
         const state = shadowStates.get(el);
         if (!state) return;
-        const { factor, blur1, blur2, isText, isInset } = state;
+        const { factor } = state;
         if (distance > 0) {
           const normalizedX = deltaX / distance;
           const normalizedY = deltaY / distance;
@@ -193,13 +212,7 @@ const App = () => {
         // Settled: skip the style write, which would only trigger a repaint
         if (Math.abs(state.currentLightX - prevX) < 0.02 && Math.abs(state.currentLightY - prevY) < 0.02) return;
         moving = true;
-        if (isText) {
-          el.style.textShadow = `${state.currentLightX.toFixed(2)}px ${state.currentLightY.toFixed(2)}px ${blur1}px var(--shadowLight), ${state.currentDarkX.toFixed(2)}px ${state.currentDarkY.toFixed(2)}px ${blur2}px var(--shadowDark)`;
-        } else if (isInset) {
-          el.style.boxShadow = `inset ${state.currentLightX.toFixed(2)}px ${state.currentLightY.toFixed(2)}px ${blur1}px var(--shadowLight), inset ${state.currentDarkX.toFixed(2)}px ${state.currentDarkY.toFixed(2)}px ${blur2}px var(--shadowDark)`;
-        } else {
-          el.style.boxShadow = `${state.currentLightX.toFixed(2)}px ${state.currentLightY.toFixed(2)}px ${blur1}px var(--shadowLight), ${state.currentDarkX.toFixed(2)}px ${state.currentDarkY.toFixed(2)}px ${blur2}px var(--shadowDark)`;
-        }
+        paintShadow(el, state);
       });
       if (moving) {
         rafId = requestAnimationFrame(updateNeumorphism);
@@ -207,7 +220,11 @@ const App = () => {
         running = false;
       }
     };
-    wake();
+    if (followPointer) {
+      wake();
+    } else {
+      allElements.forEach((el) => paintShadow(el, shadowStates.get(el)));
+    }
 
     // Nav scroll spy
     const sectionIds = ['hello', 'results', 'evidence', 'learning', 'contact'];

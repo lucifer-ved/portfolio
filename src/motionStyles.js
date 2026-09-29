@@ -25,4 +25,13 @@ export const MotionStyle = createGlobalStyle`
     .reveal:nth-child(3) { transition-delay: 0.16s; }
     .reveal:nth-child(4) { transition-delay: 0.24s; }
   }
+
+  /* The full-screen noise layer is blended over the whole page on every scroll
+     frame, which phones can't keep up with. Its effect on the dark theme is
+     barely visible, so touch screens and narrow windows skip it. */
+  @media (hover: none), (pointer: coarse), (max-width: 760px) {
+    body::after {
+      display: none;
+    }
+  }
 `;

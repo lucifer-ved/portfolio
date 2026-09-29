@@ -56,10 +56,23 @@ export const Section = styled.section`
   display: flex;
   align-items: center;
 
+  /* Phones: clear air between sections, marked by a small pressed groove.
+     The negative scroll margin lands jumps on the heading, not the groove. */
   @media screen and (max-width: 760px) {
     min-height: auto;
-    padding: 5rem 1rem 6.8rem;
+    padding: 3.5rem 1rem;
     display: block;
+    scroll-margin-top: -2rem;
+
+    &::before {
+      content: '';
+      display: block;
+      width: 3.5rem;
+      height: 0.4rem;
+      margin: 0 auto 3.5rem;
+      border-radius: 999px;
+      box-shadow: inset -2px -2px 4px var(--shadowLight), inset 2px 2px 4px var(--shadowDark);
+    }
   }
 `;
 
@@ -94,9 +107,9 @@ export const HeroContent = styled.div`
   @media screen and (max-width: 760px) {
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
+    align-items: center;
     justify-content: center;
-    text-align: left;
+    text-align: center;
     min-height: calc(100svh - 12.5rem);
   }
 `;
@@ -155,9 +168,9 @@ export const HeroHeading = styled.h1`
     font-size: clamp(4rem, 18vw, 5.6rem);
     letter-spacing: -0.012em;
     line-height: 0.84;
-    align-items: flex-start;
-    margin-left: 0;
-    margin-right: 0;
+    align-items: center;
+    margin-left: auto;
+    margin-right: auto;
     text-shadow:
       -7px -7px 14px var(--shadowLight),
       7px 7px 14px var(--shadowDark),
@@ -196,9 +209,9 @@ export const HeroText = styled.p`
     font-size: 1rem;
     line-height: 1.64;
     max-width: min(92vw, 560px);
-    margin-left: 0;
-    margin-right: 0;
-    text-align: left;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
   }
 `;
 
@@ -280,11 +293,6 @@ export const ChipRow = styled.div`
   flex-wrap: wrap;
   gap: 0.58rem;
 
-  @media screen and (max-width: 760px) {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 0.5rem;
-  }
 `;
 
 export const StackChip = styled.span`
@@ -368,7 +376,7 @@ export const MobileOnlyStackSection = styled.section`
 
   @media screen and (max-width: 760px) {
     display: block;
-    padding: 0 1rem 6.8rem;
+    padding: 0 1rem 3rem;
     scroll-margin-top: 5rem;
   }
 `;
@@ -383,7 +391,13 @@ export const SectionTop = styled.div`
   margin-bottom: 2rem;
 
   @media screen and (max-width: 760px) {
-    margin-bottom: 1.4rem;
+    margin-bottom: 1.6rem;
+    text-align: center;
+
+    p {
+      margin-left: auto;
+      margin-right: auto;
+    }
   }
 `;
 
@@ -632,6 +646,16 @@ const toolsMarqueeMove = keyframes`
   }
 `;
 
+// Phones use a 0.6rem gap between the two tile groups, so the loop point moves with it
+const toolsMarqueeMoveMobile = keyframes`
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(calc(-50% - 0.3rem));
+  }
+`;
+
 export const BottomToolsMarqueeSection = styled.div`
   position: relative;
   margin: 0 auto 5.4rem;
@@ -675,15 +699,6 @@ export const ToolsMarqueeViewport = styled.div`
   }
 
   @media screen and (max-width: 760px) {
-    overflow-x: auto;
-    overflow-y: hidden;
-    scrollbar-width: none;
-    -ms-overflow-style: none;
-
-    &::-webkit-scrollbar {
-      display: none;
-    }
-
     &::before,
     &::after {
       width: 26px;
@@ -699,18 +714,20 @@ export const ToolsMarqueeTrack = styled.div`
   animation: ${toolsMarqueeMove} 48s linear infinite;
   will-change: transform;
 
-  &:hover {
-    animation-play-state: paused;
+  /* Pause for a mouse only: on touch screens a tap leaves :hover stuck on */
+  @media (hover: hover) {
+    &:hover {
+      animation-play-state: paused;
+    }
+  }
+
+  @media screen and (max-width: 760px) {
+    animation-name: ${toolsMarqueeMoveMobile};
+    gap: 0.6rem;
   }
 
   @media (prefers-reduced-motion: reduce) {
     animation: none;
-  }
-
-  @media screen and (max-width: 760px) {
-    animation: none;
-    gap: 0.6rem;
-    padding: 0 0.1rem;
   }
 `;
 
@@ -922,6 +939,20 @@ export const TimelineIcon = styled.span`
     -5px -5px 10px var(--shadowLight),
     5px 5px 10px var(--shadowDark);
   transition: box-shadow 0.35s ease, transform 0.35s ease;
+
+  /* Company logo in place of the icon; decorative, the company is named beside it */
+  img {
+    width: 56%;
+    height: 56%;
+    object-fit: contain;
+    border-radius: 22%;
+  }
+
+  /* Wide wordmarks need more of the circle to stay legible */
+  img[src$='olx.png'] {
+    width: 70%;
+    border-radius: 0;
+  }
 
   ${(props) =>
     props.$current &&
@@ -1275,12 +1306,9 @@ export const SocialBar = styled.div`
     display: none;
   }
 
+  /* Phones get the section dock instead; socials move into the hero */
   @media screen and (max-width: 760px) {
-    padding: 0.48rem 0.9rem;
-    border-top: 1px solid rgba(128, 128, 128, 0.12);
-    background: var(--bg);
-    backdrop-filter: none;
-    -webkit-backdrop-filter: none;
+    display: none;
   }
 `;
 
@@ -1362,4 +1390,335 @@ export const TimelineSubLabel = styled.small`
   color: var(--textSoft);
   font-size: 0.68rem;
   font-weight: 500;
+`;
+
+/* ── Mobile layout (≤760px) ── */
+// Same raised / pressed recipe as the desktop cards; explicit because the
+// global .neu-* classes don't apply at runtime.
+const mRaised = '-5px -5px 10px var(--shadowLight), 5px 5px 10px var(--shadowDark)';
+const mRaisedLg = '-8px -8px 14px var(--shadowLight), 8px 8px 14px var(--shadowDark)';
+const mPressed = 'inset -3px -3px 6px var(--shadowLight), inset 3px 3px 6px var(--shadowDark)';
+const mWell = 'inset -2px -2px 5px var(--shadowLight), inset 2px 2px 5px var(--shadowDark)';
+
+// Section navigation within thumb reach; replaces the social bar on phones.
+// Items carry .nav-link + data-target, so App.js's scroll spy marks the active one.
+export const SectionDock = styled.nav`
+  display: none;
+
+  @media screen and (max-width: 760px) {
+    position: fixed;
+    z-index: 60;
+    left: 0.75rem;
+    right: 0.75rem;
+    bottom: calc(0.7rem + env(safe-area-inset-bottom, 0px));
+    max-width: 30rem;
+    margin: 0 auto;
+    padding: 0.35rem;
+    border-radius: 1.4rem;
+    background: var(--bg);
+    box-shadow: ${mRaisedLg};
+    display: grid;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: 0.25rem;
+  }
+`;
+
+export const DockLink = styled.a`
+  min-height: 3.2rem;
+  border-radius: 1.05rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.22rem;
+  color: var(--textSoft);
+  font-size: 0.66rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  text-decoration: none;
+  transition: color 0.25s ease, box-shadow 0.25s ease;
+  -webkit-tap-highlight-color: transparent;
+
+  svg {
+    width: 18px;
+    height: 18px;
+  }
+
+  &.nav-active {
+    color: var(--text);
+    font-weight: 700;
+    box-shadow: ${mPressed};
+  }
+`;
+
+// Social links move from the fixed bar into the hero on phones
+export const HeroSocialRow = styled.div`
+  display: none;
+
+  @media screen and (max-width: 760px) {
+    display: flex;
+    justify-content: center;
+    gap: 0.9rem;
+    margin-top: 1.5rem;
+
+    ${SidebarIconLink} {
+      width: 2.75rem;
+      height: 2.75rem;
+      box-shadow: ${mRaised};
+
+      svg {
+        width: 18px;
+        height: 18px;
+      }
+    }
+  }
+`;
+
+/* Stack on phones: every group visible, each a header over a chip cloud */
+export const MobileStackGroup = styled.div`
+  padding: 1.15rem 0;
+
+  & + & {
+    border-top: 1px solid rgba(128, 128, 128, 0.14);
+  }
+
+  &:last-child {
+    padding-bottom: 0.2rem;
+  }
+`;
+
+export const MobileStackHead = styled.h3`
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  color: var(--text);
+  font-size: 0.95rem;
+  font-weight: 700;
+`;
+
+export const MobileStackIcon = styled.span`
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--textSoft);
+  font-size: 0.85rem;
+  box-shadow: ${mPressed};
+`;
+
+export const StackGroupCount = styled.span`
+  border-radius: 999px;
+  padding: 0.12rem 0.5rem;
+  color: var(--textSoft);
+  font-size: 0.7rem;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+  box-shadow: ${mPressed};
+`;
+
+export const MobileChipCloud = styled.div`
+  margin-top: 0.85rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.55rem;
+
+  ${StackChip} {
+    width: auto;
+    padding: 0.5rem 0.8rem;
+    font-size: 0.82rem;
+  }
+`;
+
+/* Experience: vertical, tap-to-expand list on phones */
+export const DesktopOnly = styled.div`
+  @media screen and (max-width: 760px) {
+    display: none;
+  }
+`;
+
+export const MobileExperienceList = styled.ol`
+  display: none;
+
+  @media screen and (max-width: 760px) {
+    display: block;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+`;
+
+export const MobileJob = styled.li`
+  display: grid;
+  grid-template-columns: 2.75rem minmax(0, 1fr);
+  column-gap: 0.85rem;
+`;
+
+export const MobileRail = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  &::after {
+    content: '';
+    flex: 1;
+    width: 2px;
+    min-height: 0.9rem;
+    margin: 0.55rem 0;
+    border-radius: 999px;
+    background: rgba(122, 132, 142, 0.3);
+  }
+
+  li:last-child > &::after {
+    display: none;
+  }
+`;
+
+export const MobileJobIcon = styled.span`
+  width: 2.75rem;
+  height: 2.75rem;
+  flex: none;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: ${({ $active }) => ($active ? 'var(--text)' : 'var(--icon-color)')};
+  font-size: 1rem;
+  background: var(--surface);
+  box-shadow: ${({ $active }) => ($active ? mPressed : mRaised)};
+  transition: box-shadow 0.35s ease, color 0.35s ease;
+
+  /* Company logo in place of the icon; decorative, the company is named beside it */
+  img {
+    width: 56%;
+    height: 56%;
+    object-fit: contain;
+    border-radius: 22%;
+  }
+
+  /* Wide wordmarks need more of the circle to stay legible */
+  img[src$='olx.png'] {
+    width: 70%;
+    border-radius: 0;
+  }
+`;
+
+export const MobileJobBody = styled.div`
+  min-width: 0;
+  padding-bottom: 2.1rem;
+
+  li:last-child > & {
+    padding-bottom: 0;
+  }
+`;
+
+export const MobileJobToggle = styled.button`
+  width: 100%;
+  min-height: 2.75rem;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  font: inherit;
+  padding: 0;
+  text-align: left;
+  color: var(--text);
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 0.6rem;
+`;
+
+export const MobileJobMeta = styled.span`
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  color: var(--textSoft);
+  font-size: 0.74rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+`;
+
+export const MobileJobCompany = styled.span`
+  display: block;
+  margin-top: 0.2rem;
+  font-size: 1.02rem;
+  font-weight: 700;
+`;
+
+export const MobileJobRole = styled.span`
+  display: block;
+  margin-top: 0.1rem;
+  color: var(--textSoft);
+  font-size: 0.82rem;
+`;
+
+export const MobileChevron = styled.span`
+  width: 2rem;
+  height: 2rem;
+  flex: none;
+  margin-top: 0.3rem;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--textSoft);
+  box-shadow: ${mRaised};
+  transform: rotate(${({ $open }) => ($open ? '180deg' : '0deg')});
+  transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+`;
+
+export const MobileJobPanel = styled.div`
+  margin-top: 0.8rem;
+  padding: 0.9rem;
+  border-radius: 1rem;
+  box-shadow: ${mWell};
+  animation: ${detailFadeInA} 0.42s cubic-bezier(0.22, 1, 0.36, 1) both;
+
+  ${CaseList} {
+    font-size: 0.86rem;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    animation: none;
+  }
+`;
+
+export const MobilePanelToggle = styled.button`
+  margin-top: 0.9rem;
+  width: 100%;
+  min-height: 2.75rem;
+  border: none;
+  cursor: pointer;
+  font: inherit;
+  padding: 0 0.9rem;
+  border-radius: 0.85rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: var(--surface);
+  color: var(--text);
+  font-size: 0.84rem;
+  font-weight: 700;
+  box-shadow: ${mRaised};
+
+  svg {
+    transform: rotate(${({ $open }) => ($open ? '180deg' : '0deg')});
+    transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+`;
+
+export const MobileWebsite = styled.a`
+  margin-top: 0.9rem;
+  min-height: 2.5rem;
+  padding: 0 0.95rem;
+  border-radius: 999px;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  color: var(--text);
+  font-size: 0.82rem;
+  font-weight: 700;
+  text-decoration: none;
+  box-shadow: ${mRaised};
 `;

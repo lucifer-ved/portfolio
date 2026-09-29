@@ -15,6 +15,11 @@ import {
   TopicIndicator,
   Topic,
   Fit,
+  TopicList,
+  TopicListIndicator,
+  TopicRow,
+  TopicRadio,
+  TopicText,
   Actions,
   BigButton,
   Footer
@@ -73,7 +78,10 @@ const Contact = () => {
   const [copied, setCopied] = useState('');
   const topic = TOPICS.find((t) => t.key === topicKey);
   const trackRef = useRef(null);
+  const listRef = useRef(null);
   const indicator = useSlidingIndicator(trackRef, '[aria-pressed="true"]', [topicKey]);
+  // Phones: the same sliding highlight, moving down a list instead of across a track
+  const listIndicator = useSlidingIndicator(listRef, '[aria-pressed="true"]', [topicKey]);
 
   const mailto = `mailto:${EMAIL}?subject=${encodeURIComponent(topic.subject)}&body=${encodeURIComponent(topic.draft)}`;
 
@@ -124,6 +132,25 @@ const Contact = () => {
               </Topic>
             ))}
           </TopicTrack>
+          <TopicList ref={listRef} role="group" aria-labelledby="contact-topic-label">
+            {listIndicator && <TopicListIndicator aria-hidden="true" style={listIndicator} />}
+            {TOPICS.map((t) => (
+              <TopicRow
+                key={t.key}
+                type="button"
+                className="no-hover"
+                $active={t.key === topicKey}
+                aria-pressed={t.key === topicKey}
+                onClick={() => setTopicKey(t.key)}
+              >
+                <TopicRadio $active={t.key === topicKey} aria-hidden="true" />
+                <TopicText>
+                  <strong>{t.label}</strong>
+                  <span>{t.promise}</span>
+                </TopicText>
+              </TopicRow>
+            ))}
+          </TopicList>
 
           <Fit key={topicKey} aria-live="polite">
             <b>{topic.promise}</b> {topic.detail}

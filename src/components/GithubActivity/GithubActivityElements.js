@@ -25,6 +25,11 @@ export const ActivityCard = styled.article`
   background: transparent;
   box-shadow: ${raisedLg};
 
+  @media screen and (max-width: 760px) {
+    margin-top: 1.6rem;
+    padding: 1.35rem 1.2rem;
+  }
+
   ${levelRules(levelLight)}
 
   html[data-theme='dark'] & {
@@ -38,6 +43,10 @@ export const ActivityHead = styled.div`
   align-items: center;
   justify-content: space-between;
   gap: 0.7rem 1rem;
+
+  @media screen and (max-width: 760px) {
+    gap: 1.1rem;
+  }
 `;
 
 export const ActivityTitle = styled.h3`
@@ -54,6 +63,14 @@ export const StatRow = styled.div`
   display: flex;
   flex-wrap: wrap;
   gap: 0.5rem;
+
+  /* Phones: an even 2 × 2 grid reads faster than wrapped pills */
+  @media screen and (max-width: 760px) {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.6rem;
+  }
 `;
 
 export const StatPill = styled.span`
@@ -70,10 +87,29 @@ export const StatPill = styled.span`
     color: var(--textSoft);
     font-weight: 500;
   }
+
+  @media screen and (max-width: 760px) {
+    border-radius: 0.9rem;
+    padding: 0.7rem 0.8rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.15rem;
+    font-size: 1.15rem;
+    font-weight: 800;
+
+    span {
+      font-size: 0.72rem;
+    }
+  }
 `;
 
 export const GraphWell = styled.div`
   margin-top: 1rem;
+
+  @media screen and (max-width: 760px) {
+    margin-top: 1.3rem;
+  }
+
   border-radius: 1rem;
   padding: 0.9rem 1rem 0.85rem;
   box-shadow: ${well};
@@ -124,6 +160,15 @@ export const Legend = styled.div`
   gap: 0.5rem 1rem;
   color: var(--textSoft);
   font-size: 0.72rem;
+
+  @media screen and (max-width: 760px) {
+    margin-top: 1.1rem;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-items: center;
+    text-align: center;
+    gap: 0.8rem;
+  }
 `;
 
 export const LegendGroup = styled.span`
@@ -140,4 +185,11 @@ export const ProfileLink = styled.a`
   color: var(--text);
   font-weight: 600;
   text-decoration: none;
+
+  @media screen and (max-width: 760px) {
+    min-height: 2.75rem;
+    display: inline-flex;
+    align-items: center;
+    font-size: 0.82rem;
+  }
 `;

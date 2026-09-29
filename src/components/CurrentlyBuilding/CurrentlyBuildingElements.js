@@ -30,6 +30,15 @@ export const StudioStrip = styled.div`
   align-items: center;
   justify-content: space-between;
   gap: 0.9rem 1.5rem;
+
+  /* nowrap: in a wrapping column, a line is as wide as its widest item */
+  @media screen and (max-width: 760px) {
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-items: stretch;
+    gap: 1.2rem;
+    padding: 1.3rem 1.2rem;
+  }
 `;
 
 export const StudioIdentity = styled.div`
@@ -71,6 +80,11 @@ export const StudioStats = styled.div`
   display: flex;
   flex-wrap: wrap;
   gap: 0.6rem;
+
+  @media screen and (max-width: 760px) {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
 `;
 
 export const StudioPill = styled.a`
@@ -89,6 +103,16 @@ export const StudioPill = styled.a`
     color: var(--textSoft);
     font-weight: 500;
   }
+
+  @media screen and (max-width: 760px) {
+    justify-content: center;
+    min-height: 2.5rem;
+    font-size: 0.82rem;
+
+    &[href] {
+      grid-column: 1 / -1;
+    }
+  }
 `;
 
 /* Board shell + controls */
@@ -97,6 +121,35 @@ export const BuildShell = styled.div`
   margin-top: 1.1rem;
   border-radius: 1.35rem;
   padding: clamp(1rem, 2vw, 1.4rem);
+
+  /* Phones: one card holding the filter and the products, with room to breathe */
+  @media screen and (max-width: 760px) {
+    margin-top: 2.2rem;
+    padding: 1.3rem 1.1rem 0.4rem;
+  }
+`;
+
+// Phones: the heading of the products card
+export const BoardLabel = styled.h3`
+  display: none;
+
+  @media screen and (max-width: 760px) {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    margin: 0 0.1rem 1rem;
+    color: var(--textSoft);
+    font-size: 0.74rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+
+    span {
+      letter-spacing: 0.02em;
+      text-transform: none;
+      font-weight: 500;
+    }
+  }
 `;
 
 export const BoardHead = styled.div`
@@ -105,6 +158,14 @@ export const BoardHead = styled.div`
   align-items: center;
   justify-content: space-between;
   gap: 0.8rem;
+
+  /* nowrap: in a wrapping column, the one-row filter would widen the whole head */
+  @media screen and (max-width: 760px) {
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-items: stretch;
+    gap: 1rem;
+  }
 `;
 
 export const StageFilter = styled.div`
@@ -117,7 +178,15 @@ export const StageFilter = styled.div`
   box-shadow: ${pressed};
 
   @media screen and (max-width: 760px) {
-    border-radius: 1.1rem;
+    display: flex;
+    flex-wrap: nowrap;
+    min-width: 0;
+    overflow-x: auto;
+    scrollbar-width: none;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
   }
 `;
 
@@ -165,6 +234,13 @@ export const StageButton = styled.button`
     font-weight: 500;
     font-variant-numeric: tabular-nums;
   }
+
+  @media screen and (max-width: 760px) {
+    flex: none;
+    min-height: 2.5rem;
+    padding: 0.4rem 0.9rem;
+    font-size: 0.82rem;
+  }
 `;
 
 export const StageDot = styled.span`
@@ -179,6 +255,13 @@ export const BoardControls = styled.div`
   display: flex;
   align-items: center;
   gap: 0.55rem;
+
+  @media screen and (max-width: 760px) {
+    /* Stash switch on the left, arrows on the right */
+    & > button:first-child {
+      margin-right: auto;
+    }
+  }
 `;
 
 export const StashSwitch = styled.button`
@@ -249,7 +332,8 @@ export const RoundButton = styled.button`
   }
 
   @media screen and (max-width: 760px) {
-    display: none;
+    width: 2.75rem;
+    height: 2.75rem;
   }
 `;
 
@@ -272,7 +356,16 @@ export const Carousel = styled.div`
   scrollbar-color: var(--muted) transparent;
 
   @media screen and (max-width: 760px) {
-    grid-auto-columns: minmax(240px, 78%);
+    grid-auto-columns: 82%;
+    gap: 1.1rem;
+    margin: 0.4rem -1.1rem 0;
+    padding: 1.2rem 1.1rem 1.6rem;
+    scroll-padding-inline: 1.1rem;
+    scrollbar-width: none;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
   }
 
   @media (prefers-reduced-motion: reduce) {
@@ -297,6 +390,11 @@ export const BuildCard = styled.article`
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
+
+  @media screen and (max-width: 760px) {
+    padding: 1.35rem 1.3rem;
+    gap: 0.7rem;
+  }
   background: transparent;
   box-shadow: ${raisedLg};
   --card-opacity: ${({ $muted }) => ($muted ? 0.72 : 1)};
@@ -347,6 +445,10 @@ export const CardName = styled.h4`
   font-size: 1rem;
   font-weight: 650;
   letter-spacing: 0.01em;
+
+  @media screen and (max-width: 760px) {
+    font-size: 1.2rem;
+  }
 `;
 
 export const CardDescription = styled.p`
@@ -354,6 +456,11 @@ export const CardDescription = styled.p`
   color: var(--textSoft);
   font-size: 0.78rem;
   line-height: 1.45;
+
+  @media screen and (max-width: 760px) {
+    font-size: 0.88rem;
+    line-height: 1.5;
+  }
 `;
 
 export const CardFoot = styled.div`
@@ -420,6 +527,13 @@ export const CardLink = styled.a`
 
   &:hover {
     transform: translateY(-1px);
+  }
+
+  @media screen and (max-width: 760px) {
+    align-self: stretch;
+    justify-content: center;
+    min-height: 2.75rem;
+    font-size: 0.82rem;
   }
 `;
 

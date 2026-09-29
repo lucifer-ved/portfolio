@@ -34,7 +34,8 @@ import {
   ProgressTrack,
   ProgressFill,
   CardLink,
-  EmptyState
+  EmptyState,
+  BoardLabel
 } from './CurrentlyBuildingElements';
 
 const studio = {
@@ -198,6 +199,7 @@ const CurrentlyBuilding = () => {
       </StudioStrip>
 
       <BuildShell className="neu-lg reveal">
+        <BoardLabel>Products <span>{visibleCount} shown</span></BoardLabel>
         <BoardHead>
           <StageFilter ref={filterRef} role="group" aria-label="Filter by stage">
             {indicator && <StageIndicator aria-hidden="true" style={indicator} />}

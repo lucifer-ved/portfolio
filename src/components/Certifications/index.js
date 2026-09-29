@@ -99,7 +99,9 @@ const CertificateBadge = ({ cert, onOpen }) => {
 
   return (
     <Badge className="neu-lg">
-      <BadgeMark className="neu-sm">{cert.mark}</BadgeMark>
+      <BadgeMark className="neu-sm">
+        {cert.logo ? <img src={cert.logo} alt="" /> : cert.mark}
+      </BadgeMark>
       <BadgeTitle>{cert.title}</BadgeTitle>
       <BadgeMeta>{cert.issuer} · {cert.date}</BadgeMeta>
       <BadgeFoot className="neu-inset-md">
@@ -144,7 +146,9 @@ const Certifications = () => {
         ))}
 
         <Badge $exam>
-          <BadgeMark $exam>{ExamPrep.mark}</BadgeMark>
+          <BadgeMark $exam>
+            {ExamPrep.logo ? <img src={ExamPrep.logo} alt="" /> : ExamPrep.mark}
+          </BadgeMark>
           <BadgeTitle>{ExamPrep.title}</BadgeTitle>
           <BadgeMeta>{ExamPrep.issuer} · Exam {ExamPrep.exam}</BadgeMeta>
           <BadgeFoot>

@@ -14,6 +14,12 @@ export const ContactLayout = styled.div`
   @media screen and (max-width: 900px) {
     grid-template-columns: 1fr;
   }
+
+  @media screen and (max-width: 760px) {
+    & > div:first-child {
+      text-align: center;
+    }
+  }
 `;
 
 export const Kicker = styled.span`
@@ -44,11 +50,26 @@ export const Emboss = styled.h2`
   html[data-theme='dark'] & span {
     -webkit-text-stroke: 1px rgba(228, 232, 239, 0.06);
   }
+
+  /* Phones: same scale as the hero heading, so the page opens and closes alike */
+  @media screen and (max-width: 760px) {
+    font-size: clamp(4rem, 19vw, 5.6rem);
+    line-height: 0.84;
+    text-shadow:
+      -7px -7px 14px var(--shadowLight),
+      7px 7px 14px var(--shadowDark),
+      0 0 14px rgba(0, 0, 0, 0.2);
+  }
 `;
 
 export const Lead = styled.p`
-  margin: 1.5rem 0 0;
+  margin: 1.5rem auto 0 0;
   max-width: 34em;
+
+  @media screen and (max-width: 760px) {
+    margin: 1.5rem auto 0;
+  }
+
   color: var(--textSoft);
   font-size: clamp(1rem, 1.2vw, 1.12rem);
   line-height: 1.7;
@@ -63,6 +84,16 @@ export const Facts = styled.div`
   display: flex;
   flex-wrap: wrap;
   gap: 0.55rem;
+
+  /* Phones: availability as the headline pill, location and work mode as one
+     quiet line under it, instead of three full-width rows */
+  @media screen and (max-width: 760px) {
+    display: grid;
+    grid-template-columns: auto auto;
+    justify-content: center;
+    align-items: center;
+    gap: 0.9rem 0;
+  }
 `;
 
 export const Fact = styled.span`
@@ -75,6 +106,32 @@ export const Fact = styled.span`
   font-size: 0.8rem;
   font-weight: 600;
   box-shadow: ${pressed};
+
+  @media screen and (max-width: 760px) {
+    font-size: 0.84rem;
+
+    /* Location and work mode: plain text, joined by a dot */
+    &:not(:first-child) {
+      padding: 0;
+      border-radius: 0;
+      box-shadow: none;
+      color: var(--textSoft);
+      font-weight: 500;
+    }
+
+    &:first-child {
+      grid-column: 1 / -1;
+      justify-self: center;
+      padding: 0.5rem 1rem;
+    }
+
+    &:last-child::before {
+      content: '·';
+      /* The item's own 0.45rem gap sits after the dot, so less margin on that side */
+      margin: 0 0.1rem 0 0.55rem;
+      color: var(--textSoft);
+    }
+  }
 `;
 
 export const LiveDot = styled.i`
@@ -98,6 +155,11 @@ export const Question = styled.span`
   color: var(--text);
   font-size: 0.95rem;
   font-weight: 700;
+
+  @media screen and (max-width: 760px) {
+    text-align: center;
+    font-size: 1.02rem;
+  }
 `;
 
 export const TopicTrack = styled.div`
@@ -109,9 +171,9 @@ export const TopicTrack = styled.div`
   border-radius: 999px;
   box-shadow: ${pressed};
 
-  @media screen and (max-width: 480px) {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    border-radius: 1.3rem;
+  /* Phones use TopicList instead */
+  @media screen and (max-width: 760px) {
+    display: none;
   }
 `;
 
@@ -151,6 +213,97 @@ export const Topic = styled.button`
   &:hover {
     color: var(--text);
   }
+
+  @media screen and (max-width: 760px) {
+    min-height: 2.75rem;
+    font-size: 0.88rem;
+  }
+`;
+
+/* Phones: topics as a vertical list, each with its one-line promise */
+export const TopicList = styled.div`
+  display: none;
+
+  @media screen and (max-width: 760px) {
+    position: relative;
+    display: grid;
+    gap: 0.25rem;
+    padding: 0.35rem;
+    border-radius: 1.3rem;
+    box-shadow: ${pressed};
+  }
+`;
+
+export const TopicListIndicator = styled.span`
+  position: absolute;
+  z-index: 0;
+  border-radius: 1rem;
+  background: var(--surface);
+  box-shadow: -4px -4px 8px var(--shadowLight), 4px 4px 8px var(--shadowDark);
+  pointer-events: none;
+  transition:
+    top 0.45s cubic-bezier(0.22, 1, 0.36, 1),
+    height 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+
+  @media (prefers-reduced-motion: reduce) {
+    transition: none;
+  }
+`;
+
+export const TopicRow = styled.button`
+  position: relative;
+  z-index: 1;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  font: inherit;
+  text-align: left;
+  border-radius: 1rem;
+  padding: 0.8rem 0.9rem;
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  color: ${({ $active }) => ($active ? 'var(--text)' : 'var(--textSoft)')};
+  transition: color 0.3s ease;
+  -webkit-tap-highlight-color: transparent;
+`;
+
+export const TopicRadio = styled.span`
+  width: 1.15rem;
+  height: 1.15rem;
+  flex: none;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  box-shadow: ${pressed};
+
+  &::after {
+    content: '';
+    width: 0.45rem;
+    height: 0.45rem;
+    border-radius: 50%;
+    background: var(--text);
+    transform: scale(${({ $active }) => ($active ? 1 : 0)});
+    transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+`;
+
+export const TopicText = styled.span`
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  min-width: 0;
+
+  strong {
+    font-size: 0.95rem;
+    font-weight: 700;
+  }
+
+  span {
+    color: var(--textSoft);
+    font-size: 0.8rem;
+    line-height: 1.4;
+  }
 `;
 
 const fitIn = keyframes`
@@ -175,6 +328,15 @@ export const Fit = styled.p`
     color: var(--text);
     font-weight: 650;
   }
+
+  @media screen and (max-width: 760px) {
+    min-height: 0;
+    text-align: center;
+
+    b {
+      display: none;
+    }
+  }
 `;
 
 export const Actions = styled.div`
@@ -182,7 +344,7 @@ export const Actions = styled.div`
   grid-template-columns: 1fr 1fr;
   gap: 0.8rem;
 
-  @media screen and (max-width: 480px) {
+  @media screen and (max-width: 760px) {
     grid-template-columns: 1fr;
   }
 `;
@@ -223,6 +385,18 @@ export const Footer = styled.div`
   gap: 0.6rem;
   color: var(--textSoft);
   font-size: 0.78rem;
+
+  /* Phones: centred, one line each, clear of the section dock */
+  @media screen and (max-width: 760px) {
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-items: center;
+    text-align: center;
+    gap: 0.45rem;
+    padding-top: 1.4rem;
+    border-top: 1px solid rgba(128, 128, 128, 0.14);
+    font-size: 0.84rem;
+  }
 
   a {
     color: var(--text);

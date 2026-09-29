@@ -32,7 +32,12 @@ import {
   FiBook,
   FiMessageSquare,
   FiStar,
-  FiGlobe
+  FiGlobe,
+  FiHome,
+  FiBox,
+  FiBriefcase,
+  FiChevronDown,
+  FiExternalLink
 } from 'react-icons/fi';
 import {
   SiPython,
@@ -118,14 +123,40 @@ import {
   ToolsMarqueeGroup,
   ToolCard,
   ToolIcon,
-  ToolName
+  ToolName,
+  SectionDock,
+  DockLink,
+  HeroSocialRow,
+  MobileStackGroup,
+  MobileStackHead,
+  MobileStackIcon,
+  StackGroupCount,
+  MobileChipCloud,
+  DesktopOnly,
+  MobileExperienceList,
+  MobileJob,
+  MobileRail,
+  MobileJobIcon,
+  MobileJobBody,
+  MobileJobToggle,
+  MobileJobMeta,
+  MobileJobCompany,
+  MobileJobRole,
+  MobileChevron,
+  MobileJobPanel,
+  MobilePanelToggle,
+  MobileWebsite
 } from './IntroElements';
+
+// Company logos live in public/logos/; a milestone without one keeps its icon
+const companyLogo = (file) => `${process.env.PUBLIC_URL}/logos/${file}`;
 
 const experienceTimeline = [
   {
     year: '2026',
     icon: FiZap,
     company: 'IdeaForgeLabs',
+    logo: companyLogo('ideaforgelabs.png'),
     subLabel: 'Career break',
     role: 'Founder, IdeaForgeLabs',
     period: '2026 – Present',
@@ -150,6 +181,7 @@ const experienceTimeline = [
     year: '2024',
     icon: FiServer,
     company: 'Capillary',
+    logo: companyLogo('capillary.png'),
     role: 'Technical Solution Architect',
     period: '2024 – 2025',
     caseStudy: {
@@ -167,6 +199,7 @@ const experienceTimeline = [
     year: '2023',
     icon: FiCpu,
     company: 'SmartQ',
+    logo: companyLogo('smartq.png'),
     role: 'Technical Solution Architect',
     period: '2023 – Present',
     impact: 'Owned architecture for integrations and personalization workflows with production-grade monitoring and reliability controls.',
@@ -191,6 +224,7 @@ const experienceTimeline = [
     year: '2022',
     icon: FiCode,
     company: 'Itilite',
+    logo: companyLogo('itilite.svg'),
     role: 'Senior Software Engineer',
     period: '2022 – 2023',
     caseStudy: {
@@ -206,6 +240,7 @@ const experienceTimeline = [
     year: '2021',
     icon: FiActivity,
     company: 'OLX People',
+    logo: companyLogo('olx.png'),
     role: 'Software Engineer 2',
     period: '2021 – 2022',
     caseStudy: {
@@ -222,6 +257,7 @@ const experienceTimeline = [
     year: '2017',
     icon: FiLayers,
     company: 'Visible Alpha',
+    logo: companyLogo('visiblealpha.png'),
     role: 'Software Engineer 2',
     period: '2017 – 2021',
     caseStudy: {
@@ -246,6 +282,7 @@ const experienceTimeline = [
     year: '2016',
     icon: FiDatabase,
     company: 'Godcast',
+    logo: companyLogo('godcast.png'),
     role: 'Software Engineer',
     period: '2016 – 2017',
     caseStudy: {
@@ -263,6 +300,7 @@ const experienceTimeline = [
     year: '2015',
     icon: FiCode,
     company: 'Vistaar Technologies',
+    logo: companyLogo('vistaar.png'),
     role: 'Software Engineer Trainee',
     period: '9 months',
     caseStudy: {
@@ -485,6 +523,134 @@ const renderStackContent = () => (
   </>
 );
 
+// Phones: every group stays visible, as a header over a cloud of chips
+const MobileStackContent = () => (
+  <>
+    <StackLabel>Technical Stack</StackLabel>
+    {stackGroups.map((group) => (
+      <MobileStackGroup key={group.title}>
+        <MobileStackHead>
+          <MobileStackIcon aria-hidden="true"><group.icon /></MobileStackIcon>
+          {group.title}
+          <StackGroupCount>{group.chips.length}</StackGroupCount>
+        </MobileStackHead>
+        <MobileChipCloud>
+          {group.chips.map((chip) => (
+            <StackChip
+              className={chip.learning ? 'no-hover' : 'neu-sm no-hover'}
+              $learning={chip.learning}
+              title={chip.learning ? 'Currently learning' : undefined}
+              key={chip.label}
+              {...linkProps(chip.label)}
+            >
+              <StackChipIcon><chip.icon /></StackChipIcon>
+              {chip.label}
+            </StackChip>
+          ))}
+        </MobileChipCloud>
+      </MobileStackGroup>
+    ))}
+  </>
+);
+
+// Phones: the timeline becomes a vertical list; tap a job to open its case study.
+const MobileExperience = () => {
+  const [openIndex, setOpenIndex] = useState(0);
+  const [showChallenges, setShowChallenges] = useState(false);
+
+  const toggleJob = (idx) => {
+    setOpenIndex((prev) => (prev === idx ? -1 : idx));
+    setShowChallenges(false);
+  };
+
+  return (
+    <MobileExperienceList className="reveal">
+      {experienceTimeline.map((item, idx) => {
+        const open = idx === openIndex;
+        const study = item.caseStudy;
+        const panelId = `job-panel-${idx}`;
+        return (
+          <MobileJob key={`${item.company}-${item.year}`}>
+            <MobileRail>
+              <MobileJobIcon $active={open} aria-hidden="true">
+                {item.logo ? <img src={item.logo} alt="" /> : <item.icon />}
+              </MobileJobIcon>
+            </MobileRail>
+            <MobileJobBody>
+              <MobileJobToggle
+                type="button"
+                className="no-hover"
+                aria-expanded={open}
+                aria-controls={panelId}
+                onClick={() => toggleJob(idx)}
+              >
+                <span>
+                  <MobileJobMeta>
+                    {item.period}
+                    {item.current && <TimelineNowBadge>Now</TimelineNowBadge>}
+                  </MobileJobMeta>
+                  <MobileJobCompany>{item.company}</MobileJobCompany>
+                  <MobileJobRole>{item.subLabel ? `${item.role} · ${item.subLabel}` : item.role}</MobileJobRole>
+                </span>
+                <MobileChevron $open={open} aria-hidden="true"><FiChevronDown /></MobileChevron>
+              </MobileJobToggle>
+              {open && study && (
+                <MobileJobPanel id={panelId}>
+                  <CaseSectionTitle>What I did</CaseSectionTitle>
+                  <CaseList>
+                    {study.whatIDid.map((point, i) => (
+                      <li key={`m-work-${item.company}-${i}`}>{point}</li>
+                    ))}
+                  </CaseList>
+                  {study.challenges?.length > 0 && (
+                    <>
+                      <MobilePanelToggle
+                        type="button"
+                        className="no-hover"
+                        $open={showChallenges}
+                        aria-expanded={showChallenges}
+                        onClick={() => setShowChallenges((prev) => !prev)}
+                      >
+                        Challenges ({study.challenges.length})
+                        <FiChevronDown />
+                      </MobilePanelToggle>
+                      {showChallenges && (
+                        <CaseList style={{ marginTop: '0.85rem' }}>
+                          {study.challenges.map((point, i) => (
+                            <li key={`m-challenge-${item.company}-${i}`}>{point}</li>
+                          ))}
+                        </CaseList>
+                      )}
+                    </>
+                  )}
+                  {study.website && (
+                    <MobileWebsite
+                      className="no-hover"
+                      href={study.website}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      Website <FiExternalLink />
+                    </MobileWebsite>
+                  )}
+                </MobileJobPanel>
+              )}
+            </MobileJobBody>
+          </MobileJob>
+        );
+      })}
+    </MobileExperienceList>
+  );
+};
+
+const dockLinks = [
+  { target: 'hello', label: 'Hello', icon: FiHome },
+  { target: 'results', label: 'Building', icon: FiBox },
+  { target: 'evidence', label: 'Work', icon: FiBriefcase },
+  { target: 'learning', label: 'Learning', icon: FiBookOpen },
+  { target: 'contact', label: 'Contact', icon: FiSend }
+];
+
 const Intro = () => {
   const [activeExperienceIndex, setActiveExperienceIndex] = useState(0);
   const [detailMotionToken, setDetailMotionToken] = useState(0);
@@ -588,6 +754,20 @@ const Intro = () => {
               <strong>Passionate about building systems</strong> that are reliable, scalable, and maintainable.{' '}
               Right now I'm on an intentional career break, shipping my own products at IdeaForgeLabs.
             </HeroText>
+            <HeroSocialRow>
+              {socialLinks.filter(({ href }) => href.startsWith('http') || href.startsWith('mailto')).map(({ icon: Icon, href, label }) => (
+                <SidebarIconLink
+                  key={label}
+                  href={href}
+                  target={href.startsWith('http') ? '_blank' : undefined}
+                  rel={href.startsWith('http') ? 'noopener noreferrer' : undefined}
+                  className="no-hover"
+                  aria-label={label}
+                >
+                  <Icon />
+                </SidebarIconLink>
+              ))}
+            </HeroSocialRow>
           </HeroContent>
 
           <HideOnMobile>
@@ -600,7 +780,7 @@ const Intro = () => {
         <MobileOnlyStackSection>
           <MobileStackInner>
             <StackCard className="neu-lg reveal">
-              {renderStackContent()}
+              <MobileStackContent />
             </StackCard>
           </MobileStackInner>
         </MobileOnlyStackSection>
@@ -630,6 +810,7 @@ const Intro = () => {
                 Real production ownership across product, platform, and architecture.
               </SectionDescription>
             </SectionTop>
+            <DesktopOnly>
             <TimelineWrap className="reveal">
               <TimelineScroll ref={timelineScrollRef}>
                 <TimelineTrack>
@@ -652,7 +833,7 @@ const Intro = () => {
                       </TimelineYearRow>
                       <TimelineTick $active={idx === activeExperienceIndex} />
                       <TimelineIcon $active={idx === activeExperienceIndex} $current={item.current}>
-                        <item.icon />
+                        {item.logo ? <img src={item.logo} alt="" /> : <item.icon />}
                       </TimelineIcon>
                       <TimelineLabel>
                         {item.company}
@@ -732,6 +913,8 @@ const Intro = () => {
               </ExperienceDetailMotion>
               </ExperienceHeight>
             </ExperienceCard>
+            </DesktopOnly>
+            <MobileExperience />
           </SectionInner>
         </Section>
 
@@ -819,6 +1002,21 @@ const Intro = () => {
           </SidebarIconLink>
         ))}
       </SocialBar>
+
+      {/* ── Mobile section dock (fixed bottom) ── */}
+      <SectionDock aria-label="Sections">
+        {dockLinks.map(({ target, label, icon: Icon }) => (
+          <DockLink
+            key={target}
+            href={`#${target}`}
+            className="nav-link no-hover"
+            data-target={target}
+          >
+            <Icon aria-hidden="true" />
+            {label}
+          </DockLink>
+        ))}
+      </SectionDock>
     </>
   );
 };
