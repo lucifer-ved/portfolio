@@ -209,10 +209,19 @@ const App = () => {
         state.currentLightY = lerp(state.currentLightY, state.targetLightY, lerpFactor);
         state.currentDarkX = lerp(state.currentDarkX, state.targetDarkX, lerpFactor);
         state.currentDarkY = lerp(state.currentDarkY, state.targetDarkY, lerpFactor);
-        // Settled: skip the style write, which would only trigger a repaint
-        if (Math.abs(state.currentLightX - prevX) < 0.02 && Math.abs(state.currentLightY - prevY) < 0.02) return;
-        moving = true;
-        paintShadow(el, state);
+        const settled = Math.abs(state.currentLightX - prevX) < 0.02 && Math.abs(state.currentLightY - prevY) < 0.02;
+        if (!settled) moving = true;
+        // Redraw only once the shadow has moved a visible amount: each write
+        // restyles and repaints the element, and sub-quarter-pixel shifts of a
+        // blurred shadow can't be seen
+        const drift = state.shownX === undefined
+          ? Infinity
+          : Math.max(Math.abs(state.currentLightX - state.shownX), Math.abs(state.currentLightY - state.shownY));
+        if (drift >= 0.25) {
+          paintShadow(el, state);
+          state.shownX = state.currentLightX;
+          state.shownY = state.currentLightY;
+        }
       });
       if (moving) {
         rafId = requestAnimationFrame(updateNeumorphism);

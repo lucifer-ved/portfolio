@@ -77,7 +77,7 @@ const Cursor = () => {
 
   useEffect(() => {
     if (!finePointer) return undefined;
-    document.documentElement.classList.add('has-custom-cursor');
+    const root = document.documentElement;
 
     const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     // Share of the remaining gap the pebble closes per 60Hz frame; scaled by
@@ -120,25 +120,62 @@ const Cursor = () => {
       dot.style.transform = `translate3d(${mx}px, ${my}px, 0)`;
       const el = e.target.closest ? e.target.closest(INTERACTIVE) : null;
       overControl = !!el && !el.matches('input, textarea');
-      if (!shown) { shown = true; setVisible(true); } // one render, not one per move
+      if (!shown) {
+        // Hide the system pointer only once the pebble is on screen, so a
+        // stall before the first move never leaves the page without a cursor
+        shown = true;
+        setVisible(true); // one render, not one per move
+        root.classList.add('has-custom-cursor');
+      }
       wake();
     };
     const onDown = () => { down = true; wake(); };
     const onUp = () => { down = false; wake(); };
-    const onLeave = () => { shown = false; setVisible(false); };
+    const onLeave = () => {
+      shown = false;
+      setVisible(false);
+      root.classList.remove('has-custom-cursor');
+    };
+
+    // A drag of a link or image stops mousemove and swallows the mouseup, which
+    // froze the pebble and left it pressed. Nothing here is meant to be dragged,
+    // so links and images don't start one...
+    const onDragStart = (e) => {
+      if (e.target.closest && e.target.closest('a, img')) e.preventDefault();
+    };
+    // ...and if a drag still starts (selected text), the pebble keeps following
+    const onDragOver = (e) => {
+      if (e.clientX || e.clientY) onMove(e);
+    };
+    // Any way a press can end without a mouseup: drag end, switching apps,
+    // hiding the tab, or a right-click menu
+    const release = () => { if (down) { down = false; wake(); } };
+    const onVisibility = () => { if (document.hidden) release(); };
 
     document.addEventListener('mousemove', onMove, { passive: true });
     document.addEventListener('mousedown', onDown);
     document.addEventListener('mouseup', onUp);
-    document.documentElement.addEventListener('mouseleave', onLeave);
+    root.addEventListener('mouseleave', onLeave);
+    document.addEventListener('dragstart', onDragStart);
+    document.addEventListener('dragover', onDragOver, { passive: true });
+    document.addEventListener('dragend', release);
+    document.addEventListener('contextmenu', release);
+    document.addEventListener('visibilitychange', onVisibility);
+    window.addEventListener('blur', release);
 
     return () => {
       cancelAnimationFrame(raf);
       document.removeEventListener('mousemove', onMove);
       document.removeEventListener('mousedown', onDown);
       document.removeEventListener('mouseup', onUp);
-      document.documentElement.removeEventListener('mouseleave', onLeave);
-      document.documentElement.classList.remove('has-custom-cursor');
+      root.removeEventListener('mouseleave', onLeave);
+      document.removeEventListener('dragstart', onDragStart);
+      document.removeEventListener('dragover', onDragOver);
+      document.removeEventListener('dragend', release);
+      document.removeEventListener('contextmenu', release);
+      document.removeEventListener('visibilitychange', onVisibility);
+      window.removeEventListener('blur', release);
+      root.classList.remove('has-custom-cursor');
     };
   }, [finePointer]);
 
