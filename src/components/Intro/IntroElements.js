@@ -38,6 +38,14 @@ export const HeroStage = styled.section`
     gap: 2.5rem;
   }
 
+  /* Tablets: a smaller desktop, heading and intro left of the stack card */
+  @media screen and (min-width: 761px) and (max-width: 1100px) {
+    grid-template-columns: minmax(0, 1fr) minmax(320px, 48%);
+    gap: 2.25rem;
+    align-items: center;
+    padding: 7rem 1.5rem 3rem;
+  }
+
   @media screen and (max-width: 760px) {
     min-height: 100svh;
     padding: 5.3rem 1rem 7.2rem;
@@ -55,6 +63,26 @@ export const Section = styled.section`
   padding: clamp(6rem, 10vh, 8rem) 1.5rem clamp(6rem, 10vh, 8rem);
   display: flex;
   align-items: center;
+
+  /* Tablet portrait: sections sized to their content, not a full (tall) screen,
+     with the phone's pressed groove between them and a little more air.
+     The negative scroll margin lands jumps on the heading, not the groove. */
+  @media screen and (min-width: 761px) and (max-width: 1100px) {
+    min-height: auto;
+    display: block;
+    padding: 5rem 1.5rem;
+    scroll-margin-top: -4.5rem;
+
+    &::before {
+      content: '';
+      display: block;
+      width: 4.5rem;
+      height: 0.45rem;
+      margin: 0 auto 4.5rem;
+      border-radius: 999px;
+      box-shadow: inset -2px -2px 4px var(--shadowLight), inset 2px 2px 4px var(--shadowDark);
+    }
+  }
 
   /* Phones: clear air between sections, marked by a small pressed groove.
      The negative scroll margin lands jumps on the heading, not the groove. */
@@ -135,6 +163,11 @@ export const HeroHeading = styled.h1`
     font-size: clamp(3.8rem, 6.9vw, 7.1rem);
   }
 
+  /* Tablets: scaled to leave room for the stack card beside it */
+  @media screen and (min-width: 761px) and (max-width: 1100px) {
+    font-size: clamp(3rem, 7.6vw, 5rem);
+  }
+
   span {
     display: block;
     width: max-content;
@@ -213,6 +246,12 @@ export const HeroText = styled.p`
     margin-right: auto;
     text-align: center;
   }
+
+  @media screen and (min-width: 761px) and (max-width: 1100px) {
+    /* Tablets: a step up, to balance the stack card */
+    font-size: 1.08rem;
+    line-height: 1.7;
+  }
 `;
 
 export const HeroMeta = styled.p`
@@ -245,6 +284,12 @@ export const StackCard = styled.aside`
     max-width: 540px;
   }
 
+  @media screen and (min-width: 761px) and (max-width: 1100px) {
+    max-width: none;
+    justify-self: stretch;
+    padding: 1.1rem 1.1rem 1.2rem;
+  }
+
   @media screen and (max-width: 760px) {
     max-width: 100%;
     padding: 1.15rem 1rem;
@@ -265,6 +310,10 @@ export const StackGroup = styled.div`
   @media screen and (max-width: 760px) {
     margin-top: 0.9rem;
   }
+
+  @media screen and (min-width: 761px) and (max-width: 1100px) {
+    margin-top: 0.85rem;
+  }
 `;
 
 export const StackGroupTitle = styled.h3`
@@ -280,6 +329,11 @@ export const StackGroupTitle = styled.h3`
     font-size: 0.92rem;
     margin-bottom: 0.5rem;
   }
+
+  @media screen and (min-width: 761px) and (max-width: 1100px) {
+    font-size: 0.9rem;
+    margin-bottom: 0.45rem;
+  }
 `;
 
 export const StackGroupIcon = styled.span`
@@ -292,6 +346,10 @@ export const ChipRow = styled.div`
   display: flex;
   flex-wrap: wrap;
   gap: 0.58rem;
+
+  @media screen and (min-width: 761px) and (max-width: 1100px) {
+    gap: 0.45rem;
+  }
 
 `;
 
@@ -356,6 +414,13 @@ export const StackChip = styled.span`
     font-size: 0.8rem;
     gap: 0.36rem;
     justify-content: flex-start;
+  }
+
+  @media screen and (min-width: 761px) and (max-width: 1100px) {
+    /* Tablets: smaller chips keep the card in proportion with the intro */
+    padding: 0.34rem 0.66rem;
+    font-size: 0.76rem;
+    gap: 0.34rem;
   }
 `;
 

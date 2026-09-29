@@ -15,6 +15,12 @@ export const ContactLayout = styled.div`
     grid-template-columns: 1fr;
   }
 
+  /* Tablets: one row like desktop, the card a little narrower than the intro */
+  @media screen and (min-width: 761px) and (max-width: 1100px) {
+    grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+    gap: 2.5rem;
+  }
+
   @media screen and (max-width: 760px) {
     & > div:first-child {
       text-align: center;
@@ -60,6 +66,10 @@ export const Emboss = styled.h2`
       7px 7px 14px var(--shadowDark),
       0 0 14px rgba(0, 0, 0, 0.2);
   }
+
+  @media screen and (min-width: 761px) and (max-width: 1100px) {
+    font-size: clamp(4rem, 10vw, 6rem);
+  }
 `;
 
 export const Lead = styled.p`
@@ -76,6 +86,10 @@ export const Lead = styled.p`
 
   strong {
     color: var(--text);
+  }
+
+  @media screen and (min-width: 761px) and (max-width: 1100px) {
+    font-size: 1.1rem;
   }
 `;
 
@@ -132,6 +146,10 @@ export const Fact = styled.span`
       color: var(--textSoft);
     }
   }
+
+  @media screen and (min-width: 761px) and (max-width: 1100px) {
+    font-size: 0.86rem;
+  }
 `;
 
 export const LiveDot = styled.i`
@@ -149,6 +167,11 @@ export const Card = styled.div`
   gap: 1.6rem;
   background: transparent;
   box-shadow: ${raisedLg};
+
+  @media screen and (min-width: 761px) and (max-width: 1100px) {
+    padding: 1.6rem 1.4rem;
+    gap: 1.3rem;
+  }
 `;
 
 export const Question = styled.span`
@@ -159,6 +182,10 @@ export const Question = styled.span`
   @media screen and (max-width: 760px) {
     text-align: center;
     font-size: 1.02rem;
+  }
+
+  @media screen and (min-width: 761px) and (max-width: 1100px) {
+    font-size: 1.05rem;
   }
 `;
 
@@ -174,6 +201,12 @@ export const TopicTrack = styled.div`
   /* Phones use TopicList instead */
   @media screen and (max-width: 760px) {
     display: none;
+  }
+
+  /* Tablets: two by two, so each label has room in the narrower card */
+  @media screen and (min-width: 761px) and (max-width: 1100px) {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    border-radius: 1.3rem;
   }
 `;
 
@@ -217,6 +250,11 @@ export const Topic = styled.button`
   @media screen and (max-width: 760px) {
     min-height: 2.75rem;
     font-size: 0.88rem;
+  }
+
+  @media screen and (min-width: 761px) and (max-width: 1100px) {
+    font-size: 0.9rem;
+    padding: 0.7rem 0.4rem;
   }
 `;
 
@@ -337,6 +375,10 @@ export const Fit = styled.p`
       display: none;
     }
   }
+
+  @media screen and (min-width: 761px) and (max-width: 1100px) {
+    font-size: 1rem;
+  }
 `;
 
 export const Actions = styled.div`
@@ -345,6 +387,10 @@ export const Actions = styled.div`
   gap: 0.8rem;
 
   @media screen and (max-width: 760px) {
+    grid-template-columns: 1fr;
+  }
+
+  @media screen and (min-width: 761px) and (max-width: 1100px) {
     grid-template-columns: 1fr;
   }
 `;
