@@ -75,6 +75,7 @@ import {
   StackChip,
   StackChipIcon,
   HideOnMobile,
+  HideOnMobileInline,
   MobileOnlyStackSection,
   MobileStackInner,
   Section,
@@ -302,7 +303,7 @@ const experienceTimeline = [
     company: 'Vistaar Technologies',
     logo: companyLogo('vistaar.png'),
     role: 'Software Engineer Trainee',
-    period: '9 months',
+    period: '2015 · 9 months',
     caseStudy: {
       role: 'Software Engineer Trainee',
       website: 'https://www.vistaar.com/',
@@ -925,7 +926,8 @@ const Intro = () => {
               <SectionKicker>Learning</SectionKicker>
               <SectionTitle>Certifications</SectionTitle>
               <SectionDescription>
-                Verified certificates earned during the break, plus what I'm studying now.
+                Verified certificates earned during the break
+                <HideOnMobileInline>, plus what I'm studying now</HideOnMobileInline>.
               </SectionDescription>
             </SectionTop>
 

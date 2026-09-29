@@ -436,6 +436,13 @@ export const HideOnMobile = styled.div`
   }
 `;
 
+// Inline variant, for a phrase that only applies to larger screens
+export const HideOnMobileInline = styled.span`
+  @media screen and (max-width: 760px) {
+    display: none;
+  }
+`;
+
 export const MobileOnlyStackSection = styled.section`
   display: none;
 
