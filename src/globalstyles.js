@@ -17,10 +17,6 @@ export const GlobalStyle = createGlobalStyle`
 
     --fade-color: 239, 242, 249;
 
-    --cursor-dot: #6b7280;
-    --cursor-ring: #9ca3af;
-    --cursor-hover: #000000;
-
     --icon-color: #4b5563;
 
     --grid-line: rgba(0, 0, 0, 0.04);
@@ -40,10 +36,6 @@ export const GlobalStyle = createGlobalStyle`
     --shadowDark: rgba(0, 0, 0, 0.5);
 
     --fade-color: 19, 19, 19;
-
-    --cursor-dot: #9ca3af;
-    --cursor-ring: #6b7280;
-    --cursor-hover: #e5e7eb;
 
     --icon-color: #d1d5db;
 
@@ -94,7 +86,9 @@ export const GlobalStyle = createGlobalStyle`
     height: 100%;
     pointer-events: none;
     background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
-    filter: opacity(0.1);
+    /* opacity, not filter: opacity(): same look, far cheaper to composite while scrolling */
+    opacity: 0.1;
+    transform: translateZ(0);
     z-index: 1000;
     mix-blend-mode: multiply;
   }
@@ -381,84 +375,6 @@ export const GlobalStyle = createGlobalStyle`
   .theme-toggle .lucide {
     width: 20px;
     height: 20px;
-  }
-
-  @media (pointer: fine) {
-    * {
-      cursor: none;
-    }
-  }
-
-  .custom-cursor {
-    position: fixed;
-    width: 20px;
-    height: 20px;
-    border-radius: 50%;
-    border: 1.5px solid var(--cursor-ring);
-    background: transparent;
-    pointer-events: none;
-    z-index: 9999;
-    transform: translate(-50%, -50%);
-    transition: transform 0.14s ease, border-color 0.2s ease;
-    display: none;
-  }
-
-  @media (pointer: fine) {
-    .custom-cursor {
-      display: block;
-    }
-  }
-
-  .custom-cursor::before {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 5px;
-    height: 5px;
-    background: var(--cursor-dot);
-    border-radius: 50%;
-    transition: width 0.2s ease, height 0.2s ease, background 0.2s ease;
-  }
-
-  .custom-cursor::after {
-    content: '';
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    width: 1.6px;
-    height: 9px;
-    border-radius: 999px;
-    background: var(--cursor-ring);
-    transform: translate(-50%, 2px);
-    transition: height 0.2s ease, transform 0.2s ease, background 0.2s ease;
-  }
-
-  .custom-cursor.hover {
-    transform: translate(-50%, -50%) scale(1.16);
-    border-color: var(--cursor-hover);
-  }
-
-  .custom-cursor.hover::before {
-    width: 6px;
-    height: 6px;
-    background: var(--cursor-hover);
-  }
-
-  .custom-cursor.hover::after {
-    height: 11px;
-    transform: translate(-50%, 1px);
-    background: var(--cursor-hover);
-  }
-
-  .custom-cursor.active {
-    transform: translate(-50%, -50%) scale(0.92);
-  }
-
-  .custom-cursor.active::after {
-    height: 7px;
-    transform: translate(-50%, 3px);
   }
 
   .tooltip {

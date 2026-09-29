@@ -8,17 +8,42 @@ Portfolio of Ved Solanki, backend architect and technical solution architect wit
 - Event-driven systems and automation
 - AI integrations and practical product engineering
 
+## Technical Stack
+- Backend: Python, Django, FastAPI, PostgreSQL, GraphQL, Docker
+- Cloud & DevOps: AWS, AWS Lambda, Google Cloud, GitHub Actions
+- AI & Agents: Claude API, OpenAI API, Claude Agent SDK, OpenAI Agents SDK, LangChain, LangGraph, CrewAI, LlamaIndex, MCP servers, RAG, Jev, xAI Grok API, Hugging Face, Ollama, Azure AI Foundry / Azure OpenAI (learning)
+- AI coding and app building: Claude Code, OpenAI Codex, GitHub Copilot, Agent Skills, Lovable, Replit Agent, Firebase Studio, Google Stitch; iOS and macOS apps shipped with AI-assisted development
+- Agent apps: Grok Bot, OpenClaw, Hermes Agent, ChatGPT Agent, Manus
+- Automation: n8n
+- AI media: Nano Banana, Sora, ElevenLabs
+- Research: Perplexity, NotebookLM, ChatGPT, Gemini, Firecrawl
+
 ## Current Status
 - Intentional career break (2026-present)
-- Learning deeply and building AI-first products
+- Founder of IdeaForgeLabs: https://theideaforgelabs.com/
+- Preparing for Microsoft exam AI-103 (Azure AI Apps and Agents Developer Associate)
 
-## Current Products
-- MediReco: https://medireco.com
-- Pawlog: https://pawlog.netlify.app
-- House of Agents: https://houseofagents.co
+## Current Products (IdeaForgeLabs)
+- NextRenew: https://theideaforgelabs.com/nextrenew
+- Origo: https://theideaforgelabs.com/origo
+- Stowbox: https://theideaforgelabs.com/stowbox
+- LinguaLens: https://theideaforgelabs.com/lingualens
+- CaninePages: https://theideaforgelabs.com/caninepages
+- FuelNote: https://theideaforgelabs.com/fuelnote
+- Northstar: https://theideaforgelabs.com/northstar
+- Unspiral: https://theideaforgelabs.com/unspiral
+- Japo: https://japo-app.netlify.app/
+
+## Certifications
+- Generative AI for Security Fundamentals (Edureka, Coursera): https://coursera.org/verify/0TYKR52531SA
+- Prompt Engineering for ChatGPT (Vanderbilt University, Coursera): https://coursera.org/verify/AEBIPOGDY3Q9
+- Modernize Infrastructure and Applications with Google Cloud (Coursera): https://coursera.org/verify/FSDY9F2LM0OF
+- Digital Transformation with Google Cloud (Coursera): https://coursera.org/verify/GY3SN3GPTVDQ
+- Develop Generative AI Applications: Get Started (IBM, Coursera): https://coursera.org/verify/UYNN4TI0D25S
 
 ## Important URLs
 - Home: https://www.yourdomain.com/
 - Building section: https://www.yourdomain.com/#results
 - Experience section: https://www.yourdomain.com/#evidence
+- Learning section: https://www.yourdomain.com/#learning
 - Contact section: https://www.yourdomain.com/#contact

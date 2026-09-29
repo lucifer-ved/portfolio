@@ -1,6 +1,8 @@
 import React, { useEffect } from 'react';
 import { GlobalStyle } from './globalstyles';
+import { MotionStyle } from './motionStyles';
 import NavBar from './components/Navbar';
+import Cursor from './components/Cursor';
 import Routing from './components/Routing';
 
 const App = () => {
@@ -97,40 +99,6 @@ const App = () => {
       accentToggle.addEventListener('click', handleAccentToggle);
     }
 
-    // Custom cursor
-    const cursor = document.querySelector('.custom-cursor');
-    const interactiveElements = Array.from(document.querySelectorAll('a, button, [role="button"], input, textarea, label, summary'));
-
-    if (cursor) {
-      cursor.style.left = `${window.innerWidth / 2}px`;
-      cursor.style.top = `${window.innerHeight / 2}px`;
-    }
-
-    const handleMouseMove = (e) => {
-      if (!cursor) return;
-      cursor.style.left = `${e.clientX}px`;
-      cursor.style.top = `${e.clientY}px`;
-    };
-
-    const onMouseDown = () => { if (cursor) cursor.classList.add('active'); };
-    const onMouseUp = () => { if (cursor) cursor.classList.remove('active'); };
-
-    const interactiveHandlers = [];
-
-    if (cursor && window.matchMedia('(pointer: fine)').matches) {
-      document.addEventListener('mousemove', handleMouseMove);
-      document.addEventListener('mousedown', onMouseDown);
-      document.addEventListener('mouseup', onMouseUp);
-
-      interactiveElements.forEach((el) => {
-        const enter = () => cursor.classList.add('hover');
-        const leave = () => cursor.classList.remove('hover');
-        el.addEventListener('mouseenter', enter);
-        el.addEventListener('mouseleave', leave);
-        interactiveHandlers.push({ el, enter, leave });
-      });
-    }
-
     // Neumorphism dynamic shadows
     let mouseX = window.innerWidth / 2;
     let mouseY = window.innerHeight / 2;
@@ -162,13 +130,33 @@ const App = () => {
 
     const lerp = (start, end, f) => start + (end - start) * f;
 
-    const trackMouseForNeumorphism = (e) => { mouseX = e.clientX; mouseY = e.clientY; };
+    const allElements = [...neuElements, ...neuInsetElements, ...neuTextElements];
+    let running = false;
+
+    // The loop only runs while something moves: it starts on pointer, scroll
+    // or resize, and stops once every visible shadow has settled.
+    const wake = () => {
+      if (!running) {
+        running = true;
+        rafId = requestAnimationFrame(updateNeumorphism);
+      }
+    };
+
+    const trackMouseForNeumorphism = (e) => { mouseX = e.clientX; mouseY = e.clientY; wake(); };
     document.addEventListener('mousemove', trackMouseForNeumorphism);
+    window.addEventListener('scroll', wake, { passive: true });
+    window.addEventListener('resize', wake);
 
     const updateNeumorphism = () => {
-      const allElements = [...neuElements, ...neuInsetElements, ...neuTextElements];
-      allElements.forEach((el) => {
-        const rect = el.getBoundingClientRect();
+      // Read every position first, then write, so layout is computed once per frame
+      const viewH = window.innerHeight;
+      const rects = allElements.map((el) => el.getBoundingClientRect());
+      let moving = false;
+
+      allElements.forEach((el, i) => {
+        const rect = rects[i];
+        // Skip hidden and off-screen elements
+        if (!rect.width || rect.bottom < -100 || rect.top > viewH + 100) return;
         const elCenterX = rect.left + rect.width / 2;
         const elCenterY = rect.top + rect.height / 2;
         const deltaX = mouseX - elCenterX;
@@ -196,10 +184,15 @@ const App = () => {
           state.targetDarkY = -normalizedY * strength;
         }
         const lerpFactor = 0.15;
+        const prevX = state.currentLightX;
+        const prevY = state.currentLightY;
         state.currentLightX = lerp(state.currentLightX, state.targetLightX, lerpFactor);
         state.currentLightY = lerp(state.currentLightY, state.targetLightY, lerpFactor);
         state.currentDarkX = lerp(state.currentDarkX, state.targetDarkX, lerpFactor);
         state.currentDarkY = lerp(state.currentDarkY, state.targetDarkY, lerpFactor);
+        // Settled: skip the style write, which would only trigger a repaint
+        if (Math.abs(state.currentLightX - prevX) < 0.02 && Math.abs(state.currentLightY - prevY) < 0.02) return;
+        moving = true;
         if (isText) {
           el.style.textShadow = `${state.currentLightX.toFixed(2)}px ${state.currentLightY.toFixed(2)}px ${blur1}px var(--shadowLight), ${state.currentDarkX.toFixed(2)}px ${state.currentDarkY.toFixed(2)}px ${blur2}px var(--shadowDark)`;
         } else if (isInset) {
@@ -208,12 +201,16 @@ const App = () => {
           el.style.boxShadow = `${state.currentLightX.toFixed(2)}px ${state.currentLightY.toFixed(2)}px ${blur1}px var(--shadowLight), ${state.currentDarkX.toFixed(2)}px ${state.currentDarkY.toFixed(2)}px ${blur2}px var(--shadowDark)`;
         }
       });
-      rafId = requestAnimationFrame(updateNeumorphism);
+      if (moving) {
+        rafId = requestAnimationFrame(updateNeumorphism);
+      } else {
+        running = false;
+      }
     };
-    rafId = requestAnimationFrame(updateNeumorphism);
+    wake();
 
     // Nav scroll spy
-    const sectionIds = ['hello', 'results', 'evidence', 'contact'];
+    const sectionIds = ['hello', 'results', 'evidence', 'learning', 'contact'];
     const sections = sectionIds.map(id => document.getElementById(id)).filter(Boolean);
 
     const updateActiveNav = () => {
@@ -233,7 +230,18 @@ const App = () => {
       }
     };
 
-    window.addEventListener('scroll', updateActiveNav);
+    // At most one nav update per frame while scrolling
+    let navQueued = false;
+    const onScrollNav = () => {
+      if (navQueued) return;
+      navQueued = true;
+      requestAnimationFrame(() => {
+        navQueued = false;
+        updateActiveNav();
+      });
+    };
+
+    window.addEventListener('scroll', onScrollNav, { passive: true });
     updateActiveNav();
 
     return () => {
@@ -243,25 +251,21 @@ const App = () => {
       io.disconnect();
       if (themeToggle) themeToggle.removeEventListener('click', handleThemeToggle);
       if (accentToggle) accentToggle.removeEventListener('click', handleAccentToggle);
-      document.removeEventListener('mousemove', handleMouseMove);
-      document.removeEventListener('mousedown', onMouseDown);
-      document.removeEventListener('mouseup', onMouseUp);
       document.removeEventListener('mousemove', trackMouseForNeumorphism);
-      interactiveHandlers.forEach(({ el, enter, leave }) => {
-        el.removeEventListener('mouseenter', enter);
-        el.removeEventListener('mouseleave', leave);
-      });
       if (rafId) cancelAnimationFrame(rafId);
-      window.removeEventListener('scroll', updateActiveNav);
+      window.removeEventListener('scroll', wake);
+      window.removeEventListener('resize', wake);
+      window.removeEventListener('scroll', onScrollNav);
     };
   }, []);
 
   return (
     <div id="App" className="App">
       <GlobalStyle />
+      <MotionStyle />
       <NavBar />
       <Routing />
-      <div className="custom-cursor" />
+      <Cursor />
       {/* Chat launcher disabled for now */}
       <div className="bottom-fade" />
     </div>

@@ -11,12 +11,32 @@ import {
   FiLayers,
   FiDatabase,
   FiActivity,
-  FiZap
+  FiZap,
+  FiSmartphone,
+  FiBookOpen,
+  FiPackage,
+  FiGitMerge,
+  FiShare2,
+  FiTarget,
+  FiTerminal,
+  FiGrid,
+  FiPenTool,
+  FiUsers,
+  FiHeart,
+  FiSmile,
+  FiHardDrive,
+  FiImage,
+  FiFilm,
+  FiMic,
+  FiSearch,
+  FiBook,
+  FiMessageSquare,
+  FiStar,
+  FiGlobe
 } from 'react-icons/fi';
 import {
   SiPython,
   SiDjango,
-  SiReact,
   SiJavascript,
   SiTypescript,
   SiPostgresql,
@@ -25,9 +45,16 @@ import {
   SiGraphql,
   SiTailwindcss,
   SiAdobeillustrator,
-  SiAdobephotoshop
+  SiAdobephotoshop,
+  SiGooglecloud,
+  SiMicrosoftazure,
+  SiGithubactions,
+  SiFirebase
 } from 'react-icons/si';
 import CurrentlyBuilding from '../CurrentlyBuilding';
+import Certifications from '../Certifications';
+import GithubActivity from '../GithubActivity';
+import Contact from '../Contact';
 import {
   IntroContainer,
   HeroStage,
@@ -58,6 +85,7 @@ import {
   ExperiencePeriod,
   ExperienceImpact,
   ExperienceDetailMotion,
+  ExperienceHeight,
   TagRow,
   Tag,
   CaseStudyWrap,
@@ -68,12 +96,6 @@ import {
   CaseSectionTitle,
   CaseBlock,
   CaseList,
-  ContactGrid,
-  ContactLeft,
-  ContactRight,
-  AvailRow,
-  AvailDot,
-  ContactFooter,
   TimelineWrap,
   TimelineScroll,
   TimelineTrack,
@@ -84,6 +106,7 @@ import {
   TimelineTick,
   TimelineIcon,
   TimelineLabel,
+  TimelineSubLabel,
   TimelineEdgeFade,
   SocialSidebar,
   SocialIconsCol,
@@ -102,22 +125,24 @@ const experienceTimeline = [
   {
     year: '2026',
     icon: FiZap,
-    company: 'Career Break',
-    role: 'Independent Builder',
+    company: 'IdeaForgeLabs',
+    subLabel: 'Career break',
+    role: 'Founder, IdeaForgeLabs',
     period: '2026 – Present',
     current: true,
     caseStudy: {
-      role: 'Independent Builder',
-      focus: 'Learning + Shipping',
-      currentLine: 'Intentional career break: learning deeply and building products.',
+      role: 'Founder, IdeaForgeLabs',
+      website: 'https://theideaforgelabs.com/',
       whatIDid: [
-        'Products being built: 5 (MediReco, Pawlog, House of Agents + 2 in pipeline).',
-        'Experiments per week: 6-8 across AI workflows, automation, and product UX.',
-        'Current technical focus: event-driven systems, AI integration reliability, and practical automation tooling.'
+        'Took an intentional career break to learn deeply and build products end to end, and started IdeaForgeLabs, a founder-led studio building websites, apps and AI systems for small businesses.',
+        'Built 9 products across iOS, Android, macOS, web and Meta Ray-Ban Display, including NextRenew, Origo, Stowbox, Japo and CaninePages.',
+        'Built Origo, a local macOS control plane for AI agent tooling: MCP servers, secrets, skills, prompts and instructions.',
+        'Completed 5 certifications in generative AI, prompt engineering and Google Cloud, and preparing for Microsoft exam AI-103 (Azure AI Apps and Agents).'
       ],
       challenges: [
         'Balancing deep learning with consistent shipping cadence while maintaining production quality.',
-        'Prioritizing high-signal experiments and validating real user problems before scaling.'
+        'Prioritizing high-signal experiments and validating real user problems before scaling.',
+        'Distribution turned out to be harder than building: shipping a product is not the same as getting it in front of the right users. I am learning marketing engineering (positioning, analytics, answer-engine optimization and content systems like Northstar) to close that gap.'
       ]
     }
   },
@@ -250,6 +275,68 @@ const experienceTimeline = [
   }
 ];
 
+// Official site or repo for each tool, keyed by label. Concepts (RAG, Serverless…) stay unlinked.
+const techLinks = {
+  Python: 'https://www.python.org/',
+  Django: 'https://www.djangoproject.com/',
+  FastAPI: 'https://fastapi.tiangolo.com/',
+  PostgreSQL: 'https://www.postgresql.org/',
+  GraphQL: 'https://graphql.org/',
+  Docker: 'https://www.docker.com/',
+  AWS: 'https://aws.amazon.com/',
+  'AWS Lambda': 'https://aws.amazon.com/lambda/',
+  'Google Cloud': 'https://cloud.google.com/',
+  'GitHub Actions': 'https://github.com/features/actions',
+  JavaScript: 'https://developer.mozilla.org/en-US/docs/Web/JavaScript',
+  TypeScript: 'https://www.typescriptlang.org/',
+  'Claude Code': 'https://www.claude.com/product/claude-code',
+  Codex: 'https://openai.com/codex/',
+  'OpenAI Codex': 'https://openai.com/codex/',
+  'GitHub Copilot': 'https://github.com/features/copilot',
+  Lovable: 'https://lovable.dev/',
+  'Replit Agent': 'https://replit.com/ai',
+  'Firebase Studio': 'https://firebase.studio/',
+  'Google Stitch': 'https://stitch.withgoogle.com/',
+  'Grok Bot': 'https://grok.com/',
+  OpenClaw: 'https://github.com/openclaw/openclaw',
+  'Hermes Agent': 'https://github.com/NousResearch/hermes-agent',
+  'ChatGPT Agent': 'https://openai.com/index/introducing-chatgpt-agent/',
+  Manus: 'https://manus.im/',
+  LangChain: 'https://github.com/langchain-ai/langchain',
+  LangGraph: 'https://github.com/langchain-ai/langgraph',
+  'Claude Agent SDK': 'https://github.com/anthropics/claude-agent-sdk-python',
+  'OpenAI Agents SDK': 'https://github.com/openai/openai-agents-python',
+  CrewAI: 'https://github.com/crewAIInc/crewAI',
+  LlamaIndex: 'https://github.com/run-llama/llama_index',
+  'Agent Skills': 'https://agentskills.io/',
+  MCP: 'https://modelcontextprotocol.io/',
+  'MCP Servers': 'https://github.com/modelcontextprotocol/servers',
+  'Claude API': 'https://docs.claude.com/',
+  'OpenAI API': 'https://platform.openai.com/docs',
+  'Azure AI Foundry': 'https://ai.azure.com/',
+  'xAI Grok API': 'https://docs.x.ai/',
+  Jev: 'https://typesafe.ai/',
+  'Hugging Face': 'https://huggingface.co/',
+  Ollama: 'https://ollama.com/',
+  n8n: 'https://n8n.io/',
+  'Nano Banana': 'https://deepmind.google/models/gemini-image/',
+  Sora: 'https://openai.com/sora/',
+  ElevenLabs: 'https://elevenlabs.io/',
+  Perplexity: 'https://www.perplexity.ai/',
+  NotebookLM: 'https://notebooklm.google/',
+  ChatGPT: 'https://chatgpt.com/',
+  Gemini: 'https://gemini.google.com/',
+  Firecrawl: 'https://www.firecrawl.dev/',
+  Tailwind: 'https://tailwindcss.com/',
+  Illustrator: 'https://www.adobe.com/products/illustrator.html',
+  Photoshop: 'https://www.adobe.com/products/photoshop.html'
+};
+
+// Spread onto a chip: renders it as a quiet anchor when the label has a link.
+const linkProps = (label) => (techLinks[label]
+  ? { as: 'a', href: techLinks[label], target: '_blank', rel: 'noopener noreferrer' }
+  : {});
+
 const stackGroups = [
   {
     title: 'Backend',
@@ -258,26 +345,45 @@ const stackGroups = [
       { label: 'Python', icon: FiCode },
       { label: 'Django', icon: FiLayers },
       { label: 'FastAPI', icon: FiZap },
-      { label: 'GraphQL', icon: FiActivity }
+      { label: 'PostgreSQL', icon: FiDatabase },
+      { label: 'GraphQL', icon: FiActivity },
+      { label: 'Docker', icon: FiPackage }
     ]
   },
   {
-    title: 'Cloud & Systems',
+    title: 'Cloud & DevOps',
     icon: FiCloud,
     chips: [
       { label: 'AWS', icon: FiCloud },
-      { label: 'Event-Driven', icon: FiActivity },
-      { label: 'Serverless', icon: FiZap },
-      { label: 'Observability', icon: FiDatabase }
+      { label: 'AWS Lambda', icon: FiZap },
+      { label: 'Google Cloud', icon: SiGooglecloud },
+      { label: 'GitHub Actions', icon: FiGitMerge }
     ]
   },
   {
-    title: 'AI & Automation',
+    title: 'AI & Agents',
     icon: FiCpu,
     chips: [
-      { label: 'LLM Integrations', icon: FiCpu },
-      { label: 'Automation Pipelines', icon: FiLayers },
-      { label: 'Agentic Workflows', icon: FiSend }
+      { label: 'Claude & OpenAI APIs', icon: FiCpu },
+      { label: 'Claude Agent SDK', icon: FiTerminal },
+      { label: 'LangGraph', icon: FiShare2 },
+      { label: 'MCP Servers', icon: FiLayers },
+      { label: 'RAG', icon: FiDatabase },
+      { label: 'Jev', icon: FiTarget },
+      { label: 'Azure AI Foundry', icon: FiBookOpen, learning: true }
+    ]
+  },
+  {
+    title: 'AI-Native Build',
+    icon: FiTerminal,
+    chips: [
+      { label: 'Claude Code', icon: FiTerminal },
+      { label: 'Codex', icon: FiCode },
+      { label: 'GitHub Copilot', icon: FiGithub },
+      { label: 'Google Stitch', icon: FiPenTool },
+      { label: 'Grok Bot', icon: FiUsers },
+      { label: 'Agent Skills', icon: FiGrid },
+      { label: 'iOS & macOS Apps', icon: FiSmartphone }
     ]
   }
 ];
@@ -285,7 +391,7 @@ const stackGroups = [
 const socialLinks = [
   { icon: FiGithub, href: 'https://github.com/lucifer-ved', label: 'GitHub', tooltip: 'GitHub' },
   { icon: FiLinkedin, href: 'https://www.linkedin.com/in/vedantsolanki/', label: 'LinkedIn', tooltip: 'LinkedIn' },
-  { icon: FiMail, href: 'mailto:vedantsolanki004@gmail.com', label: 'Email', tooltip: 'Email' },
+  { icon: FiMail, href: 'mailto:lucifer.ved@gmail.com', label: 'Email', tooltip: 'Email' },
   { icon: FiSend, href: '#contact', label: 'Connect', tooltip: 'Contact' }
 ];
 
@@ -296,20 +402,56 @@ const toolTiles = [
   { label: 'PostgreSQL', icon: SiPostgresql },
   { label: 'Docker', icon: SiDocker },
   { label: 'AWS', icon: SiAmazonaws },
+  { label: 'AWS Lambda', icon: FiZap },
+  { label: 'Google Cloud', icon: SiGooglecloud },
   { label: 'GraphQL', icon: SiGraphql },
-  { label: 'React', icon: SiReact },
+  { label: 'GitHub Actions', icon: SiGithubactions },
   { label: 'JavaScript', icon: SiJavascript },
   { label: 'TypeScript', icon: SiTypescript },
   { label: 'Event-Driven', icon: FiActivity },
   { label: 'Serverless', icon: FiCloud },
   { label: 'Observability', icon: FiActivity },
-  { label: 'n8n', icon: FiLayers },
-  { label: 'LLM APIs', icon: FiCpu },
+  { label: 'Claude Code', icon: FiTerminal },
+  { label: 'OpenAI Codex', icon: FiCode },
+  { label: 'GitHub Copilot', icon: FiGithub },
+  { label: 'Lovable', icon: FiHeart },
+  { label: 'Replit Agent', icon: FiTerminal },
+  { label: 'Firebase Studio', icon: SiFirebase },
+  { label: 'Google Stitch', icon: FiPenTool },
+  { label: 'Grok Bot', icon: FiUsers },
+  { label: 'OpenClaw', icon: FiCpu },
+  { label: 'Hermes Agent', icon: FiSend },
+  { label: 'ChatGPT Agent', icon: FiCpu },
+  { label: 'Manus', icon: FiCpu },
+  { label: 'LangChain', icon: FiShare2 },
+  { label: 'LangGraph', icon: FiShare2 },
+  { label: 'Claude Agent SDK', icon: FiTerminal },
+  { label: 'OpenAI Agents SDK', icon: FiCpu },
+  { label: 'CrewAI', icon: FiUsers },
+  { label: 'LlamaIndex', icon: FiDatabase },
+  { label: 'Agent Skills', icon: FiGrid },
+  { label: 'MCP', icon: FiLayers },
+  { label: 'Claude API', icon: FiCpu },
+  { label: 'OpenAI API', icon: FiCpu },
+  { label: 'Azure AI Foundry', icon: SiMicrosoftazure },
+  { label: 'xAI Grok API', icon: FiCpu },
+  { label: 'Jev', icon: FiTarget },
+  { label: 'Hugging Face', icon: FiSmile },
+  { label: 'Ollama', icon: FiHardDrive },
   { label: 'RAG', icon: FiDatabase },
   { label: 'Vector DB', icon: FiDatabase },
   { label: 'Prompt Eval', icon: FiActivity },
   { label: 'Agents', icon: FiCpu },
+  { label: 'n8n', icon: FiLayers },
   { label: 'Automation', icon: FiZap },
+  { label: 'Nano Banana', icon: FiImage },
+  { label: 'Sora', icon: FiFilm },
+  { label: 'ElevenLabs', icon: FiMic },
+  { label: 'Perplexity', icon: FiSearch },
+  { label: 'NotebookLM', icon: FiBook },
+  { label: 'ChatGPT', icon: FiMessageSquare },
+  { label: 'Gemini', icon: FiStar },
+  { label: 'Firecrawl', icon: FiGlobe },
   { label: 'Tailwind', icon: SiTailwindcss },
   { label: 'Illustrator', icon: SiAdobeillustrator },
   { label: 'Photoshop', icon: SiAdobephotoshop }
@@ -326,7 +468,13 @@ const renderStackContent = () => (
         </StackGroupTitle>
         <ChipRow>
           {group.chips.map((chip) => (
-            <StackChip className="neu-sm" key={chip.label}>
+            <StackChip
+              className={chip.learning ? 'no-hover' : 'neu-sm no-hover'}
+              $learning={chip.learning}
+              title={chip.learning ? 'Currently learning' : undefined}
+              key={chip.label}
+              {...linkProps(chip.label)}
+            >
               <StackChipIcon><chip.icon /></StackChipIcon>
               {chip.label}
             </StackChip>
@@ -370,13 +518,21 @@ const Intro = () => {
     };
   }, [updateTimelineFade]);
 
+  // Centre the chosen milestone by scrolling the timeline strip only (never the
+  // page), and only for clicks and keyboard; moving the strip under a hovering
+  // pointer would select the next milestone and set off a chain of switches.
+  const centreOnSelect = useRef(false);
   useEffect(() => {
     const timelineNode = timelineScrollRef.current;
     if (!timelineNode) return;
 
-    const activeNode = timelineNode.querySelector(`[data-milestone="${activeExperienceIndex}"]`);
-    if (activeNode) {
-      activeNode.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
+    if (centreOnSelect.current) {
+      const activeNode = timelineNode.querySelector(`[data-milestone="${activeExperienceIndex}"]`);
+      if (activeNode) {
+        const left = activeNode.offsetLeft - (timelineNode.clientWidth - activeNode.offsetWidth) / 2;
+        timelineNode.scrollTo({ left, behavior: 'smooth' });
+      }
+      centreOnSelect.current = false;
     }
 
     requestAnimationFrame(updateTimelineFade);
@@ -388,9 +544,31 @@ const Intro = () => {
 
   const onSelectMilestone = useCallback((idx) => {
     if (idx !== activeExperienceIndex) {
+      centreOnSelect.current = true;
       setActiveExperienceIndex(idx);
     }
   }, [activeExperienceIndex]);
+
+  // Hover intent: switch only when the pointer rests on a milestone briefly,
+  // so sweeping across the timeline doesn't flicker through every job
+  const hoverTimer = useRef(null);
+  const onHoverMilestone = useCallback((idx) => {
+    clearTimeout(hoverTimer.current);
+    hoverTimer.current = setTimeout(() => setActiveExperienceIndex(idx), 140);
+  }, []);
+  const onLeaveMilestone = useCallback(() => clearTimeout(hoverTimer.current), []);
+  useEffect(() => () => clearTimeout(hoverTimer.current), []);
+
+  // Animate the card's height between jobs with different amounts of text
+  const detailRef = useRef(null);
+  const [detailHeight, setDetailHeight] = useState(null);
+  useEffect(() => {
+    const node = detailRef.current;
+    if (!node || typeof ResizeObserver === 'undefined') return undefined;
+    const observer = new ResizeObserver(([entry]) => setDetailHeight(entry.contentRect.height));
+    observer.observe(node);
+    return () => observer.disconnect();
+  }, []);
 
   const activeExperience = experienceTimeline[activeExperienceIndex] || experienceTimeline[0];
 
@@ -407,7 +585,8 @@ const Intro = () => {
             </HeroHeading>
             <HeroText>
               A tech enthusiast with 10+ years of experience, fueled by curiosity and innovation.{' '}
-              <strong>Passionate about building systems</strong> that are reliable, scalable, and maintainable.
+              <strong>Passionate about building systems</strong> that are reliable, scalable, and maintainable.{' '}
+              Right now I'm on an intentional career break, shipping my own products at IdeaForgeLabs.
             </HeroText>
           </HeroContent>
 
@@ -437,6 +616,7 @@ const Intro = () => {
               </SectionDescription>
             </SectionTop>
             <CurrentlyBuilding />
+            <GithubActivity />
           </SectionInner>
         </Section>
 
@@ -458,7 +638,8 @@ const Intro = () => {
                       key={`${item.company}-${item.year}`}
                       type="button"
                       onClick={() => onSelectMilestone(idx)}
-                      onMouseEnter={() => onSelectMilestone(idx)}
+                      onMouseEnter={() => onHoverMilestone(idx)}
+                      onMouseLeave={onLeaveMilestone}
                       onFocus={() => onSelectMilestone(idx)}
                       $active={idx === activeExperienceIndex}
                       data-milestone={idx}
@@ -473,7 +654,10 @@ const Intro = () => {
                       <TimelineIcon $active={idx === activeExperienceIndex} $current={item.current}>
                         <item.icon />
                       </TimelineIcon>
-                      <TimelineLabel>{item.company}</TimelineLabel>
+                      <TimelineLabel>
+                        {item.company}
+                        {item.subLabel && <TimelineSubLabel>{item.subLabel}</TimelineSubLabel>}
+                      </TimelineLabel>
                     </TimelineMilestone>
                   ))}
                 </TimelineTrack>
@@ -483,7 +667,8 @@ const Intro = () => {
             </TimelineWrap>
 
             <ExperienceCard className="neu-lg reveal" style={{ marginTop: '1.45rem' }}>
-              <ExperienceDetailMotion $token={detailMotionToken}>
+              <ExperienceHeight style={detailHeight ? { height: detailHeight } : undefined}>
+              <ExperienceDetailMotion ref={detailRef} $token={detailMotionToken}>
                 {activeExperience.caseStudy ? (
                   <>
                     <CaseTopBar>
@@ -545,72 +730,30 @@ const Intro = () => {
                   </>
                 )}
               </ExperienceDetailMotion>
+              </ExperienceHeight>
             </ExperienceCard>
+          </SectionInner>
+        </Section>
+
+        {/* ── Learning ── */}
+        <Section id="learning">
+          <SectionInner>
+            <SectionTop className="reveal">
+              <SectionKicker>Learning</SectionKicker>
+              <SectionTitle>Certifications</SectionTitle>
+              <SectionDescription>
+                Verified certificates earned during the break, plus what I'm studying now.
+              </SectionDescription>
+            </SectionTop>
+
+            <Certifications />
           </SectionInner>
         </Section>
 
         {/* ── Contact ── */}
         <Section id="contact">
           <SectionInner>
-            <ContactGrid>
-              <ContactLeft className="reveal">
-                <SectionKicker>Contact</SectionKicker>
-                <SectionTitle>Ready to start?</SectionTitle>
-                <SectionDescription>
-                  Share your context, current bottleneck, and timeline. I will respond with a practical execution plan.
-                </SectionDescription>
-                <ul style={{ color: 'var(--textSoft)', fontSize: '0.9rem', marginTop: '1rem', paddingLeft: '1.1rem', lineHeight: 1.85 }}>
-                  <li>Understand your challenge</li>
-                  <li>Verify I'm the right fit</li>
-                  <li>Define scope and first milestone</li>
-                </ul>
-                <div style={{ marginTop: '2rem', display: 'flex', flexWrap: 'wrap', gap: '0.75rem' }}>
-                  <a
-                    href="https://www.linkedin.com/in/vedantsolanki/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="neu-lg no-hover"
-                    style={{ padding: '0.75rem 1.5rem', borderRadius: '999px', fontSize: '0.9rem', fontWeight: '700', color: 'var(--text)', display: 'inline-flex', alignItems: 'center', gap: '0.4rem' }}
-                  >
-                    <FiLinkedin /> LinkedIn →
-                  </a>
-                  <a
-                    href="mailto:vedantsolanki004@gmail.com"
-                    className="neu-md no-hover"
-                    style={{ padding: '0.75rem 1.5rem', borderRadius: '999px', fontSize: '0.9rem', fontWeight: '600', color: 'var(--text)', display: 'inline-flex', alignItems: 'center', gap: '0.4rem' }}
-                  >
-                    <FiMail /> Email →
-                  </a>
-                </div>
-              </ContactLeft>
-
-              <ContactRight className="neu-lg reveal">
-                <div style={{ fontSize: '1.05rem', fontWeight: '700', color: 'var(--text)', marginBottom: '0.25rem' }}>Availability</div>
-                <AvailRow>
-                  <AvailDot />
-                  <span style={{ color: 'var(--textSoft)', fontSize: '0.88rem' }}>Open to new projects in 2026</span>
-                </AvailRow>
-                <div style={{ display: 'flex', gap: '0.75rem', justifyContent: 'center', marginBottom: '1.25rem' }}>
-                  <div className="neu-inset-md" style={{ padding: '1rem 1.5rem', textAlign: 'center', borderRadius: '1rem' }}>
-                    <div style={{ fontSize: '1.5rem', fontWeight: '700', color: 'var(--text)' }}>~24h</div>
-                    <div style={{ fontSize: '0.72rem', color: 'var(--textSoft)', marginTop: '0.2rem' }}>Avg. response</div>
-                  </div>
-                  <div className="neu-inset-md" style={{ padding: '1rem 1.5rem', textAlign: 'center', borderRadius: '1rem' }}>
-                    <div style={{ fontSize: '1.5rem', fontWeight: '700', color: 'var(--text)' }}>+10</div>
-                    <div style={{ fontSize: '0.72rem', color: 'var(--textSoft)', marginTop: '0.2rem' }}>Years exp.</div>
-                  </div>
-                </div>
-                <div style={{ fontSize: '0.88rem', fontWeight: '600', color: 'var(--text)', marginBottom: '0.5rem' }}>Next steps:</div>
-                <ol style={{ color: 'var(--textSoft)', fontSize: '0.88rem', paddingLeft: '1.1rem', lineHeight: 1.9 }}>
-                  <li>Quick intro call (30 min)</li>
-                  <li>Scope alignment</li>
-                  <li>Project kickoff 🚀</li>
-                </ol>
-                <ContactFooter>
-                  © {new Date().getFullYear()} Vedant Solanki
-                </ContactFooter>
-              </ContactRight>
-            </ContactGrid>
+            <Contact />
           </SectionInner>
         </Section>
 
@@ -619,7 +762,7 @@ const Intro = () => {
             <ToolsMarqueeTrack>
               <ToolsMarqueeGroup>
                 {toolTiles.map(({ label, icon: Icon }) => (
-                  <ToolCard key={`marquee-a-${label}`} className="neu-sm" title={label} aria-label={label}>
+                  <ToolCard key={`marquee-a-${label}`} className="neu-sm no-hover" title={label} aria-label={label} {...linkProps(label)}>
                     <ToolIcon><Icon /></ToolIcon>
                     <ToolName>{label}</ToolName>
                   </ToolCard>
@@ -627,7 +770,7 @@ const Intro = () => {
               </ToolsMarqueeGroup>
               <ToolsMarqueeGroup aria-hidden="true">
                 {toolTiles.map(({ label, icon: Icon }) => (
-                  <ToolCard key={`marquee-b-${label}`} className="neu-sm" title={label}>
+                  <ToolCard key={`marquee-b-${label}`} className="neu-sm no-hover" title={label} tabIndex={-1} {...linkProps(label)}>
                     <ToolIcon><Icon /></ToolIcon>
                     <ToolName>{label}</ToolName>
                   </ToolCard>

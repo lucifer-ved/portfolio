@@ -16,9 +16,9 @@ export const HeroStage = styled.section`
   min-height: calc(100vh - 4.25rem);
   scroll-margin-top: 5rem;
   scroll-snap-align: start;
-  padding: 5.5rem 1.5rem 4rem;
+  padding: 8.5rem 1.5rem 6rem;
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(360px, 480px);
+  grid-template-columns: minmax(0, 1fr) minmax(360px, 560px);
   gap: clamp(1.5rem, 3vw, 4rem);
   align-items: center;
   max-width: min(1280px, 94vw);
@@ -26,7 +26,7 @@ export const HeroStage = styled.section`
 
   @media screen and (min-width: 1280px) {
     padding-left: 4.2rem;
-    grid-template-columns: minmax(0, 1fr) minmax(340px, 450px);
+    grid-template-columns: minmax(0, 1fr) minmax(360px, 540px);
     gap: clamp(1.25rem, 2vw, 2.4rem);
     box-sizing: border-box;
   }
@@ -52,13 +52,13 @@ export const Section = styled.section`
   min-height: calc(100vh - 4.25rem);
   scroll-margin-top: 5rem;
   scroll-snap-align: start;
-  padding: 4.25rem 1.5rem 3rem;
+  padding: clamp(6rem, 10vh, 8rem) 1.5rem clamp(6rem, 10vh, 8rem);
   display: flex;
   align-items: center;
 
   @media screen and (max-width: 760px) {
     min-height: auto;
-    padding: 3rem 1rem 6.8rem;
+    padding: 5rem 1rem 6.8rem;
     display: block;
   }
 `;
@@ -82,6 +82,14 @@ export const HeroContent = styled.div`
   width: 100%;
   max-width: 760px;
   margin: 0 auto;
+
+  /* Size the column to the heading (which never wraps), so the intro
+     paragraph wraps within the heading's width instead of running past it */
+  @media screen and (min-width: 761px) {
+    width: min-content;
+    max-width: none;
+    margin: 0;
+  }
 
   @media screen and (max-width: 760px) {
     display: flex;
@@ -173,7 +181,7 @@ export const HeroHeading = styled.h1`
 `;
 
 export const HeroText = styled.p`
-  max-width: 680px;
+  max-width: 100%;
   margin-top: 1.35rem;
   color: var(--textSoft);
   font-size: clamp(1rem, 1.18vw, 1.18rem);
@@ -216,8 +224,8 @@ export const StackCard = styled.aside`
   justify-self: end;
 
   @media screen and (min-width: 1280px) {
-    max-width: 450px;
-    padding: 1.4rem 1.35rem;
+    max-width: 540px;
+    padding: 1.5rem 1.5rem;
   }
 
   @media screen and (max-width: 1100px) {
@@ -296,6 +304,44 @@ export const StackChip = styled.span`
     box-shadow: inset -2px -2px 4px var(--shadowLight), inset 2px 2px 4px var(--shadowDark);
   }
 
+  /* Linked chips read as chips: the only cue is a faint arrow on hover */
+  &[href]::after {
+    content: '↗';
+    font-size: 0.7em;
+    color: var(--textSoft);
+    margin-left: -0.2rem;
+    max-width: 0;
+    opacity: 0;
+    overflow: hidden;
+    transition: max-width 0.2s ease, opacity 0.2s ease, margin 0.2s ease;
+  }
+
+  &[href]:hover::after,
+  &[href]:focus-visible::after {
+    max-width: 1em;
+    opacity: 1;
+    margin-left: 0;
+  }
+
+  &[href]:focus-visible {
+    outline: 2px solid var(--textSoft);
+    outline-offset: 2px;
+  }
+
+  ${({ $learning }) => $learning && css`
+    background: rgba(241, 199, 90, 0.1);
+    border: 1px dashed rgba(241, 199, 90, 0.7);
+    box-shadow: none;
+
+    &:hover {
+      box-shadow: 0 0 12px rgba(241, 199, 90, 0.2);
+    }
+
+    ${StackChipIcon} {
+      color: #f1c75a;
+    }
+  `}
+
   @media screen and (max-width: 760px) {
     width: 100%;
     padding: 0.43rem 0.65rem;
@@ -334,10 +380,10 @@ export const MobileStackInner = styled.div`
 
 /* ── Section header block ── */
 export const SectionTop = styled.div`
-  margin-bottom: 0.75rem;
+  margin-bottom: 2rem;
 
   @media screen and (max-width: 760px) {
-    margin-bottom: 0.6rem;
+    margin-bottom: 1.4rem;
   }
 `;
 
@@ -532,6 +578,20 @@ export const ToolCard = styled.div`
   color: var(--text);
   text-align: center;
   padding: 0.45rem;
+  transition: transform 0.2s ease;
+
+  &[href]:hover {
+    transform: translateY(-2px);
+  }
+
+  &[href]:hover > span {
+    color: var(--text);
+  }
+
+  &[href]:focus-visible {
+    outline: 2px solid var(--textSoft);
+    outline-offset: 2px;
+  }
 
   @media screen and (max-width: 760px) {
     width: 66px;
@@ -636,7 +696,7 @@ export const ToolsMarqueeTrack = styled.div`
   align-items: center;
   width: max-content;
   gap: 0.9rem;
-  animation: ${toolsMarqueeMove} 28s linear infinite;
+  animation: ${toolsMarqueeMove} 48s linear infinite;
   will-change: transform;
 
   &:hover {
@@ -790,28 +850,36 @@ export const TimelineNowBadge = styled.span`
   color: #f1c75a;
   background: rgba(241, 199, 90, 0.15);
   border: 1px solid rgba(241, 199, 90, 0.48);
-  box-shadow:
-    inset 0 0 0 1px rgba(241, 199, 90, 0.18),
-    0 0 14px rgba(241, 199, 90, 0.24);
+  position: relative;
+  box-shadow: inset 0 0 0 1px rgba(241, 199, 90, 0.18);
   text-shadow: 0 0 8px rgba(241, 199, 90, 0.28);
-  animation: nowPulse 2.2s ease-in-out infinite;
+
+  /* The glow lives on its own layer and pulses by opacity, so it never repaints */
+  &::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    box-shadow: 0 0 18px rgba(241, 199, 90, 0.34);
+    opacity: 0.55;
+    animation: nowPulse 2.2s ease-in-out infinite;
+    pointer-events: none;
+  }
 
   @keyframes nowPulse {
     0%,
     100% {
-      box-shadow:
-        inset 0 0 0 1px rgba(241, 199, 90, 0.18),
-        0 0 10px rgba(241, 199, 90, 0.18);
+      opacity: 0.55;
     }
     50% {
-      box-shadow:
-        inset 0 0 0 1px rgba(241, 199, 90, 0.28),
-        0 0 18px rgba(241, 199, 90, 0.32);
+      opacity: 1;
     }
   }
 
   @media (prefers-reduced-motion: reduce) {
-    animation: none;
+    &::after {
+      animation: none;
+    }
   }
 `;
 
@@ -853,7 +921,7 @@ export const TimelineIcon = styled.span`
   box-shadow:
     -5px -5px 10px var(--shadowLight),
     5px 5px 10px var(--shadowDark);
-  transition: box-shadow 0.2s ease, transform 0.2s ease;
+  transition: box-shadow 0.35s ease, transform 0.35s ease;
 
   ${(props) =>
     props.$current &&
@@ -920,7 +988,8 @@ export const ExperienceList = styled.div`
 export const ExperienceCard = styled.article`
   border-radius: 1.1rem;
   padding: 1.55rem 1.65rem;
-  width: fit-content;
+  /* A fixed width, so switching jobs never resizes the card sideways */
+  width: 100%;
   max-width: min(100%, 980px);
   margin-left: auto;
   margin-right: auto;
@@ -971,28 +1040,38 @@ export const ExperienceImpact = styled.p`
 
 const detailFadeInA = keyframes`
   from {
-    opacity: 0.58;
-    transform: translateY(3px);
+    opacity: 0;
+    transform: translate3d(0, 10px, 0);
   }
   to {
     opacity: 1;
-    transform: translateY(0);
+    transform: none;
   }
 `;
 
 const detailFadeInB = keyframes`
   from {
-    opacity: 0.58;
-    transform: translateY(3px);
+    opacity: 0;
+    transform: translate3d(0, 10px, 0);
   }
   to {
     opacity: 1;
-    transform: translateY(0);
+    transform: none;
+  }
+`;
+
+// Glides between the heights of different jobs instead of snapping
+export const ExperienceHeight = styled.div`
+  overflow: hidden;
+  transition: height 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+
+  @media (prefers-reduced-motion: reduce) {
+    transition: none;
   }
 `;
 
 export const ExperienceDetailMotion = styled.div`
-  animation: ${(props) => (props.$token % 2 === 0 ? detailFadeInA : detailFadeInB)} 150ms ease-out;
+  animation: ${(props) => (props.$token % 2 === 0 ? detailFadeInA : detailFadeInB)} 0.42s cubic-bezier(0.22, 1, 0.36, 1) both;
 
   @media (prefers-reduced-motion: reduce) {
     animation: none;
@@ -1156,50 +1235,6 @@ export const FaqAnswer = styled.p`
   line-height: 1.65;
 `;
 
-/* ── Contact section ── */
-export const ContactGrid = styled.div`
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 2.5rem;
-  align-items: center;
-
-  @media screen and (max-width: 760px) {
-    grid-template-columns: 1fr;
-  }
-`;
-
-export const ContactLeft = styled.div``;
-
-export const ContactRight = styled.div`
-  border-radius: 1.3rem;
-  padding: 2rem;
-`;
-
-export const AvailRow = styled.div`
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  margin: 1rem 0 1.5rem;
-`;
-
-export const AvailDot = styled.span`
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-  background: #19b47b;
-  display: inline-block;
-  flex-shrink: 0;
-`;
-
-export const ContactFooter = styled.div`
-  margin-top: 2rem;
-  padding-top: 1rem;
-  border-top: 1px solid rgba(128, 128, 128, 0.15);
-  font-size: 0.8rem;
-  color: var(--textSoft);
-  text-align: center;
-`;
-
 /* ── Social sidebar (desktop: fixed left) ── */
 export const SocialSidebar = styled.div`
   display: none;
@@ -1319,4 +1354,12 @@ export const FooterLink = styled.a`
 export const FooterText = styled.p`
   color: var(--textSoft);
   font-size: 0.88rem;
+`;
+
+export const TimelineSubLabel = styled.small`
+  display: block;
+  margin-top: 0.15rem;
+  color: var(--textSoft);
+  font-size: 0.68rem;
+  font-weight: 500;
 `;

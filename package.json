@@ -17,6 +17,7 @@
   },
   "scripts": {
     "start": "node scripts/run-react-scripts.js start",
+    "prebuild": "node scripts/fetch-github-contributions.js",
     "build": "node scripts/run-react-scripts.js build",
     "test": "node scripts/run-react-scripts.js test",
     "eject": "react-scripts eject"
