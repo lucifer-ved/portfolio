@@ -1,0 +1,8 @@
+# Build settings for Netlify. Values here take precedence over the dashboard.
+[build]
+  command = "npm run build"
+  publish = "build"
+
+[build.environment]
+  # The build script needs Node 14+; the project was still set to Node 12.
+  NODE_VERSION = "20"
