@@ -1,7 +1,7 @@
 import React, { useCallback, useEffect, useRef, useState } from 'react';
 import ReactDOM from 'react-dom';
 import { FiExternalLink, FiMaximize2, FiX } from 'react-icons/fi';
-import { Certificates, ExamPrep, NowLearning } from '../../CertificationData';
+import { Certificates, NowLearning } from '../../CertificationData';
 import {
   NowRow,
   NowLabel,
@@ -16,7 +16,6 @@ import {
   BadgeActions,
   PillButton,
   PillLink,
-  StatusBadge,
   LightboxMeta,
   LightboxActions,
   LightboxBackdrop,
@@ -32,6 +31,7 @@ const useImageAvailable = (src) => {
   const [available, setAvailable] = useState(false);
 
   useEffect(() => {
+    if (!src) return undefined;
     let active = true;
     const img = new Image();
     img.onload = () => active && setAvailable(true);
@@ -75,7 +75,6 @@ const CertificateLightbox = ({ cert, onClose }) => {
             <LightboxTitle>{cert.title}</LightboxTitle>
             <LightboxMeta>
               <span>{cert.issuer} · {cert.platform}</span>
-              <span>{cert.date}</span>
               <code>{cert.credentialId}</code>
             </LightboxMeta>
           </div>
@@ -98,12 +97,12 @@ const CertificateBadge = ({ cert, onOpen }) => {
   const hasImage = useImageAvailable(cert.image);
 
   return (
-    <Badge className="neu-lg">
-      <BadgeMark className="neu-sm">
+    <Badge className={cert.highlight ? undefined : 'neu-lg'} $highlight={cert.highlight}>
+      <BadgeMark className={cert.highlight ? undefined : 'neu-sm'} $highlight={cert.highlight}>
         {cert.logo ? <img src={cert.logo} alt="" /> : cert.mark}
       </BadgeMark>
       <BadgeTitle>{cert.title}</BadgeTitle>
-      <BadgeMeta>{cert.issuer} · {cert.date}</BadgeMeta>
+      <BadgeMeta>{cert.issuer}{cert.exam && ` · Exam ${cert.exam}`}</BadgeMeta>
       <BadgeFoot className="neu-inset-md">
         <CredentialId title="Credential ID">{cert.credentialId}</CredentialId>
         <BadgeActions>
@@ -117,7 +116,7 @@ const CertificateBadge = ({ cert, onOpen }) => {
             href={cert.link}
             target="_blank"
             rel="noopener noreferrer"
-            aria-label={`Verify ${cert.title} on Coursera`}
+            aria-label={`Verify ${cert.title} on ${cert.platform}`}
           >
             Verify <FiExternalLink />
           </PillLink>
@@ -144,20 +143,6 @@ const Certifications = () => {
         {Certificates.map((cert) => (
           <CertificateBadge key={cert.credentialId} cert={cert} onOpen={setOpenCert} />
         ))}
-
-        <Badge $exam>
-          <BadgeMark $exam>
-            {ExamPrep.logo ? <img src={ExamPrep.logo} alt="" /> : ExamPrep.mark}
-          </BadgeMark>
-          <BadgeTitle>{ExamPrep.title}</BadgeTitle>
-          <BadgeMeta>{ExamPrep.issuer} · Exam {ExamPrep.exam}</BadgeMeta>
-          <BadgeFoot>
-            <StatusBadge>{ExamPrep.status}</StatusBadge>
-            <PillLink className="neu-sm no-hover" href={ExamPrep.link} target="_blank" rel="noopener noreferrer">
-              Exam <FiExternalLink />
-            </PillLink>
-          </BadgeFoot>
-        </Badge>
       </BadgeGrid>
 
       {openCert && <CertificateLightbox cert={openCert} onClose={closeCert} />}

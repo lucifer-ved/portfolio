@@ -1,6 +1,8 @@
 import React from 'react';
-import { FiMoon, FiSun, FiZap } from 'react-icons/fi';
-import Resume from '../../assets/vedantsolanki.pdf';
+import { FiMoon, FiSun } from 'react-icons/fi';
+// Resume is hidden until the PDF is updated: restore this import, FiZap,
+// NavButton and the button below.
+// import Resume from '../../assets/vedantsolanki.pdf';
 import {
   Nav,
   NavInner,
@@ -12,7 +14,6 @@ import {
   NavMenu,
   NavAnchor,
   NavActions,
-  NavButton,
   ThemeToggleButton
 } from './NavbarElements';
 
@@ -39,9 +40,9 @@ const NavBar = () => {
         </NavMenu>
 
         <NavActions>
-          <NavButton href={Resume} target="_blank" rel="noopener noreferrer" className="neu-sm no-hover">
+          {/* <NavButton href={Resume} target="_blank" rel="noopener noreferrer" className="neu-sm no-hover">
             <FiZap style={{ marginRight: '0.45rem' }} /> Resume
-          </NavButton>
+          </NavButton> */}
 
           <ThemeToggleButton
             id="theme-toggle"

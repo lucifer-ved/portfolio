@@ -370,23 +370,31 @@ export const StackChip = styled.span`
     box-shadow: inset -2px -2px 4px var(--shadowLight), inset 2px 2px 4px var(--shadowDark);
   }
 
-  /* Linked chips read as chips: the only cue is a faint arrow on hover */
+  /* Linked chips read as chips: the only cue is a faint arrow on hover.
+     It sits in the right padding, out of flow, so the chip never resizes
+     (a growing chip wraps to the next row and flickers under the pointer). */
+  &[href] {
+    position: relative;
+  }
+
   &[href]::after {
     content: '↗';
+    position: absolute;
+    top: 50%;
+    right: 0.4em;
     font-size: 0.7em;
+    line-height: 1;
     color: var(--textSoft);
-    margin-left: -0.2rem;
-    max-width: 0;
     opacity: 0;
-    overflow: hidden;
-    transition: max-width 0.2s ease, opacity 0.2s ease, margin 0.2s ease;
+    transform: translate(-2px, -50%);
+    transition: opacity 0.2s ease, transform 0.2s ease;
+    pointer-events: none;
   }
 
   &[href]:hover::after,
   &[href]:focus-visible::after {
-    max-width: 1em;
     opacity: 1;
-    margin-left: 0;
+    transform: translate(0, -50%);
   }
 
   &[href]:focus-visible {
@@ -1164,8 +1172,11 @@ const detailFadeInB = keyframes`
 `;
 
 // Glides between the heights of different jobs instead of snapping
+// Clips only the bottom edge while the height animates: overflow hidden would
+// also cut the raised pills' shadows square along the top and sides.
 export const ExperienceHeight = styled.div`
-  overflow: hidden;
+  display: flow-root;
+  clip-path: inset(-1rem -1rem 0 -1rem);
   transition: height 0.45s cubic-bezier(0.22, 1, 0.36, 1);
 
   @media (prefers-reduced-motion: reduce) {

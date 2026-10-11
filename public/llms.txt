@@ -21,7 +21,6 @@ Portfolio of Ved Solanki, backend architect and technical solution architect wit
 ## Current Status
 - Intentional career break (2026-present)
 - Founder of IdeaForgeLabs: https://theideaforgelabs.com/
-- Preparing for Microsoft exam AI-103 (Azure AI Apps and Agents Developer Associate)
 
 ## Current Products (IdeaForgeLabs)
 - NextRenew: https://theideaforgelabs.com/nextrenew
@@ -35,6 +34,7 @@ Portfolio of Ved Solanki, backend architect and technical solution architect wit
 - Japo: https://japo-app.netlify.app/
 
 ## Certifications
+- Microsoft Certified: Azure AI Apps and Agents Developer Associate (Microsoft, exam AI-103): https://learn.microsoft.com/api/credentials/share/en-us/VedantSolanki-3803/B6D539794C2159BB?sharingId=44727EE6B703727C
 - Generative AI for Security Fundamentals (Edureka, Coursera): https://coursera.org/verify/0TYKR52531SA
 - Prompt Engineering for ChatGPT (Vanderbilt University, Coursera): https://coursera.org/verify/AEBIPOGDY3Q9
 - Modernize Infrastructure and Applications with Google Cloud (Coursera): https://coursera.org/verify/FSDY9F2LM0OF

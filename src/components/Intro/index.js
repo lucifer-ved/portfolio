@@ -167,9 +167,9 @@ const experienceTimeline = [
       website: 'https://theideaforgelabs.com/',
       whatIDid: [
         'Took an intentional career break to learn deeply and build products end to end, and started IdeaForgeLabs, a founder-led studio building websites, apps and AI systems for small businesses.',
-        'Built 9 products across iOS, Android, macOS, web and Meta Ray-Ban Display, including NextRenew, Origo, Stowbox, Japo and CaninePages.',
+        'Built products at IdeaForgeLabs across iOS, Android, macOS, web and Meta Ray-Ban Display, including NextRenew, Origo, Stowbox, Japo and CaninePages.',
         'Built Origo, a local macOS control plane for AI agent tooling: MCP servers, secrets, skills, prompts and instructions.',
-        'Completed 5 certifications in generative AI, prompt engineering and Google Cloud, and preparing for Microsoft exam AI-103 (Azure AI Apps and Agents).'
+        'Completed 5 certifications in generative AI, prompt engineering and Google Cloud, and passed Microsoft exam AI-103 (Azure AI Apps and Agents Developer Associate).'
       ],
       challenges: [
         'Balancing deep learning with consistent shipping cadence while maintaining production quality.',
@@ -184,15 +184,22 @@ const experienceTimeline = [
     company: 'Capillary',
     logo: companyLogo('capillary.png'),
     role: 'Technical Solution Architect',
-    period: '2024 – 2025',
+    period: '2024 – 2026',
     caseStudy: {
       role: 'Technical Solution Architect',
       website: 'https://www.capillarytech.com/',
       whatIDid: [
-        'Placeholder: project and ownership details will be added.'
+        'Led architecture for two enterprise loyalty programs on the Capillary platform: a six-brand program for one of India\'s largest building-products manufacturers, and one for one of the UAE\'s largest real-estate developers. I owned both, from integration through day-to-day running.',
+        'Cleaned up and restructured the manufacturer\'s loyalty data while the program stayed live, making the system more reliable and giving new features a sound base.',
+        'Built a dashboard that follows every barcode through its full lifecycle across all six brands. It drew on more than 75 GB of data, growing every month, and was never more than 30 minutes behind.',
+        'Designed new loyalty features for the real-estate developer and led its integrations with a major regional bank and other third-party systems.'
       ],
       challenges: [
-        'Placeholder: key challenges and solutions will be added.'
+        'The cleanup had to happen on a live system. There was no quiet window, so I planned every step to be safe while the program kept running.',
+        'Requests to correct or update data came in constantly, and each one had to go straight into production without breaking anything.',
+        'The dashboard had to stay within 30 minutes of live even as the data behind it kept growing.',
+        'All six brands went through the same barcode lifecycle, but they did not follow the same rules or store data the same way. The reporting model had to make them comparable.',
+        'The bank and other third-party integrations depended on systems I did not control, each with its own contract, timeline and ways of failing. Every one needed clear handling for timeouts, retries and reconciliation.'
       ]
     }
   },
@@ -202,7 +209,7 @@ const experienceTimeline = [
     company: 'SmartQ',
     logo: companyLogo('smartq.png'),
     role: 'Technical Solution Architect',
-    period: '2023 – Present',
+    period: '2023 – 2024',
     impact: 'Owned architecture for integrations and personalization workflows with production-grade monitoring and reliability controls.',
     tags: ['Python', 'AWS', 'System Design', 'Observability'],
     caseStudy: {
@@ -430,8 +437,7 @@ const stackGroups = [
 const socialLinks = [
   { icon: FiGithub, href: 'https://github.com/lucifer-ved', label: 'GitHub', tooltip: 'GitHub' },
   { icon: FiLinkedin, href: 'https://www.linkedin.com/in/vedantsolanki/', label: 'LinkedIn', tooltip: 'LinkedIn' },
-  { icon: FiMail, href: 'mailto:lucifer.ved@gmail.com', label: 'Email', tooltip: 'Email' },
-  { icon: FiSend, href: '#contact', label: 'Connect', tooltip: 'Contact' }
+  { icon: FiMail, href: 'mailto:lucifer.ved@gmail.com', label: 'Email', tooltip: 'Email' }
 ];
 
 const toolTiles = [

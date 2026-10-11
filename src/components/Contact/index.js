@@ -1,6 +1,6 @@
 import React, { useRef, useState } from 'react';
 import useSlidingIndicator from '../../hooks/useSlidingIndicator';
-import { FiLinkedin, FiMail } from 'react-icons/fi';
+import { FiExternalLink, FiLinkedin, FiMail } from 'react-icons/fi';
 import {
   ContactLayout,
   Kicker,
@@ -60,7 +60,9 @@ const TOPICS = [
     promise: 'An idea you want to turn into something real.',
     detail: 'Websites, apps and AI tools, from first sketch to launch, through my studio IdeaForgeLabs.',
     subject: 'Product build: ',
-    draft: "Hi Vedant,\n\nI'd like to build [what]. Here's the idea:\n\n"
+    draft: "Hi Vedant,\n\nI'd like to build [what]. Here's the idea:\n\n",
+    // Studio work is handled on the studio's own contact page
+    studioContact: 'https://theideaforgelabs.com/contact'
   }
 ];
 
@@ -157,18 +159,32 @@ const Contact = () => {
           </Fit>
 
           <Actions>
-            <BigButton href={mailto} className="neu-sm no-hover">
-              <FiMail /> Email me
-            </BigButton>
-            <BigButton
-              href={LINKEDIN}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="neu-sm no-hover"
-              onClick={onLinkedIn}
-            >
-              <FiLinkedin /> {copied === 'draft' ? 'Draft copied' : 'LinkedIn'}
-            </BigButton>
+            {topic.studioContact ? (
+              <BigButton
+                href={topic.studioContact}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="neu-sm no-hover"
+                style={{ gridColumn: '1 / -1' }}
+              >
+                <FiExternalLink /> IdeaForgeLabs
+              </BigButton>
+            ) : (
+              <>
+                <BigButton href={mailto} className="neu-sm no-hover">
+                  <FiMail /> Email me
+                </BigButton>
+                <BigButton
+                  href={LINKEDIN}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="neu-sm no-hover"
+                  onClick={onLinkedIn}
+                >
+                  <FiLinkedin /> {copied === 'draft' ? 'Draft copied' : 'LinkedIn'}
+                </BigButton>
+              </>
+            )}
           </Actions>
         </Card>
       </ContactLayout>

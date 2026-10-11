@@ -1,6 +1,6 @@
 // Certificate images live in public/certificates/<credentialId>.png
 // (export page 1 of each Coursera PDF). A badge shows its View button
-// only once that image exists; Verify always links to Coursera.
+// only once that image exists; Verify links to the issuing platform.
 
 // Issuer logos live in public/logos/; a badge falls back to its initials without one.
 const logo = (file) => `${process.env.PUBLIC_URL}/logos/${file}`;
@@ -11,6 +11,16 @@ const coursera = (credentialId) => ({
 });
 
 export const Certificates = [
+  {
+    title: 'Azure AI Apps and Agents Developer Associate',
+    issuer: 'Microsoft',
+    mark: 'MS',
+    logo: logo('microsoft.svg'),
+    platform: 'Microsoft Learn',
+    exam: 'AI-103',
+    credentialId: 'B6D539794C2159BB',
+    link: 'https://learn.microsoft.com/api/credentials/share/en-us/VedantSolanki-3803/B6D539794C2159BB?sharingId=44727EE6B703727C'
+  },
   {
     title: 'Generative AI for Security Fundamentals',
     issuer: 'Edureka',
@@ -59,19 +69,11 @@ export const Certificates = [
     platform: 'Coursera',
     date: 'Sep 9, 2026',
     credentialId: 'UYNN4TI0D25S',
+    // The largest course of the set: its badge gets the gold dashed highlight
+    highlight: true,
     ...coursera('UYNN4TI0D25S')
   }
 ];
-
-export const ExamPrep = {
-  title: 'Azure AI Apps and Agents Developer Associate',
-  issuer: 'Microsoft',
-  mark: 'MS',
-  logo: logo('microsoft.svg'),
-  exam: 'AI-103',
-  status: 'Preparing',
-  link: 'https://learn.microsoft.com/en-us/credentials/certifications/azure-ai-apps-and-agents-developer-associate/'
-};
 
 // Topics in progress, shown as one line of chips (no progress tracking).
 export const NowLearning = [

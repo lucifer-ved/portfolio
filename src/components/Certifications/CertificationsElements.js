@@ -43,10 +43,15 @@ export const TopicChip = styled.span`
 /* Badge grid */
 
 export const BadgeGrid = styled.div`
-  margin-top: 1.2rem;
+  margin-top: 2rem;
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: clamp(0.9rem, 1.6vw, 1.2rem);
+
+  /* Phones hide the chip row above, so keep the original gap */
+  @media screen and (max-width: 760px) {
+    margin-top: 1.2rem;
+  }
 
   @media screen and (max-width: 1000px) {
     grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -72,7 +77,8 @@ export const Badge = styled.article`
     padding: 1rem;
   }
 
-  ${({ $exam }) => $exam && `
+  /* Highlighted badge: gold tint and dashed edge instead of the raised shadow */
+  ${({ $highlight }) => $highlight && `
     background: rgba(241, 199, 90, 0.08);
     border: 1px dashed rgba(241, 199, 90, 0.6);
     box-shadow: none;
@@ -86,11 +92,11 @@ export const BadgeMark = styled.span`
   border-radius: 999px;
   display: grid;
   place-items: center;
-  color: ${({ $exam }) => ($exam ? gold : 'var(--text)')};
+  color: ${({ $highlight }) => ($highlight ? gold : 'var(--text)')};
   font-size: 0.7rem;
   font-weight: 900;
   letter-spacing: 0.03em;
-  box-shadow: ${({ $exam }) => ($exam ? 'none' : raisedSm)};
+  box-shadow: ${({ $highlight }) => ($highlight ? 'none' : raisedSm)};
 
   /* Issuer logo; alt is empty because the issuer is named right beside it */
   img {
@@ -184,23 +190,6 @@ export const PillButton = styled.button`
 
 export const PillLink = styled.a`
   ${pill}
-`;
-
-export const StatusBadge = styled.span`
-  display: inline-flex;
-  align-items: center;
-  border-radius: 999px;
-  padding: 0.18rem 0.5rem;
-  font-size: 0.62rem;
-  font-weight: 700;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: ${gold};
-  background: rgba(241, 199, 90, 0.15);
-  border: 1px solid rgba(241, 199, 90, 0.48);
-  box-shadow: inset 0 0 0 1px rgba(241, 199, 90, 0.18), 0 0 14px rgba(241, 199, 90, 0.24);
-  text-shadow: 0 0 8px rgba(241, 199, 90, 0.28);
-  white-space: nowrap;
 `;
 
 export const LightboxMeta = styled.div`
