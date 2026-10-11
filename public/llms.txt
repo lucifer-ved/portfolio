@@ -1,12 +1,23 @@
-# Ved Solanki
+# Vedant Solanki
 
-Portfolio of Ved Solanki, backend architect and technical solution architect with 10+ years of experience.
+Portfolio of Vedant Solanki (also known as Ved Solanki), backend architect and technical solution architect with 10+ years of experience.
 
 ## Focus
 - Python backend systems
 - AWS and cloud architecture
 - Event-driven systems and automation
 - AI integrations and practical product engineering
+
+## AI Skills
+- Generative AI and large language models
+- Prompt engineering
+- Agentic AI, AI agents and multi-agent systems
+- Retrieval-augmented generation (RAG)
+- Model Context Protocol (MCP), LLM tool use and function calling
+- AI security
+- AI-assisted software development
+- AI workflow automation
+- Generative media (image, video, voice)
 
 ## Technical Stack
 - Backend: Python, Django, FastAPI, PostgreSQL, GraphQL, Docker
@@ -42,8 +53,16 @@ Portfolio of Ved Solanki, backend architect and technical solution architect wit
 - Develop Generative AI Applications: Get Started (IBM, Coursera): https://coursera.org/verify/UYNN4TI0D25S
 
 ## Important URLs
-- Home: https://www.yourdomain.com/
-- Building section: https://www.yourdomain.com/#results
-- Experience section: https://www.yourdomain.com/#evidence
-- Learning section: https://www.yourdomain.com/#learning
-- Contact section: https://www.yourdomain.com/#contact
+- Home: https://vedantsolanki.com/
+- Building section: https://vedantsolanki.com/#results
+- Experience section: https://vedantsolanki.com/#evidence
+- Learning section: https://vedantsolanki.com/#learning
+- Contact section: https://vedantsolanki.com/#contact
+
+## Contact
+- Email: lucifer.ved@gmail.com
+- GitHub: https://github.com/lucifer-ved
+- LinkedIn: https://www.linkedin.com/in/vedantsolanki/
+
+## Personal
+- Photography: https://photographsbyved.netlify.app/

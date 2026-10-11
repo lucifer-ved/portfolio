@@ -1,8 +1,7 @@
 User-agent: *
 Allow: /
 
-# Keep these lines updated with your production domain.
-Sitemap: https://www.yourdomain.com/sitemap.xml
+Sitemap: https://vedantsolanki.com/sitemap.xml
 
 # Explicitly allow major AI crawlers.
 User-agent: GPTBot

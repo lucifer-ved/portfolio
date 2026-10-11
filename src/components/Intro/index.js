@@ -3,6 +3,7 @@ import {
   FiGithub,
   FiLinkedin,
   FiMail,
+  FiCamera,
   FiSend,
   FiServer,
   FiCloud,
@@ -437,7 +438,8 @@ const stackGroups = [
 const socialLinks = [
   { icon: FiGithub, href: 'https://github.com/lucifer-ved', label: 'GitHub', tooltip: 'GitHub' },
   { icon: FiLinkedin, href: 'https://www.linkedin.com/in/vedantsolanki/', label: 'LinkedIn', tooltip: 'LinkedIn' },
-  { icon: FiMail, href: 'mailto:lucifer.ved@gmail.com', label: 'Email', tooltip: 'Email' }
+  { icon: FiMail, href: 'mailto:lucifer.ved@gmail.com', label: 'Email', tooltip: 'Email' },
+  { icon: FiCamera, href: 'https://photographsbyved.netlify.app/', label: 'Photography', tooltip: 'Photography' }
 ];
 
 const toolTiles = [
