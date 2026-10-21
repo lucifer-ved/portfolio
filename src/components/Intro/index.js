@@ -193,7 +193,8 @@ const experienceTimeline = [
         'Led architecture for two enterprise loyalty programs on the Capillary platform: a six-brand program for one of India\'s largest building-products manufacturers, and one for one of the UAE\'s largest real-estate developers. I owned both, from integration through day-to-day running.',
         'Cleaned up and restructured the manufacturer\'s loyalty data while the program stayed live, making the system more reliable and giving new features a sound base.',
         'Built a dashboard that follows every barcode through its full lifecycle across all six brands. It drew on more than 75 GB of data, growing every month, and was never more than 30 minutes behind.',
-        'Designed new loyalty features for the real-estate developer and led its integrations with a major regional bank and other third-party systems.'
+        'Designed new loyalty features for the real-estate developer and led its integrations with a major regional bank and other third-party systems.',
+        'Designed the foundational architecture for a loyalty program for a Ghanaian fuel and energy provider, gathering requirements directly from the client and working with its third-party vendors.'
       ],
       challenges: [
         'The cleanup had to happen on a live system. There was no quiet window, so I planned every step to be safe while the program kept running.',
