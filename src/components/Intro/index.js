@@ -170,7 +170,7 @@ const experienceTimeline = [
         'Took an intentional career break to learn deeply and build products end to end, and started IdeaForgeLabs, a founder-led studio building websites, apps and AI systems for small businesses.',
         'Built products at IdeaForgeLabs across iOS, Android, macOS, web and Meta Ray-Ban Display, including NextRenew, Origo, Stowbox, Japo and CaninePages.',
         'Built Origo, a local macOS control plane for AI agent tooling: MCP servers, secrets, skills, prompts and instructions.',
-        'Completed 5 certifications in generative AI, prompt engineering and Google Cloud, and passed Microsoft exam AI-103 (Azure AI Apps and Agents Developer Associate).'
+        'Completed 6 certifications in generative AI, AI security, prompt engineering and Google Cloud, and passed Microsoft exam AI-103 (Azure AI Apps and Agents Developer Associate).'
       ],
       challenges: [
         'Balancing deep learning with consistent shipping cadence while maintaining production quality.',

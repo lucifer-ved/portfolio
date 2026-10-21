@@ -22,6 +22,16 @@ export const Certificates = [
     link: 'https://learn.microsoft.com/api/credentials/share/en-us/VedantSolanki-3803/B6D539794C2159BB?sharingId=44727EE6B703727C'
   },
   {
+    title: 'Securing AI Systems',
+    issuer: 'Edureka',
+    mark: 'ED',
+    logo: logo('edureka.png'),
+    platform: 'Coursera',
+    date: 'Oct 18, 2026',
+    credentialId: 'DG0IK4ISXJ4H',
+    ...coursera('DG0IK4ISXJ4H')
+  },
+  {
     title: 'Generative AI for Security Fundamentals',
     issuer: 'Edureka',
     mark: 'ED',
